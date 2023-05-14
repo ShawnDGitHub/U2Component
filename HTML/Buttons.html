@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buttons</title>
+<script src="./components/FilledButton.js" type="module"></script>
+<script src="./components/OutlinedButton.js" type="module"></script>
+<script src="./components/TextButton.js" type="module"></script>
+<script src="./components/IconButton.js" type="module"></script>
+<script src="./components/SegmentedButton.js" type="module"></script>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" /> -->
+
+<style>
+:root {
+--md-sys-color-primary: #8c5000;
+ 
+--md-sys-color-primary-hover-state: #955e14;
+--md-sys-color-primary-focused-state: #9a651f;
+--md-sys-color-primary-pressed-state: #9f6c29;
+--md-sys-color-primary-disabled-state: #f3ece3;
+
+--md-sys-color-on-primary: #ffffff;
+
+--md-sys-color-surface: #fffdfb;
+--md-sys-color-on-surface: #201b16;
+
+/* icon */
+--md-sys-color-surface-variant: #f4e8df;
+--md-sys-color-on-surface-variant: #51443a;
+
+/* focus 的特殊样式 */
+--md-sys-state-hover-focus-state-layer-opacity: #f6f1ebe2;
+--md-sys-state-hover-state-layer-opacity: #f6f1eb;
+--md-sys-state-focused-state-layer-opacity: #f1eae1;
+--md-sys-state-pressed-state-layer-opacity: #f1eae1;
+    
+--md-sys-color-outline: #837469;
+--md-sys-color-outline-disabled: #edecec;
+    
+--md-sys-typescale-label-large-font-family-name: NotoSansSC-Medium;
+--md-sys-typescale-label-large-font-family-style: Medium;
+--md-sys-typescale-label-large-font-weight: 500px;
+--md-sys-typescale-label-large-font-size: 0.875em;
+--md-sys-typescale-label-large-line-height: 18px;
+--md-sys-typescale-label-large-letter-spacing: 0.10px;
+}
+
+@font-face {
+    font-family: 'NotoSansSC-Medium';
+    src: url('../FONTS/NotoSansSC-Medium.otf');
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  margin: 0;
+  font-size: 1rem; /* 1rem = 16px */
+  /* padding: 2rem; */
+        
+  /* background-color: #000; */
+}
+body > * + * { margin-top: 16px; }
+
+/* ripple */
+span.ripple {
+  position: absolute; /* The absolute position we mentioned earlier */
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple  700ms cubic-bezier(0.2, 0, 0, 1);
+  background-color: #91837157;
+}
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+</style>
+
+</head>
+<body>
+    <!-- Filled button -->
+    <!-- 填充式按钮 -->
+    <section>
+    <filled-button>
+        确认
+    </filled-button>
+    <filled-button disabled>
+        授权
+    </filled-button>
+    </section>
+
+    <section >        
+        <outlined-button>button</outlined-button>
+        <outlined-button disabled>button</outlined-button>
+    </section>
+
+    <section>        
+        <!-- <text-button>button</text-button> -->
+        <text-button dropdown>字体</text-button>
+    </section>
+
+    <section style="display: flex; width: 100%;">        
+        <segmented-button>
+            <outlined-button leading-icon="keyboard" icon-variant="rounded">选项 1</outlined-button>
+            <outlined-button leading-icon="shop" icon-variant="rounded">选项 2</outlined-button>
+            <outlined-button leading-icon="design_services" icon-variant="rounded">选项 3</outlined-button>
+            <outlined-button leading-icon="emoji_nature" icon-variant="rounded">选项 4</outlined-button>
+        </segmented-button>
+    </section>
+
+    <section>
+        <icon-button icon="search" icon-variant="outlined"></icon-button>
+        <icon-button icon="add" icon-variant="outlined"></icon-button>
+        <icon-button icon="arrow_drop_down" icon-variant="outlined"></icon-button>
+        <icon-button icon="arrow_drop_up" icon-variant="outlined"></icon-button>
+        <icon-button icon="videocam" icon-variant="outlined"></icon-button>
+        <icon-button icon="star" icon-variant="outlined"></icon-button>
+    </section> 
+
+    <section>
+        <icon-button icon="search" icon-variant="rounded"></icon-button>
+        <icon-button icon="add" icon-variant="rounded"></icon-button>
+        <icon-button icon="arrow_drop_down" icon-variant="rounded"></icon-button>
+        <icon-button icon="arrow_drop_up" icon-variant="rounded"></icon-button>
+        <icon-button icon="videocam" icon-variant="rounded"></icon-button>
+        <icon-button icon="star" icon-variant="rounded"></icon-button>
+    </section>
+
+    <section style="display: flex;">
+        <icon-button icon="search" icon-variant="sharp"></icon-button>
+        <icon-button icon="add" icon-variant="sharp"></icon-button>
+        <icon-button icon="arrow_drop_down" icon-variant="sharp"></icon-button>
+        <icon-button icon="arrow_drop_up" icon-variant="sharp"></icon-button>
+        <icon-button icon="videocam" icon-variant="sharp"></icon-button>
+        <icon-button icon="star" icon-variant="sharp"></icon-button>
+    </section>
+</body>
+<script>
+function createRipple(event) {
+    const button = event.currentTarget;
+    const circle = document.createElement("span");
+    const diameter = Math.max(button.clientWidth, button.clientHeight);
+    const radius = diameter / 2;
+
+    circle.style.width = circle.style.height = `${diameter}px`;
+    circle.style.left = `${event.clientX - (button.offsetLeft + radius)}px`;
+    circle.style.top = `${event.clientY - (button.offsetTop + radius)}px`;
+    circle.classList.add("ripple"); 
+
+    const ripple = button.getElementsByClassName("ripple")[0];
+
+    if (ripple) { ripple.remove(); }
+
+    button.appendChild(circle);
+}
+
+const buttons = document.getElementsByTagName("outlined-button");
+
+for (const button of buttons) {
+  button.addEventListener("click", createRipple, true);
+}
+
+function buttonConfirm() { console.info(confirm('confirm?')); }
+function buttonConsoleInfo() { console.info('you just clicked this button'); }
+
+</script>
+</html>
