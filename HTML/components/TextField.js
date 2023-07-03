@@ -42,6 +42,15 @@ export default class TextField extends HTMLElement {
     
 
 
+    textInputDebouce(callback, delay) {  // 输入的防抖，避免每次输入都修改内容
+        let timer = null;
+        return function() {
+            if (timer != null) clearTimeout(timer);
+            setTimeout(() => {
+                callback.call(this);
+            }, delay);
+        }
+    }
     createTextField() {
         let privateType = this.getAttribute('type');
         if (privateType != 'password') this.setAttribute('type', 'input');
@@ -59,7 +68,11 @@ export default class TextField extends HTMLElement {
             let autoComplete = this.getAttribute('autocomplete');
             this.INPUT.autocomplete = autoComplete;
         }
-
+        if (this.getAttribute('value')) {  // value
+            let value = this.getAttribute('value');
+            this.INPUT.value = value;
+            this.classList.add('filled');
+        }
         this.LABEL = undefined;
         let labelElement = document.createElement('div');  // float label
         labelElement.setAttribute('class', 'filled-textfield-label');
@@ -183,7 +196,7 @@ export default class TextField extends HTMLElement {
                 let minWidth = labelWidth + 38 + 12 + 24 + 12 + 24;
                 
                 if (minWidth > 112) {  // text field has a 112 limited min width
-                    tempStr = width != undefined ? `:host{width: ${this.getWidth()}px}` : `:host{min-width: ${minWidth}px}`;
+                    tempStr = width != undefined ? `:host{width: ${this.getWidth()}px}` : `:host{min-width: ${minWidth}px !important}`;
                 } else tempStr = width != undefined ? `:host{width: ${this.getWidth()}px}` : '';
 
                 let inputWidthAdjustStr = ':host > input {max-width: calc(100% - 4.25rem - 24px - 12px)}';
@@ -192,7 +205,7 @@ export default class TextField extends HTMLElement {
                 let minWidth = labelWidth + 38 + 12 + 24;
                 
                 if (minWidth > 112) {  // text field has a 112 limited min width
-                    tempStr = width != undefined ? `:host{width: ${this.getWidth()}px}` : `:host{min-width: ${minWidth}px}`;
+                    tempStr = width != undefined ? `:host{width: ${this.getWidth()}px}` : `:host{min-width: ${minWidth}px !important}`;
                 } else tempStr = width != undefined ? `:host{width: ${this.getWidth()}px}` : '';
 
                 let inputWidthAdjustStr = ':host > input {max-width: calc(100% - 4.25rem)}';
@@ -415,6 +428,17 @@ export default class TextField extends HTMLElement {
             this.setAttribute('aria-disabled', true);
         }
     }
+    valueChanged(newValue) {
+        if (newValue != "") {
+            this.classList.remove('empty');
+            this.classList.add('filled');
+        }
+        else {
+            this.classList.remove('filled');
+            this.classList.add('empty');
+        }
+        this.INPUT.value = newValue;
+    }
     changeLabelBackgroundColor(backgroundColor) {
         let style = document.createElement( 'style' );
         style.innerText = `:host > .filled-textfield-label{ background-color: ${backgroundColor} !important; }`;
@@ -451,6 +475,13 @@ export default class TextField extends HTMLElement {
             })
         } else if (this.classList.contains('textarea')) {
             this.createTextareaField();
+            this.addEventListener("keyup", () => {
+                if (this.TEXTAREA.value == '') { 
+                    this.setAttribute('value', "");
+                } else {
+                    this.setAttribute('value', this.TEXTAREA.value);
+                }
+            });
         } else {  // text field
             this.createTextField();
             this.INPUT.addEventListener("focus", (evt) => {
@@ -458,35 +489,37 @@ export default class TextField extends HTMLElement {
                 evt.stopPropagation();
                 this.classList.add('focused');
             })
-            this.addEventListener("click", () => {
-                this.setState(true);
-                this.INPUT.focus();
-                this.classList.add('focused');
-            })
-            this.addEventListener("keyup", () => {
-                if (this.INPUT.value == '') { 
-                    this.setAttribute('value', "");
-                    if (this.classList.contains('filled')) {
-                        this.classList.remove('filled');
-                        this.classList.add('empty');
+            this.addEventListener("click", this.textInputDebouce(
+                () => {
+                    this.setState(true);
+                    this.INPUT.focus();
+                    this.classList.add('focused');
+                }, 100)
+            );
+
+            this.addEventListener("keyup", this.textInputDebouce(
+                () => {
+                    if (this.INPUT.value == '') { 
+                        this.setAttribute('value', "");
+                        if (this.classList.contains('filled')) {
+                            this.classList.remove('filled');
+                            this.classList.add('empty');
+                        }
+                        this.setClearableState(false);
+                        this.classList.add('invisible-clearable');
+                    } else {
+                        this.setAttribute('value', this.INPUT.value);
+                        if (this.classList.contains('empty')) {
+                            this.classList.remove('empty');
+                            this.classList.add('filled');
+                        }
+                        if (this.classList.contains('invisible-clearable')) {
+                            this.classList.remove('invisible-clearable');
+                            if (this.getShouldClearState()) this.setClearableState(true);
+                        }
                     }
-                } else {
-                    this.setAttribute('value', this.INPUT.value);
-                    if (this.classList.contains('empty')) {
-                        this.classList.remove('empty');
-                        this.classList.add('filled');
-                    }
-                }
-                if (this.INPUT.value == '') {
-                    this.setClearableState(false);
-                    this.classList.add('invisible-clearable');
-                } else {
-                    if (this.classList.contains('invisible-clearable')) {
-                        this.classList.remove('invisible-clearable');
-                        if (this.getShouldClearState()) this.setClearableState(true);
-                    }
-                }
-            });
+                }, 300)
+            );
             this.addEventListener("focus", () => {
                 this.classList.add('focused');
             });
@@ -520,12 +553,15 @@ export default class TextField extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['variant', 'placeholder', 'label-backgroundColor', 'autocomplete', 'disabled'];
+        return ['variant', 'placeholder', 'label-backgroundColor', 'autocomplete', 'disabled', 'value'];
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
         switch(name) {
             case 'disabled': this.disabledStateChanged(); break;
+            case 'value': 
+                if (newValue != oldValue) this.valueChanged(newValue);
+                break;
             default: break;
         } 
     }
