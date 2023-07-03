@@ -68,12 +68,11 @@ body > * + * { margin-top: 3rem; }
 
 </head>
 <body>
-    <section>
     <!-- Text button -->
     <!-- 文字按钮 -->
-        <!-- 用于测试 -->
-        <text-button dropdown>下拉选择</text-button>  <!-- 文字按钮变种类型，为 -->
-        <!-- <text-button>确认</text-button> -->  <!-- 文字按钮原本类型 -->
+    <section>
+        <text-button dropdown>字体</text-button>  <!-- 文字按钮变种类型，为富文本编辑器做准备，仅支持中文文字按钮 -->
+        <text-button>确认</text-button>  <!-- 文字按钮原本类型 -->
     </section>
 
     <section>
@@ -87,16 +86,17 @@ body > * + * { margin-top: 3rem; }
         </filled-button>
     </section>
 
-    <section>    
     <!-- Outlined button -->
     <!-- 边线按钮 -->    
+    <!-- 用于测试 -->
+    <section>    
         <outlined-button leading-icon="shop" icon-variant="rounded">确认</outlined-button>
-        <outlined-button disabled>授权</outlined-button>
+        <!-- <outlined-button disabled>授权</outlined-button> -->
     </section>
 
-    <section style="max-width: 700px;">
     <!-- Segmented button -->
     <!-- 组合按钮，目前只支持 Outlined Button -->
+    <section style="max-width: 700px;">
         <segmented-button>
             <outlined-button leading-icon="shop" icon-variant="rounded">选项 1</outlined-button>
             <outlined-button leading-icon="design_services" icon-variant="rounded">选项 2</outlined-button>
@@ -104,9 +104,9 @@ body > * + * { margin-top: 3rem; }
         </segmented-button>
     </section>
 
-    <section>
     <!-- Icon button -->
     <!-- 图标按钮 -->  
+    <section>
         <icon-button icon="search" icon-variant="outlined"></icon-button>
         <icon-button icon="add" icon-variant="outlined"></icon-button>
         <icon-button icon="arrow_drop_down" icon-variant="outlined"></icon-button>
@@ -124,8 +124,8 @@ body > * + * { margin-top: 3rem; }
         <icon-button icon="star" icon-variant="rounded"></icon-button>
     </section>
 
+    <!-- 父元素设置 flex 使得这些图标没有间隔 -->
     <section style="display: flex;">
-        <!-- 父元素设置 flex 使得这些图标没有间隔 -->
         <icon-button icon="search" icon-variant="sharp"></icon-button>
         <icon-button icon="add" icon-variant="sharp"></icon-button>
         <icon-button icon="arrow_drop_down" icon-variant="sharp"></icon-button>

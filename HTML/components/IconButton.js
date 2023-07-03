@@ -4,11 +4,6 @@ export default class IconButton extends HTMLElement {
         this.attachShadow({ mode: "open" });
         this.rendered = false;
         this.shadowRoot.innerHTML = `<style>@import "${new URL("IconButton.css", import.meta.url)}";</style>`;
-        // icon
-        let iconName = this.getAttribute('icon');
-        this.setIconName(iconName);
-        let iconVariant = this.getAttribute('icon-variant');
-        this.setIconVariant(iconVariant);
     }
     setShadowRoot(content) { this.shadowRoot.innerHTML = content; }  // shadowroot
     addToShadowRoot(additionalElement) { this.shadowRoot.appendChild(additionalElement); }
@@ -40,7 +35,8 @@ export default class IconButton extends HTMLElement {
                     spanInsert.classList.add('material-symbols-rounded');
                 else spanInsert.classList.add('material-symbols-sharp');
             } else {  // add default variant
-                console.warn('Material Symbols 拥有三类图标变种，分别是 outlined、rounded 和 sharp。传入 icon-variant 属性以隐藏该提示。')
+                if (this.rendered)
+                    console.warn('Material Symbols 拥有三类图标变种，分别是 outlined、rounded 和 sharp。传入 icon-variant 属性以隐藏该提示。')
                 spanInsert.classList.add('material-symbols-outlined');
             }
             this.addToShadowRoot(spanInsert);
@@ -50,6 +46,10 @@ export default class IconButton extends HTMLElement {
     render() {
         this.setAttribute('type', "button");
         this.disabledStateChanged();  // tabindex
+        let iconName = this.getAttribute('icon');
+        this.setIconName(iconName);
+        let iconVariant = this.getAttribute('icon-variant');
+        this.setIconVariant(iconVariant);
     }
 
     connectedCallback() {
@@ -64,6 +64,7 @@ export default class IconButton extends HTMLElement {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
+        // icon
         switch(name) {
             case 'icon':
                 this.iconChanged(newValue, this.getIconVariant());

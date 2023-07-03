@@ -3,7 +3,6 @@ export default class SegmentedButton extends HTMLElement {
         super();
         this.attachShadow({ mode: "open" });
         this.shadowRoot.innerHTML = `<style>@import "${new URL("SegmentedButton.css", import.meta.url)}";</style><slot></slot>`;
-
     }
     setValue(value) {
         this._value = value;
@@ -29,6 +28,23 @@ export default class SegmentedButton extends HTMLElement {
         selectedButton = button;
         selectedButton.classList.add('focused');
     }
+    eventFunc(evt) {
+        let previousValue = this.getValue();
+        let button = evt.target;
+        
+        while (button && button.parentNode !== this) {
+            button = button.parentNode;
+        }
+
+        if (button) {
+            this.setValue(this.getButtonValue(button));
+            this.setAttribute('value', this.getValue());
+            if (previousValue !== this.getValue()) {
+                this.focusButton(button, this.previousButton);
+            }
+            this.previousButton = button;
+        }
+    }
 
     render() {
         let firstButton = this.children[0];
@@ -36,24 +52,15 @@ export default class SegmentedButton extends HTMLElement {
         let value = this.getButtonValue(firstButton);
         this.setValue(value);
         firstButton.classList.add('focused');
+
         this.setAttribute('value', this.getValue());
 
         this.addEventListener("click", evt => {
-            let previousValue = this.getValue();
-            let button = evt.target;
-            
-            while (button && button.parentNode !== this) {
-                button = button.parentNode;
-            }
+            this.eventFunc(evt);
+        })
 
-            if (button) {
-                this.setValue(this.getButtonValue(button));
-                this.setAttribute('value', this.getValue());
-                if (previousValue !== this.getValue()) {
-                    this.focusButton(button, this.previousButton);
-                }
-                this.previousButton = button;
-            }
+        this.addEventListener("keydown", evt => {
+            if (evt.key == 'Enter') this.eventFunc(evt);
         })
     }
 
@@ -66,9 +73,6 @@ export default class SegmentedButton extends HTMLElement {
 
     static get observedAttributes() {
         return [];
-    }
-
-    attributeChangedCallback(name, oldValue, newValue) {
     }
 }
 

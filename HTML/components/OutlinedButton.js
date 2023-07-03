@@ -9,8 +9,6 @@ export default class OutlinedButton extends HTMLElement {
     addToShadowRoot(additionalElement) { this.shadowRoot.appendChild(additionalElement); }
     setLeadingIcon(leadingIcon) { this._leadingIcon = leadingIcon; }
     getLeadingIcon() { return this._leadingIcon; }
-    setIconVariant(iconVariant) { this._iconVariant = iconVariant; }
-    getIconVariant() { return this._iconVariant; }
 
     disabledStateChanged() {
         if (this.getAttribute('disabled')==null) { 
@@ -34,7 +32,7 @@ export default class OutlinedButton extends HTMLElement {
         else if (this.nextElementSibling == null) this.setAttribute('segmentedtype', 'end');
         else this.setAttribute('segmentedtype', 'normal');
     }
-    leadingIconChanged() {
+    handleLeadingIcon() {
         let leadingIcon = this.getAttribute('leading-icon');
         if (leadingIcon != null) {
             this.setLeadingIcon(leadingIcon);
@@ -62,7 +60,7 @@ export default class OutlinedButton extends HTMLElement {
 
         this.setAttribute('type', "button");
         this.disabledStateChanged();  // tabindex and disbale state
-
+        this.handleLeadingIcon();
         if (this.parentNode.tagName == 'SEGMENTED-BUTTON') {
             this.handleSegmented();
             this.addEventListener("click", evt => {
@@ -71,6 +69,18 @@ export default class OutlinedButton extends HTMLElement {
                     icon.textContent = 'check';
                 }
             })
+        } else {
+            let buttonText = this.childNodes[0].textContent;
+            let tempStr = '';
+            let isStringType = isNaN(Number(buttonText, 10));
+            let buttonWidth = buttonText.length * 16;
+
+            let style = document.createElement( 'style' );
+            let minWidth = buttonWidth + 24;
+            if (isStringType) tempStr = `:host{min-width: ${minWidth + 24}px}`;
+            else tempStr = `:host{min-width: ${minWidth - 8}px}`;
+            style.innerHTML = tempStr;
+            this.addToShadowRoot(style);
         }
 
         // transform
@@ -80,7 +90,7 @@ export default class OutlinedButton extends HTMLElement {
         }
     }
 
-    connectedCallback() {
+    connectedCallback() { // 子元素还不存在，例如内部文字 当自定义元素第一次被连接到文档 DOM 时被调用
         if (!this.rendered) {
             this.render();
             this.rendered = true;
@@ -88,7 +98,7 @@ export default class OutlinedButton extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['transform', 'disabled', 'class', 'leading-icon'];
+        return ['transform', 'disabled', 'class'];
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
@@ -96,10 +106,6 @@ export default class OutlinedButton extends HTMLElement {
             case 'transform': console.info(oldValue, newValue); break;
             case 'disabled': this.disabledStateChanged(); break;
             case 'class': if (newValue === '') this.classUnfocued(); break;
-            case 'leading-icon':
-                this.leadingIconChanged(newValue, this.getIconVariant());
-                this.setLeadingIcon(newValue);
-                break;
             default: break;
         } 
     }

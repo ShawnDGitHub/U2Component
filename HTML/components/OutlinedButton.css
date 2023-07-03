@@ -1,13 +1,41 @@
-:host {
+:host(:not([segmentedtype])) {
     /* outlined-button */
     position: relative;
-    display: inline;
+    padding: 10px 24px;
+    color: var(--md-sys-color-primary);
+    border: 1px solid var(--md-sys-color-outline);
+    user-select: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 1.875em;
+    font-family: var(--md-sys-typescale-label-large-font-family-name);
+    font-style: var(--md-sys-typescale-label-large-font-family-style);
+    font-weight: var(--md-sys-typescale-label-large-font-weight);
+    font-size: var(--md-sys-typescale-label-large-font-size);
+    line-height: var(--md-sys-typescale-label-large-line-height);
+    letter-spacing: var(--md-sys-typescale-label-large-letter-spacing);
+    white-space: nowrap;
+    cursor: pointer;
+    max-height: 41px;
+    transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+    overflow: hidden;
+}
+:host([segmentedtype]) {
+    /* outlined-button */
+    position: relative;
     padding: 10px 24px;
     width: 100%;
     color: var(--md-sys-color-primary);
     border: 1px solid var(--md-sys-color-outline);
     user-select: none;
-    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
     border-radius: 1.875em;
     font-family: var(--md-sys-typescale-label-large-font-family-name);
     font-style: var(--md-sys-typescale-label-large-font-family-style);
@@ -32,25 +60,16 @@
     background-color: var(--md-sys-state-pressed-state-layer-opacity);
 }
 :host([disabled]) {
+    cursor: not-allowed;
     padding: 10px 24px;
-    color: #cccac8;
+    color: var(--md-sys-color-on-surface-disabled);
     background-color: transparent;
-    border: 1px solid var(--md-sys-color-outline-disabled);
+    border: 1px solid var(--md-sys-color-on-surface-disabled);
     pointer-events: none;
 }
 :host([class="focused"]) {
     color: var(--md-sys-color-primary) !important;
     background-color: var(--md-sys-state-focused-state-layer-opacity);
-}
-:host([leading-icon]) {
-    color: var(--md-sys-color-on-primary-container);
-    display: inline-flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 12px;
-    width: fit-content;
-    min-width: 48px;
 }
 :host([segmentedtype]) {
     color: var(--md-sys-color-on-primary-container);
@@ -59,7 +78,6 @@
     justify-content: center;
     align-items: center;
     padding: 10px 12px;
-    width: 100%;
     min-width: 48px;
 }
 @media (prefers-color-scheme: dark) {

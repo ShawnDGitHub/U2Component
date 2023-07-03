@@ -1,0 +1,811 @@
+:host(:not([class~="textarea"])) {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 8px 0;
+    max-width: 280px;
+    min-width: 112px;
+}
+:host([class~="dropdown"]) {
+    z-index: 1;
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    max-width: 280px;
+    min-width: 112px;
+}
+:host > input {
+    padding: 0 16px;
+    position: absolute;
+    left: 0;
+    color: var(--md-sys-color-on-surface-variant);
+    background-color: transparent;
+    font-family: var(--md-sys-typescale-body-large-font-family-name);
+    font-style: var(--md-sys-typescale-body-large-font-family-style);
+    font-weight: var(--md-sys-typescale-body-large-font-weight);
+    font-size: var(--md-sys-typescale-body-large-font-size);
+    line-height: var(--md-sys-typescale-body-large-line-height);
+    letter-spacing: var(--md-sys-typescale-body-large-letter-spacing);
+    white-space: nowrap;
+    outline: none;
+    border: none;
+}
+:host > input[type="password"]::-ms-reveal{
+    display:none
+}
+/* Filled */
+:host([variant="filled"]:not([class~="rounded"]):not([class~="textarea"])) {
+    height: 56px;
+    color: var(--md-sys-color-on-surface-variant);
+    background-color: var(--md-sys-color-surface-variant);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-bottom: 1px solid var(--md-sys-color-on-surface-variant);
+    cursor: text;
+
+    transition: background-color 100ms cubic-bezier(0.2, 0, 0, 1);
+}
+:host([variant="filled"][class~="rounded"]) {
+    height: 56px;
+    color: var(--md-sys-color-on-surface-variant);
+    background-color: var(--md-sys-color-surface-variant);
+    border-radius: 2rem !important;
+    border-bottom: 1px solid var(--md-sys-color-on-surface-variant);
+    cursor: text;
+
+    transition: background-color 100ms cubic-bezier(0.2, 0, 0, 1);
+}
+:host([variant="filled"][class~="textarea"]) {
+    display: flow-root;
+    height: fit-content;
+    padding: 8px 0;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    color: var(--md-sys-color-on-surface-variant);
+    background-color: var(--md-sys-color-surface-variant);
+    border-bottom: 1px solid var(--md-sys-color-on-surface-variant);
+    cursor: text;
+
+    transition: background-color 100ms cubic-bezier(0.2, 0, 0, 1);
+}
+:host([variant="filled"][class~="textarea"]) > textarea {
+    font-size: 1rem;
+    caret-color: var(--md-sys-color-primary);
+    margin: 0 8px;
+    resize: none;
+    width: 100%;
+    height: fit-content;
+    font-family: NotoSansSC-Regular;
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
+:host(:hover[variant="filled"]) {
+    background-color: var(--md-sys-state-hover-state-layer-opacity);
+    transition: background-color 100ms cubic-bezier(0.2, 0, 0, 1);
+}
+:host(:hover[variant="filled"][class~="filled focused"]),
+:host(:hover[variant="filled"][class~="focused filled"]),
+:host(:hover[variant="filled"][class~="focused empty"]),
+:host(:hover[variant="filled"][class~="empty focused"]),
+:host(:hover[variant="filled"][class~="dropdown focused"]) {
+    background-color: var(--md-sys-color-surface-variant);
+    transition: background-color 100ms cubic-bezier(0.2, 0, 0, 1);
+}
+/* :host(:hover[variant="filled"][class~="empty"]) {
+    background-color: var(--md-sys-color-surface-variant);
+    transition: background-color 100ms cubic-bezier(0.2, 0, 0, 1);
+} */
+
+:host([variant="filled"]) > input {
+    margin-top: 8px;
+    caret-color: var(--md-sys-color-primary);
+}
+:host(:focus[variant="filled"]) {
+    border-bottom: 2px solid var(--md-sys-color-primary);
+    transition: border-bottom 100ms cubic-bezier(0.2, 0, 0, 1);
+}
+:host(:focus[variant="filled"]) > input, :host([class~="filled"]) > input {
+    margin-top: 14px;
+}
+:host([variant="filled"]) ::-webkit-input-placeholder,
+:host([variant="outlined"]) ::-webkit-input-placeholder
+ { color: transparent; }
+/* :host(:focus[variant="filled"]) > input::-webkit-input-placeholder { 
+    color: var(--md-sys-color-on-surface-variant);
+    transition: color 100ms cubic-bezier(0.2, 0, 0, 1);
+    opacity: 80%;
+} */
+
+/* outlined */
+:host([variant="outlined"]:not([class~="rounded"])) {
+    margin-top: 12px;
+    min-height: 50px;
+    border-radius: 4px;
+    outline: 1px solid var(--md-sys-color-outline);
+
+    cursor: text;
+}
+:host([variant="outlined"][class~="rounded"]) {
+    margin-top: 12px;
+    min-height: 50px;
+    border-radius: 2rem !important;
+    outline: 1px solid var(--md-sys-color-outline);
+
+    cursor: text;
+}
+/* textarea */
+:host([variant="outlined"][class~="textarea"]) {
+    display: flow-root;
+    height: fit-content;
+    border-radius: 4px;
+    outline: 1px solid var(--md-sys-color-outline);
+
+    cursor: text;
+}
+:host([variant="outlined"][class~="textarea"]) > textarea {
+    font-size: 1rem;
+    caret-color: var(--md-sys-color-primary);
+    margin: 8px;
+    resize: none;
+    width: 100%;
+    height: 100%;
+    font-family: NotoSansSC-Regular;
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+:host(:hover[variant="outlined"]) {
+    color: var(--md-sys-color-on-surface);
+    outline: 1px solid var(--md-sys-color-on-surface);
+    transition: color 100ms cubic-bezier(0.2, 0, 0, 1);
+}
+:host([class~="dropdown"]) {
+    cursor: pointer;
+}
+:host([variant="outlined"]) > input {
+    color: var(--md-sys-color-on-surface);
+    margin-top: 4px ;
+}
+:host(:focus[variant="outlined"]) {
+    outline: 2px solid var(--md-sys-color-primary);
+    z-index: 100;
+}
+
+/* LabelText */
+:host([variant="filled"]) .filled-textfield-label {
+    position: absolute;
+    display: inline-block;
+    transform: translateY(0);
+    overflow: hidden;
+    top: 16px;
+    left: 16px;
+    font-family: var(--md-sys-typescale-body-large-font-family-name);
+    font-style: var(--md-sys-typescale-body-large-font-family-style);
+    font-weight: var(--md-sys-typescale-body-large-font-weight);
+    font-size: var(--md-sys-typescale-body-large-font-size);
+    line-height: var(--md-sys-typescale-body-large-line-height);
+    letter-spacing: var(--md-sys-typescale-body-large-letter-spacing);
+    white-space: nowrap;
+
+    transition: transform 200ms cubic-bezier(0.2, 0, 0, 1),font-size 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+:host(:focus[variant="filled"]) .filled-textfield-label {
+    top: 18px;
+    transform: translateY(-16px);
+    font-family: var(--md-sys-typescale-body-small-font-family-name);
+    font-weight: var(--md-sys-typescale-body-small-font-weight);
+    font-size: var(--md-sys-typescale-body-small-font-size);
+    letter-spacing: var(--md-sys-typescale-body-small-letter-spacing);
+
+    color: var(--md-sys-color-primary);
+
+    transition: 
+     transform 100ms cubic-bezier(0.2, 0, 0, 1),
+     font-size 100ms cubic-bezier(0.2, 0, 0, 1);
+}
+:host([variant="filled"][class~="filled"]) .filled-textfield-label {
+    top: 18px;
+    transform: translateY(-16px);
+    font-family: var(--md-sys-typescale-body-small-font-family-name);
+    font-weight: var(--md-sys-typescale-body-small-font-weight);
+    font-size: var(--md-sys-typescale-body-small-font-size);
+    letter-spacing: var(--md-sys-typescale-body-small-letter-spacing);
+
+    color: var(--md-sys-color-on-surface-variant);
+}
+/* outlined labeltext */
+:host([variant="outlined"]) .filled-textfield-label {
+    position: absolute;
+    display: inline-block;
+    transform: translateY(0);
+    padding: 0 0px;
+    border-radius: 4px;
+
+    overflow: hidden;
+    top: 16px;
+    left: 16px;
+    color: var(--md-sys-color-on-surface-variant);
+    font-family: var(--md-sys-typescale-body-large-font-family-name);
+    font-style: var(--md-sys-typescale-body-large-font-family-style);
+    font-weight: var(--md-sys-typescale-body-large-font-weight);
+    font-size: var(--md-sys-typescale-body-large-font-size);
+    line-height: 1rem;
+    letter-spacing: var(--md-sys-typescale-body-large-letter-spacing);
+    white-space: nowrap;
+
+    transition:
+     transform 100ms cubic-bezier(0.2, 0, 0, 1),
+     font-size 100ms cubic-bezier(0.2, 0, 0, 1);
+}
+:host(:hover[variant="outlined"]:not([class~="focused"])) .filled-textfield-label {
+    color: var(--md-sys-color-on-surface);
+    transition: 
+    color 100ms cubic-bezier(0.2, 0, 0, 1);
+}
+:host([variant="outlined"][class~="focused"]) .filled-textfield-label {
+    top: 6px;
+    left: 12px;
+    padding: 0 4px;
+    transform: translateY(-16px);
+    font-family: var(--md-sys-typescale-body-small-font-family-name);
+    font-weight: var(--md-sys-typescale-body-small-font-weight);
+    font-size: var(--md-sys-typescale-body-small-font-size);
+    letter-spacing: var(--md-sys-typescale-body-small-letter-spacing);
+    background-color: #fff;
+
+    color: var(--md-sys-color-primary);
+
+    transition:
+     transform 100ms ease-in-out,
+     top 100ms ease,
+     font-size 100ms ease-in-out;
+}
+:host([variant="outlined"][class~="filled"]) .filled-textfield-label,
+:host([variant="outlined"][class~="dropdown"]) .filled-textfield-label {
+    top: 6px;
+    left: 12px;
+    padding: 0 4px;
+    transform: translateY(-16px);
+    font-family: var(--md-sys-typescale-body-small-font-family-name);
+    font-weight: var(--md-sys-typescale-body-small-font-weight);
+    font-size: var(--md-sys-typescale-body-small-font-size);
+    letter-spacing: var(--md-sys-typescale-body-small-letter-spacing);
+    background-color: #fff;
+
+    color: var(--md-sys-color-primary);
+    transition: 
+    transform 100ms cubic-bezier(0.2, 0, 0, 1),
+    font-size 100ms cubic-bezier(0.2, 0, 0, 1);
+}
+:host(:hover[variant="outlined"][class~="filled"]) .filled-textfield-label {
+    color: var(--md-sys-color-on-surface);
+    transition: color 100ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* dropdown divider */
+/* :host([variant="outlined"][class~="dropdown"]) .divider {
+    width: 100%;
+    border-top: 1px solid var(--md-sys-color-outline-variant);
+    margin: 8px 0;
+} */
+/* dropdown Trailing icon */
+:host([variant="filled"][class~="dropdown"])::after {
+    content: "arrow_drop_down";
+    position: absolute;
+    top: 16px;
+    right: 12px;
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48;
+}
+:host(:focus[variant="filled"][class~="dropdown"])::after {
+    color: var(--md-sys-color-primary);
+    content: "arrow_drop_up";
+    position: absolute;
+    top: 16px;
+    right: 12px;
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48; }
+
+:host([variant="outlined"][class~="dropdown"])::after {
+    content: "arrow_drop_down";
+    position: absolute;
+    top: 12px;
+    right: 12px;
+
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48;
+}
+:host(:focus[variant="outlined"][class~="dropdown"])::after {
+    color: var(--md-sys-color-primary);
+    content: "arrow_drop_up";
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48;}
+
+/* select placeholder */
+:host(:focus[variant="outlined"][class="dropdown focused"]) .filled-textfield-label {
+    color: var(--md-sys-color-primary);
+    transition: color 100ms cubic-bezier(0.2, 0, 0, 1);
+}
+:host .placeholder {
+    position: absolute;
+    z-index: -1;
+    top: 14.5px;
+    left: 16px;
+}
+:host(:focus) .placeholder {
+    /* color: var(--md-sys-color-on-surface-variant); */
+    font-family: var(--md-sys-typescale-body-large-font-family-name);
+    font-style: var(--md-sys-typescale-body-large-font-family-style);
+    font-weight: var(--md-sys-typescale-body-large-font-weight);
+    font-size: var(--md-sys-typescale-body-large-font-size);
+    letter-spacing: var(--md-sys-typescale-body-large-letter-spacing);
+    white-space: nowrap;
+    opacity: 1;
+}
+/* select filled */
+:host([variant="filled"]) .placeholder {
+    position: absolute;
+    z-index: 0;
+    top: 24px;
+    left: 16px;
+
+    font-family: var(--md-sys-typescale-body-large-font-family-name);
+    font-style: var(--md-sys-typescale-body-large-font-family-style);
+    font-weight: var(--md-sys-typescale-body-large-font-weight);
+    font-size: var(--md-sys-typescale-body-large-font-size);
+    letter-spacing: var(--md-sys-typescale-body-large-letter-spacing);
+    white-space: nowrap;
+}
+:host(:hover[variant="filled"]) select {
+    color: var(--md-sys-color-on-surface);
+}
+:host([variant="filled"]) select {
+    opacity: 0;
+    z-index: 0;
+    pointer-events: none;
+    appearance:none;
+    -moz-appearance:none; 
+    -webkit-appearance:none;
+
+    top: 0px;
+    position: absolute;
+    width: 100%;
+    padding: 0px 16px;
+    outline: none;
+    border: none;
+    overflow: hidden;
+
+    color: transparent;
+    font-family: var(--md-sys-typescale-body-large-font-family-name);
+    font-style: var(--md-sys-typescale-body-large-font-family-style);
+    font-weight: var(--md-sys-typescale-body-large-font-weight);
+    font-size: var(--md-sys-typescale-body-large-font-size);
+    letter-spacing: var(--md-sys-typescale-body-large-letter-spacing);
+    white-space: nowrap;
+
+    display: inline-block;
+    border-radius: 4px;
+    max-width: 280px;
+    min-width: 112px;
+    min-height: 100%;
+
+    text-align: start;
+}
+:host(:focus[variant="filled"]) { z-index: 100; }
+:host([variant="filled"]) select:focus {
+    opacity: 1;
+    pointer-events: all;
+    top: 56px;
+    padding: 8px 0px;
+    /* M3/Elevation Light/2 */
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.193), 0px 3px 8px 2px rgba(0, 0, 0, 0.078);
+}
+:host([variant="filled"]) option {
+    min-height: 48px;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+
+    color: var(--md-sys-color-on-surface);
+    text-align: start;
+    cursor: pointer;
+    overflow: hidden;
+}
+/* dropdown leading icon option */
+:host([variant="filled"][leading-icon]) option {
+    min-height: 48px;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    padding: 0 12px 0 52px;
+
+    color: var(--md-sys-color-on-surface);
+    text-align: start;
+    cursor: pointer;
+    overflow: hidden;
+}
+:host([variant="filled"]) option:hover {
+    background-color: var(--md-sys-color-on-surface-opacity-4);
+}
+:host([variant="filled"][leading-icon][class~="dropdown"]) .filled-textfield-label {
+    padding: 0;
+}
+:host([variant="filled"][class~="dropdown"]) .filled-textfield-label {
+    top: 18px;
+    left: 12px;
+    padding: 0 4px;
+    transform: translateY(-16px);
+    font-family: var(--md-sys-typescale-body-small-font-family-name);
+    font-weight: var(--md-sys-typescale-body-small-font-weight);
+    font-size: var(--md-sys-typescale-body-small-font-size);
+    letter-spacing: var(--md-sys-typescale-body-small-letter-spacing);
+
+    color: var(--md-sys-color-on-surface-variant);
+}
+:host(:focus[variant="filled"][class~="dropdown"]) .filled-textfield-label {
+    color: var(--md-sys-color-primary);
+}
+/* select outlined*/
+:host(:hover[variant="outlined"]) select {
+    color: var(--md-sys-color-on-surface);
+}
+:host([variant="outlined"]) select {
+    pointer-events: none;
+    appearance:none;
+    -moz-appearance:none; 
+    -webkit-appearance:none;
+
+    top: 0px;
+    position: absolute;
+    width: 100%;
+    padding: 0px 16px;
+    outline: none;
+    border: none;
+    overflow: hidden;
+
+    color: var(--md-sys-color-on-surface-variant);
+    font-family: var(--md-sys-typescale-body-large-font-family-name);
+    font-style: var(--md-sys-typescale-body-large-font-family-style);
+    font-weight: var(--md-sys-typescale-body-large-font-weight);
+    font-size: var(--md-sys-typescale-body-large-font-size);
+    letter-spacing: var(--md-sys-typescale-body-large-letter-spacing);
+    white-space: nowrap;
+
+    display: inline-block;
+    border-radius: 4px;
+    max-width: 280px;
+    min-width: 112px;
+    min-height: 100%;
+
+    text-align: start;
+    cursor: pointer;
+}
+
+:host([variant="outlined"]) select:focus {
+    /* TODO 为什么样式丢失去 */
+    /* 因为 focus state 未初始化 */
+    pointer-events: all;
+    z-index: 0;
+    top: 52px;
+    padding: 8px 0px;
+    /* M3/Elevation Light/2 */
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.193), 0px 3px 8px 2px rgba(0, 0, 0, 0.078);
+}
+:host([variant="outlined"]) option {
+    min-height: 48px;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+
+    color: var(--md-sys-color-on-surface);
+    text-align: start;
+    overflow: hidden;
+}
+:host([variant="outlined"][leading-icon]) option {
+    min-height: 48px;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    padding: 0 12px 0 52px;
+
+    color: var(--md-sys-color-on-surface);
+    text-align: start;
+    cursor: pointer;
+    overflow: hidden;
+}
+:host([variant="outlined"]) option:hover {
+    cursor: pointer;
+    background-color: var(--md-sys-color-on-surface-opacity-4);
+}
+/* :host([variant="outlined"]) select option:checked {
+    color: var(--md-sys-color-primary) !important;
+    background-color: #000 !important;
+} */
+:host([variant="outlined"]) option:focus-visible {
+    background-color: var(--md-sys-state-focused-state-layer-opacity);
+}
+:host([variant="outlined"]) option:active {
+    background-color: var(--md-sys-state-pressed-state-layer-opacity);
+}
+/* disabled */
+:host([disabled][variant="filled"]) {
+    color: #cccac8;
+    background-color: var(--md-sys-color-on-surface-opacity-4);
+    border-bottom: 1px solid var(--md-sys-color-on-surface-opacity-38);
+    pointer-events: none;
+}
+:host([disabled][variant="filled"]) .filled-textfield-label {
+    color: var(--md-sys-color-on-surface);
+    opacity: 38%;
+    background-color: transparent;
+}
+:host([disabled][variant="outlined"]) {
+    color: #cccac8;
+    background-color: transparent;
+    outline: 1px solid var(--md-sys-color-outline-disabled);
+    pointer-events: none;
+}
+:host([disabled][variant="outlined"]) .filled-textfield-label {
+    color: var(--md-sys-color-on-surface);
+    opacity: 38%;
+    background-color: transparent;
+}
+
+/* leading icon */
+:host .material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48;
+}
+:host .material-symbols-rounded {
+    font-family: 'Material Symbols rounded';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48;
+}
+:host .material-symbols-sharp {
+    font-family: 'Material Symbols sharp';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48;
+}
+:host([variant="filled"][leading-icon]) span.leading-icon {
+    user-select: none;
+    position: absolute;
+    display: inline-block;
+    overflow: hidden;
+    top: 16px;
+    left: 12px;
+}
+:host([variant="filled"][leading-icon]) > input {
+    left: calc(12px + 24px);
+}
+:host([variant="filled"][leading-icon]) .filled-textfield-label {
+    left: calc(16px + 12px + 24px);
+}
+/* trailing icon */
+:host([variant="filled"]) span.trailing-icon {
+    user-select: none;
+    cursor: pointer;
+    position: absolute;
+    display: inline-block;
+    overflow: hidden;
+    top: 16px;
+    right: 12px;
+}
+:host([variant="filled"][class~="invisible-clearable"]) span.trailing-icon {
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    cursor: default;
+    position: absolute;
+    display: inline-block;
+    overflow: hidden;
+    top: 16px;
+    right: 12px;
+    z-index: -1;
+}
+
+/* outlined */
+:host([variant="outlined"]) span.leading-icon {
+    z-index: 2;
+    position: absolute;
+    display: inline-block;
+    overflow: hidden;
+    top: 12.6px;
+    left: 12px;
+}
+:host([variant="outlined"][leading-icon]) > input {
+    left: calc(12px + 24px);
+}
+:host([variant="outlined"][leading-icon]) .filled-textfield-label {
+    left: calc(16px + 12px + 24px);
+}
+:host([variant="outlined"][leading-icon][class~="filled"]) .filled-textfield-label {
+    left: 12px;
+}
+:host(:focus[variant="outlined"][leading-icon]) .filled-textfield-label {
+    top: 6px;
+    left: 12px;
+    padding: 0 4px;
+    transform: translateY(-16px);
+    font-family: var(--md-sys-typescale-body-small-font-family-name);
+    font-weight: var(--md-sys-typescale-body-small-font-weight);
+    font-size: var(--md-sys-typescale-body-small-font-size);
+    letter-spacing: var(--md-sys-typescale-body-small-letter-spacing);
+    background-color: #fff;
+
+    color: var(--md-sys-color-on-surface-variant);
+    transition: 
+    transform 100ms cubic-bezier(0.2, 0, 0, 1),
+    font-size 100ms cubic-bezier(0.2, 0, 0, 1);
+}
+:host([variant="outlined"]) span.trailing-icon {
+    user-select: none;
+    cursor: pointer;
+    position: absolute;
+    display: inline-block;
+    overflow: hidden;
+    right: 12px;
+    top: 12.6px;
+}
+
+:host([variant="outlined"][class~="invisible-clearable"]) span.trailing-icon {
+    opacity: 0;
+    user-select: none;
+    cursor: default;
+    position: absolute;
+    display: inline-block;
+    overflow: hidden;
+    right: 12px;
+    top: 12.6px;
+    z-index: -1;
+}
+:host([variant="outlined"][leading-icon][class="filled"]) .filled-textfield-label,
+:host([variant="outlined"][leading-icon][class~="dropdown"]) .filled-textfield-label {
+    left: 12px;
+}
+
+/* dropdown */
+/* select filled */
+:host([variant="filled"][leading-icon]) .placeholder {
+    position: absolute;
+    z-index: 0;
+    top: 24px;
+    left: 52px;
+
+    font-family: var(--md-sys-typescale-body-large-font-family-name);
+    font-style: var(--md-sys-typescale-body-large-font-family-style);
+    font-weight: var(--md-sys-typescale-body-large-font-weight);
+    font-size: var(--md-sys-typescale-body-large-font-size);
+    letter-spacing: var(--md-sys-typescale-body-large-letter-spacing);
+    white-space: nowrap;
+}
+/* outlined */
+:host([variant="outlined"][leading-icon]) .placeholder {
+    position: absolute;
+    z-index: 1;
+    left: 52px;
+    color: var(--md-sys-color-on-surface-variant);
+    font-family: var(--md-sys-typescale-body-large-font-family-name);
+    font-style: var(--md-sys-typescale-body-large-font-family-style);
+    font-weight: var(--md-sys-typescale-body-large-font-weight);
+    font-size: var(--md-sys-typescale-body-large-font-size);
+    letter-spacing: var(--md-sys-typescale-body-large-letter-spacing);
+}
+:host(:hover[variant="outlined"][leading-icon]) .placeholder {
+    color: var(--md-sys-color-on-surface);
+}
+:host([variant="outlined"][leading-icon]) select {
+    color: transparent;
+}
