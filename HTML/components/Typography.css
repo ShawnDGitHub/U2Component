@@ -1,0 +1,166 @@
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+/* Page Title */
+:host([theme~='Page-Title']) {
+  color: #000;
+  font-family: 'NotoSansSC-Regular';
+  font-style: normal;
+  font-weight: 300;
+  transition: font-size .1s cubic-bezier(0, 0, 0, 0.83);
+  opacity: 0;
+  animation: .3s fade-in ease forwards;
+}
+:host([theme~='Page-Title'][theme~='large']) {
+  font-size: 4.375rem;
+  line-height: 4.375rem;
+}
+:host([theme~='Page-Title'][theme~='small']) {
+  font-size: 36px;
+  line-height: 36px;
+}
+:host([theme~='Selection-Title']) {
+  font-family: 'NotoSansSC-Regular';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 34px;
+  letter-spacing: 1.5px;
+  color: #222222;
+  opacity: 0;
+  transition: .1s font-size cubic-bezier(0, 0, 0, 0.83);
+  animation: .3s fade-in ease forwards;
+}
+:host([theme~='Selection-Title'][theme~='Medium']) {
+  font-size: 25px;
+}
+:host([theme~='Selection-Title'][theme~='Medium'][theme~='Active']) {
+  color: #67801d;
+  font-weight: 700;
+  transition: .2s color cubic-bezier(0, 0, 0, 0.83);
+}
+:host([theme~='Selection-Title'][theme~='Small']) {
+  font-size: 18px;
+}
+/* Top Title */
+:host([theme~='Top-Title']) {
+  font-family: 'NotoSansSC-Regular';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  letter-spacing: 1.5px;
+  opacity: 0;
+  animation: .3s fade-in ease forwards;
+}
+:host([theme~='Top-Title'][theme~='unable']) {
+  color: #a1a1a1;
+}
+/* tab Title / 选项卡标题 */
+:host([theme~='Tab-Title']) {
+  font-family: 'NotoSansSC-Regular';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 34px;
+  letter-spacing: 1.5px;
+  color: #60761b;
+  opacity: 0;
+  animation: .3s fade-in ease forwards;
+}
+/* List Title */
+:host([theme~='List-Title']) {
+  color: #000000;
+  font-family: 'NotoSansSC-Regular';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 1.5px;
+  opacity: 0;
+  animation-delay: .5s;
+  animation: .3s fade-in ease forwards;
+}
+:host([theme~='List-Title'][theme~='active']) {
+  font-family: 'NotoSansSC-Regular';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  color: #D8E5B0;
+}
+/* Body text */
+:host([theme~='normal']) {
+  font-family: 'NotoSansSC-Regular';
+  font-style: italic;
+  font-weight: 300;
+  font-size: 16px;
+  opacity: 0;
+  animation: .3s fade-in ease forwards;
+}
+/* Button */
+:host([theme~='Button']) {
+  color: rgb(27, 27, 27);
+  font-family: 'NotoSansSC-Regular';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 1.5px;
+  opacity: 0;
+  animation-delay: .5s;
+  animation: .3s fade-in ease forwards;
+}
+:host([theme~='NotoSansSC-Regular'][theme~='Large']) {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: 1.5px;
+  opacity: 0;
+  animation-delay: .5s;
+  animation: .3s fade-in ease forwards;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* Page Title */
+  :host([theme~='Page-Title']) {
+    color: #FFFFFF;
+  }
+  :host([theme~='Selection-Title']) {
+    color: #dcdcdc;
+  }
+  :host([theme~='Selection-Title'][theme~='Medium'][theme~='Active']) {
+    color: #cdff37;
+    font-weight: 400;
+  }
+
+  /* tab Title / 选项卡标题 */
+  :host([theme~='Tab-Title']) {
+    color: #D8E5B0;
+  }
+  /* List Title */
+  :host([theme~='List-Title']) {
+    color: #FFFFFF;
+  }
+
+
+  /* Button */
+:host([theme~='Button']) {
+  color: rgb(189, 189, 189);
+  font-family: 'NotoSansSC-Regular';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 1.5px;
+  opacity: 0;
+  animation-delay: .5s;
+  animation: .3s fade-in ease forwards;
+}
+:host([theme~='Button'][theme~='Large']) {
+  font-family: 'NotoSansSC-Regular';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: 1.5px;
+  opacity: 0;
+  animation-delay: .5s;
+  animation: .3s fade-in ease forwards;
+}
+}
