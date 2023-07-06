@@ -98,6 +98,7 @@ export default class TextField extends HTMLElement {
 
         if (this.getAttribute('width')) {  // width
             let width = this.getAttribute('width');
+
             this.setWidth(width);
         }
         let width = this.getWidth();
@@ -428,6 +429,10 @@ export default class TextField extends HTMLElement {
             this.setAttribute('aria-disabled', true);
         }
     }
+    placeholderChanged(newValue) {
+        this.LABEL.innerText = newValue
+        this.INPUT.placeholder = newValue;
+    }
     valueChanged(newValue) {
         if (newValue != "") {
             this.classList.remove('empty');
@@ -561,6 +566,9 @@ export default class TextField extends HTMLElement {
             case 'disabled': this.disabledStateChanged(); break;
             case 'value': 
                 if (newValue != oldValue) this.valueChanged(newValue);
+                break;
+            case 'placeholder': 
+                if (newValue != oldValue) this.placeholderChanged(newValue);
                 break;
             default: break;
         } 
