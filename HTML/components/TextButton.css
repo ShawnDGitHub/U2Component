@@ -76,7 +76,7 @@
 :host(:active) {
     background-color: var(--md-sys-state-pressed-state-layer-opacity);
 }
-:host([disabled]) {
+:host([disabled="true"]) {
     pointer-events: none;
     color: #cccac8;
     background-color: transparent;

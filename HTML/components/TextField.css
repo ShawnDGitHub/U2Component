@@ -608,24 +608,24 @@
     background-color: var(--md-sys-state-pressed-state-layer-opacity);
 }
 /* disabled */
-:host([disabled][variant="filled"]) {
+:host([disabled="true"][variant="filled"]) {
     color: #cccac8;
     background-color: var(--md-sys-color-on-surface-opacity-4);
     border-bottom: 1px solid var(--md-sys-color-on-surface-opacity-38);
     pointer-events: none;
 }
-:host([disabled][variant="filled"]) .filled-textfield-label {
+:host([disabled="true"][variant="filled"]) .filled-textfield-label {
     color: var(--md-sys-color-on-surface);
     opacity: 38%;
     background-color: transparent;
 }
-:host([disabled][variant="outlined"]) {
+:host([disabled="true"][variant="outlined"]) {
     color: #cccac8;
     background-color: transparent;
     outline: 1px solid var(--md-sys-color-outline-disabled);
     pointer-events: none;
 }
-:host([disabled][variant="outlined"]) .filled-textfield-label {
+:host([disabled="true"][variant="outlined"]) .filled-textfield-label {
     color: var(--md-sys-color-on-surface);
     opacity: 38%;
     background-color: transparent;

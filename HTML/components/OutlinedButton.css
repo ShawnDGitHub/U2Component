@@ -59,7 +59,7 @@
 :host(:active) {
     background-color: var(--md-sys-state-pressed-state-layer-opacity);
 }
-:host([disabled]) {
+:host([disabled="true"]) {
     cursor: not-allowed;
     padding: 10px 24px;
     color: var(--md-sys-color-on-surface-disabled);
