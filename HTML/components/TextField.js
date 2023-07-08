@@ -27,6 +27,8 @@ export default class TextField extends HTMLElement {
     setDropdownContent(content) { this._dropdownContent =  content; }  // TODO 返回 options
     setDropdownContentNameList(nameList) { this._dropdownContentNameList = nameList; }
     getDropdownContentNameList() { return this._dropdownContentNameList; }
+    setIsFullWidth(isFullWidth) { this.isFullWidth = isFullWidth; }
+    getIsFullWidth() { return this.isFullWidth; }
     setWidth(width) { this._width = width; }
     getWidth() { return this._width; }
     setHeight(height) { this._height = height; }
@@ -39,8 +41,9 @@ export default class TextField extends HTMLElement {
     getShouldClearState() { return this._clearState; }
     setClearableState(clearableState) { this._clearableState = clearableState; }
     getClearableState() { return this._clearableState; }
+    getTextFieldType() { return this._textFieldType; }
+    setTextFieldType(textFieldType) { this._textFieldType = textFieldType; }
     
-
 
     textInputDebouce(callback, delay) {  // 输入的防抖，避免每次输入都修改内容
         let timer = null;
@@ -52,6 +55,7 @@ export default class TextField extends HTMLElement {
         }
     }
     createTextField() {
+        this.setTextFieldType('normal');
         let privateType = this.getAttribute('type');
         if (privateType != 'password') this.setAttribute('type', 'input');
         this.classList.add("empty");
@@ -98,7 +102,6 @@ export default class TextField extends HTMLElement {
 
         if (this.getAttribute('width')) {  // width
             let width = this.getAttribute('width');
-
             this.setWidth(width);
         }
         let width = this.getWidth();
@@ -117,7 +120,7 @@ export default class TextField extends HTMLElement {
                     leadingIconSpan.classList.add('material-symbols-rounded');
                 else leadingIconSpan.classList.add('material-symbols-sharp');
             } else {  // add default outlined style
-                console.warn('Material Symbols 拥有三类图标变种，分别是 outlined、rounded 和 sharp。传入 icon-variant 属性以隐藏该提示。')
+                console.warn(`图标${this.getLeadingIcon()}属性不全，Material Symbols 拥有三类图标变种，分别是 outlined、rounded 和 sharp。传入 icon-variant 属性以隐藏该提示。`);
                 leadingIconSpan.classList.add('material-symbols-outlined');
             }
             this.INPUT.parentNode.insertBefore(leadingIconSpan, this.INPUT);
@@ -182,12 +185,14 @@ export default class TextField extends HTMLElement {
                     trailingIconSpan.classList.add('material-symbols-rounded');
                 else trailingIconSpan.classList.add('material-symbols-sharp');
             } else {  // add default outlined style
-                console.warn('Material Symbols 拥有三类图标变种，分别是 outlined、rounded 和 sharp。传入 icon-variant 属性以隐藏该提示。')
+                console.warn(`图标${this.getTrailingIcon()}属性不全，Material Symbols 拥有三类图标变种，分别是 outlined、rounded 和 sharp。传入 icon-variant 属性以隐藏该提示。`);
                 trailingIconSpan.classList.add('material-symbols-outlined');
             }
             this.INPUT.parentNode.appendChild(trailingIconSpan);
         }
 
+        let isFullWidth = this.getAttribute('fullWidth');
+        this.setIsFullWidth(isFullWidth);
         let tempStr = '';
         let labelWidth = labelText.length * 16;
         if (labelWidth > 90 || leadingIcon || trailingIcon) {  // text field's width should wider then label
@@ -200,16 +205,16 @@ export default class TextField extends HTMLElement {
                     tempStr = width != undefined ? `:host{width: ${this.getWidth()}px}` : `:host{min-width: ${minWidth}px !important}`;
                 } else tempStr = width != undefined ? `:host{width: ${this.getWidth()}px}` : '';
 
-                let inputWidthAdjustStr = ':host > input {max-width: calc(100% - 4.25rem - 24px - 12px)}';
+                let inputWidthAdjustStr = isFullWidth != null ? ':host > input {width: calc(100% - 4.25rem - 24px - 12px)}' : ':host > input {max-width: calc(100% - 4.25rem - 24px - 12px)}';
                 style.innerHTML = tempStr + inputWidthAdjustStr;
             } else if (leadingIcon != null) {
                 let minWidth = labelWidth + 38 + 12 + 24;
-                
+
                 if (minWidth > 112) {  // text field has a 112 limited min width
                     tempStr = width != undefined ? `:host{width: ${this.getWidth()}px}` : `:host{min-width: ${minWidth}px !important}`;
                 } else tempStr = width != undefined ? `:host{width: ${this.getWidth()}px}` : '';
 
-                let inputWidthAdjustStr = ':host > input {max-width: calc(100% - 4.25rem)}';
+                let inputWidthAdjustStr = isFullWidth != null ? ':host > input {width: calc(100% - 4.25rem)}' : ':host > input {max-width: calc(100% - 4.25rem)}';
                 style.innerHTML = tempStr + inputWidthAdjustStr;
             } else if (trailingIcon != null) {
                 let minWidth = labelWidth + 38 + 12 + 24;
@@ -218,11 +223,11 @@ export default class TextField extends HTMLElement {
                     tempStr = width != undefined ? `:host{width: ${this.getWidth()}px}` : `:host{min-width: ${minWidth}px}`;
                 } else tempStr = width != undefined ? `:host{min-width: ${this.getWidth()}px !important}` : '';
 
-                let inputWidthAdjustStr = ':host > input {max-width: calc(100% - 4.25rem)}';
+                let inputWidthAdjustStr = isFullWidth != null ? ':host > input {width: calc(100% - 4.25rem)}' : ':host > input {max-width: calc(100% - 4.25rem)}';
                 style.innerHTML = tempStr + inputWidthAdjustStr;
             } else {
                 tempStr = width != undefined ? `:host{width: ${this.getWidth()}px}` : `:host{min-width: ${labelWidth + 12}px}`;
-                let inputWidthAdjustStr = ':host > input {max-width: calc(100% - 2rem)}';
+                let inputWidthAdjustStr = isFullWidth != null ? ':host > input {width: calc(100% - 2rem)}' : ':host > input {max-width: calc(100% - 2rem)}';
                 style.innerHTML = tempStr + inputWidthAdjustStr;
             }
             this.addToShadowRoot(style);
@@ -242,18 +247,14 @@ export default class TextField extends HTMLElement {
 
     }
     createTextareaField() {
+        this.setTextFieldType('textarea');
         this.classList.add("empty");
         let textareaInsert = document.createElement('textarea');
-        textareaInsert.setAttribute('placeholder', ' ');
         this.addToShadowRoot(textareaInsert);
 
         this.TEXTAREA = this.shadowRoot.childNodes[1];  // Node: textarea
 
-        let labelText = this.getAttribute('placeholder');  // label text
-        this.setLabelText(labelText);
-        this.TEXTAREA.placeholder = labelText;
-
-        let style = document.createElement( 'style' );
+        let style = document.createElement('style');
         let minWidth = this.clientWidth;
             
         let tempStr = '';
@@ -278,6 +279,7 @@ export default class TextField extends HTMLElement {
     }
     createDropdownTextField() {
         // initial
+        this.setTextFieldType('dropdown');
         this.classList.add("empty");
         const labelText = this.getAttribute('placeholder');
         const title = this.getAttribute('title');
@@ -434,6 +436,7 @@ export default class TextField extends HTMLElement {
         this.INPUT.placeholder = newValue;
     }
     valueChanged(newValue) {
+        if (this.getTextFieldType() == "textarea") return;
         if (newValue != "") {
             this.classList.remove('empty');
             this.classList.add('filled');
@@ -568,7 +571,7 @@ export default class TextField extends HTMLElement {
                 if (newValue != oldValue) this.valueChanged(newValue);
                 break;
             case 'placeholder': 
-                if (newValue != oldValue) this.placeholderChanged(newValue);
+                if (newValue != oldValue && this.rendered) this.placeholderChanged(newValue);
                 break;
             default: break;
         } 
