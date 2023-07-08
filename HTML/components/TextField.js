@@ -436,8 +436,12 @@ export default class TextField extends HTMLElement {
         this.INPUT.placeholder = newValue;
     }
     valueChanged(newValue) {
-        if (this.getTextFieldType() == "textarea") return;
+        if (this.getTextFieldType() == "textarea") {
+            this.TEXTAREA.value = newValue;
+            return;
+        }
         if (newValue != "") {
+            this.classList.remove('invisible-clearable');
             this.classList.remove('empty');
             this.classList.add('filled');
         }
