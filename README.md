@@ -3,7 +3,8 @@
 </div>
 
 
-> U2Component 是一个受到 Material Design 3 ( 后文简称质感 3 ) 启发的 Web Component 组件库，提供了质感 3 风格的组件和衍生样式组件。
+> U2Component 提供了 Material Design 3 ( 简称质感 3 ) 风格的组件和衍生样式组件。
+> 是一个受到质感 3 启发的 Web Component 组件库，
 
 ## 链接
 
