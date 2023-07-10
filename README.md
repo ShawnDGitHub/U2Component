@@ -1,7 +1,7 @@
 # U2Component
 
 <div align=center>
-<img src="https://github.com/ShawnDGitHub/imgPack/blob/main/img/icon_vertical_v1.0.png" width="180" height="105"/>
+<img src="https://github.com/ShawnDGitHub/imgPack/blob/main/img/icon_vertical_v1.0.png" width="300" height="120"/>
 </div>
 
 - [简介](#简介)
