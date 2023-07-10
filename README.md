@@ -2,7 +2,8 @@
 <img src="https://github.com/ShawnDGitHub/imgPack/blob/main/img/icon_vertical_v1.0.png" width="300" height="120"/>
 </div>
 
-U2Component 是一个受到 Material Design 3 ( 后文简称质感 3 ) 启发的 Web Component 组件库，提供了质感 3 风格的组件和衍生样式组件。
+
+> U2Component 是一个受到 Material Design 3 ( 后文简称质感 3 ) 启发的 Web Component 组件库，提供了质感 3 风格的组件和衍生样式组件。
 
 ## 链接
 
@@ -46,6 +47,7 @@ U2Component 现阶段未考虑 IE 浏览器等非主流浏览器的适配，请�
 ### 图标 ( Material Symbols )
 
 U2Component 依赖于 [Material Symbols ( 质感符号 )](https://fonts.google.com/icons)，这是一组可变字形的图标字体。Google Fonts 的介绍：
+
 
 > Material Symbols 是我们最新的图标，将超过 3,004 个字形整合到一个字体文件中，并具有多种设计变体。 符号提供三种样式和四种可调节的可变字体样式（填充、粗细、等级和尺寸【optical size】 ）。
 
