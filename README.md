@@ -1,7 +1,6 @@
 # U2Component
 
-![U2Component vertical icon](
-https://contents.codingmway.com/u2component/icon_vertical_v1.0.png)
+![U2Component vertical icon](https://smms.app/image/Qy3UWswBh961znj)
 
 - [简介](#简介)
 - [保持最新](#保持最新)
