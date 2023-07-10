@@ -1,17 +1,16 @@
 # U2Component
 
-- [U2Component](#u2component)
-  - [简介](#简介)
-  - [保持最新](#保持最新)
-  - [准备使用的条件](#准备使用的条件)
-    - [图标 ( Material Symbols )](#图标--material-symbols-)
-      - [HTML 引入](#html-引入)
-      - [npm 安装](#npm-安装)
-    - [颜色](#颜色)
-    - [JavaScript](#javascript)
-    - [总结使用条件](#总结使用条件)
-  - [开始使用](#开始使用)
-  - [可用组件](#可用组件)
+- [简介](#简介)
+- [保持最新](#保持最新)
+- [准备使用的条件](#准备使用的条件)
+  - [图标 ( Material Symbols )](#图标--material-symbols-)
+    - [HTML 引入](#html-引入)
+    - [npm 安装](#npm-安装)
+  - [颜色](#颜色)
+  - [JavaScript](#javascript)
+  - [总结使用条件](#总结使用条件)
+- [开始使用](#开始使用)
+- [可用组件](#可用组件)
 
 ## 简介
 
