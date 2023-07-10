@@ -1,5 +1,6 @@
 # U2Component
-[U2Component vertical icon](
+
+![U2Component vertical icon](
 https://contents.codingmway.com/u2component/icon_vertical_v1.0.png)
 
 - [简介](#简介)
