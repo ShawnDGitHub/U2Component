@@ -1,6 +1,6 @@
 # U2Component
 
-![U2Component vertical icon](https://s2.loli.net/2023/07/10/Qy3UWswBh961znj.png)
+![U2Component vertical icon](https://github.com/ShawnDGitHub/imgPack/blob/main/img/icon_vertical_v1.0.png)
 
 - [简介](#简介)
 - [保持最新](#保持最新)
