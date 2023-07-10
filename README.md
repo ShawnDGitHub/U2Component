@@ -8,7 +8,6 @@ U2Component 是一个适应性强的组件库。你能够通过替换 CSS 文件
 
 关于设计令牌的例子，查看本篇博客：https://codingmway.com/U2Component%20README
 
-------
 
 ## 保持最新
 
@@ -39,7 +38,6 @@ U2Component 现阶段未考虑 IE 浏览器等非主流浏览器的适配，请�
 
 以上是 U2Component 所依赖的样式文件，看见了吗，token.css 包含了亮/暗色模式所需要的样式令牌，而 theme.dark.css 指定了暗色模式下的内容，无需再考虑暗色模式的适配问题。
 
-------
 
 ### JavaScript
 
@@ -68,18 +66,60 @@ webComponents 是一个文件夹，最重要的是引入每个组件需要的 JS
  this.shadowRoot.innerHTML = `<style>@import "${new URL("TextButton.css", import.meta.url)}";</style><div><slot></slot></div>`;
 ```
 
-------
-
 ### 总结使用条件
 
 1. 引入 theme.css
 2. 引入组件 JS 文件
 
-------
 
 ## 开始使用
 
-每个组件都有不同的属性，请参照对应组件的文档。目前可用的组件如下：
+## 开始使用
+
+每个组件都有不同的属性，请参照对应组件的文档。
+
+这里给出 TextField ( 文字输入框 ) 的使用范例：
+
+```javascript
+<text-field 
+ variant="filled" placeholder="用户名"
+ width="300"
+ leading-icon="person"
+ icon-variant="rounded"
+ :value="username" (*)
+ ref="usernameTextField">  (**)
+</text-field>
+```
+
+这和你使用其他组件库的方式是相同的，你需要在 HTML 标签中指定需要的属性，例如：
+
+1. 样式变种 - ***variant\***。
+
+   文本输入框的样式类型，在质感3中，该组件有 filled、outlined 两种样式变种。
+
+2. 占位符 - ***placeholder\***。
+
+   用户未输入的初始状态下要展示的占位文字，在聚焦文本输入框后，placeholder 会变为浮动指示文字。
+
+3. 固定宽度 - ***width\***。默认补充单位 px，不支持百分比单位。
+
+   你可以指定该组件的宽度，该组件的宽度将不再填充父元素宽度。（TextField 有一个最大宽度 112 px，但我设计了一个属性方便你解除这个限制，详细参考 TextField 文档。）
+
+4. 前置图标 - ***leading-icon\***。必须和 icon-variant 同时出现。
+
+   TextField 的前置图标。你可以设置 TextField 的前置图标，这能提升用户的输入体验。
+
+5. 图标变种 - ***icon-variant\***。
+
+   [Material Symbols](https://fonts.google.com/icons) 拥有三类图标变种，分别是 outlined、rounded 和 sharp (  边线图标、圆润图标以及尖锐图标 )。传入 icon-variant 属性来设置图标变种。
+
+6. 注意到（*）和（**）了吗？U2Component 可以在 Vue 环境下完美使用。
+
+   你可以通过 `this.$refs.usernameTextField.setAttribute("value", xxxx);` 来访问该对象并设定 TextField 中的内容，也可以通过 `v-bind` 动态的绑定 attribute。
+
+该组件更多属性和规范请参考文档。
+   
+目前可用的组件如下：
 
 | 组件名称  | 开发状态 | 别名 |
 | --------- | -------- | -------- |
