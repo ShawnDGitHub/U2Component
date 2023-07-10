@@ -1,8 +1,18 @@
-# U2Component
-
 <div align=center>
 <img src="https://github.com/ShawnDGitHub/imgPack/blob/main/img/icon_vertical_v1.0.png" width="300" height="120"/>
 </div>
+
+U2Component 是一个受到 Material Design 3 ( 后文简称质感 3 ) 启发的 Web Component 组件库，提供了质感 3 风格的组件和衍生样式组件。
+
+## 链接
+
+- 组件
+  - [组件文件](https://github.com/ShawnDGitHub/U2Component/tree/main/HTML/components)
+- 主题样式
+  - [CSS](https://github.com/ShawnDGitHub/U2Component/tree/main/CSS)
+  - [字体](https://github.com/ShawnDGitHub/U2Component/tree/main/FONTS)
+
+## 目录
 
 - [简介](#简介)
 - [保持最新](#保持最新)
@@ -17,8 +27,6 @@
 - [可用组件](#可用组件)
 
 ## 简介
-
-U2Component 是一个受到 Material Design 3 ( 后文简称质感 3 ) 启发的 Web Component 组件库，提供了质感 3 风格的组件和衍生样式组件。
 
 U2Component 是一个适应性强的组件库。你能够通过替换 CSS 文件立马改变所有组件的颜色，并且它们风格统一，这得益于 [Design Token](https://m3.material.io/foundations/design-tokens/overview) ( 设计令牌 ) 这个概念，所有组件的颜色、字体都使用了设计令牌。
 
