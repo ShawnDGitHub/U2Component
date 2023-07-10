@@ -1,6 +1,8 @@
 # U2Component
 
-![U2Component vertical icon](https://github.com/ShawnDGitHub/imgPack/blob/main/img/icon_vertical_v1.0.png)
+<div align=center>
+<img src="https://github.com/ShawnDGitHub/imgPack/blob/main/img/icon_vertical_v1.0.png" width="180" height="105"/>
+</div>
 
 - [简介](#简介)
 - [保持最新](#保持最新)
