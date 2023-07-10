@@ -3,6 +3,7 @@
   - [简介](#简介)
   - [保持最新](#保持最新)
   - [准备使用的条件](#准备使用的条件)
+    - [图标](#图标 ( Material Symbols ))
     - [颜色](#颜色)
     - [JavaScript](#javascript)
     - [总结使用条件](#总结使用条件)
@@ -26,6 +27,35 @@ U2Component 是一个适应性强的组件库。你能够通过替换 CSS 文件
 ## 准备使用的条件
 
 U2Component 现阶段未考虑 IE 浏览器等非主流浏览器的适配，请确保你在主流的浏览器上采用该组件库来开发。
+
+
+### 图标 ( Material Symbols )
+
+U2Component 依赖于 [Material Symbols ( 质感符号 )](https://fonts.google.com/icons)，这是一组可变字形的图标字体。Google Fonts 的介绍：
+
+> Material Symbols 是我们最新的图标，将超过 3,004 个字形整合到一个字体文件中，并具有多种设计变体。 符号提供三种样式和四种可调节的可变字体样式（填充、粗细、等级和尺寸【optical size】 ）。
+
+#### HTML 引入
+
+在 HTML 文件中引入即可（其中有很多参数可调整）：
+
+```html
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+```
+
+注意 Material+Symbols+Outlined 的 `Outlined `这个部分，其可以替换为 Rounded 或 Sharp，这将改变引入的图标从边线变种图标变为i为圆润变种或尖锐变种。
+
+由于质感符号还有很多参数可以调整，我建议访问官网自行调整参数并复制引入链接。
+
+#### npm 安装
+
+```javascript
+npm install material-symbols
+```
+
+需要注意的是，这种方式安装将会使得三种变种图标的字体文件全部安装，且其中图标数量比起官网少了一部分。
+
+[返回简介](#简介)
 
 ### 颜色
 
@@ -80,8 +110,9 @@ webComponents 是一个文件夹，最重要的是引入每个组件需要的 JS
 
 ### 总结使用条件
 
-1. 引入 theme.css
-2. 引入组件 JS 文件
+1. 引入 图标
+2. 引入 theme.css
+3. 引入组件 JS 文件
 
 
 ## 开始使用
