@@ -1,6 +1,6 @@
 # U2Component
 
-![U2Component vertical icon](https://smms.app/image/Qy3UWswBh961znj)
+![U2Component vertical icon](https://s2.loli.net/2023/07/10/Qy3UWswBh961znj.png)
 
 - [简介](#简介)
 - [保持最新](#保持最新)
