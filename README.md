@@ -1,5 +1,5 @@
 <div align=center>
-<img src="https://github.com/ShawnDGitHub/imgPack/blob/main/img/icon_vertical_v1.0.png" width="450" height="120"/>
+<img src="https://github.com/ShawnDGitHub/imgPack/blob/main/img/icon_vertical_v1.0.png" width="320" height="120"/>
 </div>
 
 
