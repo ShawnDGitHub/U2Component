@@ -1,6 +1,9 @@
 <div align=center>
 <img src="https://github.com/ShawnDGitHub/imgPack/blob/main/img/icon_vertical_v1.0.png" width="320" height="120"/>
 </div>
+<div align=center>
+<img src="https://img.shields.io/badge/License-Apache--2.0_license-blue"/>
+</div>
 
 
 > U2Component 提供了 Material Design 3 ( 简称质感 3 ) 风格的组件和衍生样式组件。
