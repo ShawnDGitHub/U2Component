@@ -10,8 +10,8 @@ A web components project Inspired by material design 3.
 U2Component 是一个受到 Material Design 3 ( 后文简称质感 3 ) 启发的 Web Component 组件库，提供了质感 3 风格的组件和衍生样式组件。
 
 ## 快速链接
-[不同主题颜色文件](https://github.com/ShawnDGitHub/U2Component/tree/main/CSS)
-[组件](https://github.com/ShawnDGitHub/U2Component/tree/main/HTML/components)
+- [多种主题颜色文件](https://github.com/ShawnDGitHub/U2Component/tree/main/CSS)
+- [组件](https://github.com/ShawnDGitHub/U2Component/tree/main/HTML/components)
 
 
 ## 目录
