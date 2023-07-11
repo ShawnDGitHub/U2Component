@@ -70,7 +70,7 @@ npm install material-symbols
 
 ### 颜色
 
-因为依赖于质感３的颜色应用规范，请确保你在自己应用中提供了组件需要的样式令牌。即使是你不知道如何获取样式令牌，也**不用担心**，在本项目的 CSS 文件夹中已经准备了多种颜色的主题需要的样式令牌，你可以选择一种主题的文件直接放入你的开发资源文件夹中，在 HTML 文件中引入 theme.css 即可。
+因为依赖于质感３的颜色应用规范，请确保你在自己应用中提供了组件需要的样式令牌。即使是你不知道如何获取样式令牌，也**不用担心**，在本项目的 CSS 文件夹中已经准备了多种颜色的主题需要的样式令牌，你可以选择一种主题的文件直接放入你的开发资源文件夹中，在 HTML 文件中引入 theme.css 即可。[多种主题颜色文件](https://github.com/ShawnDGitHub/U2Component/tree/main/CSS)
 
 ```html
 <link rel="stylesheet" type="text/css" href="css/theme.css">
