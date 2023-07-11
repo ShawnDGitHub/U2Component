@@ -11,6 +11,7 @@
 ## 快速链接
 - [多种主题颜色文件](https://github.com/ShawnDGitHub/U2Component/tree/main/CSS)
 - [组件](https://github.com/ShawnDGitHub/U2Component/tree/main/HTML/components)
+- [不同的按钮范例](https://github.com/ShawnDGitHub/U2Component/blob/main/HTML/Buttons.html)
 
 
 ## 目录
