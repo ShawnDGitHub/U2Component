@@ -1,9 +1,20 @@
 <div align="center">
   <img src="https://github.com/ShawnDGitHub/imgPack/blob/main/img/icon_vertical_v1.0.png" alt="The logo of U2Component"/>
 </div>
+<div align="center">
+  <img src="https://img.shields.io/badge/License-Apache--2.0_license-green" alt="The logo of U2Component"/>
+  <img src="https://img.shields.io/badge/Design_System-Material_Deisgn_3-blue" alt="The logo of U2Component"/>
+</div>
+
 A web components project Inspired by material design 3.
 U2Component 是一个受到 Material Design 3 ( 后文简称质感 3 ) 启发的 Web Component 组件库，提供了质感 3 风格的组件和衍生样式组件。
 
+## 快速链接
+[不同主题颜色文件](https://github.com/ShawnDGitHub/U2Component/tree/main/CSS)
+[组件](https://github.com/ShawnDGitHub/U2Component/tree/main/HTML/components)
+
+
+## 目录
 - [简介](#简介)
 - [保持最新](#保持最新)
 - [准备使用的条件](#准备使用的条件)
@@ -81,16 +92,7 @@ npm install material-symbols
 
 ### JavaScript
 
-Web Component 是一种为 Web 提供具有多种特性的标准组件的模型，允许单个 HTML 元素的封装和组件之间的操作性。同于 Web Component 的主要概念包括：
-
-- 自定义元素 ( Custom ELements )
-- 影子 DOM ( Shadow DOM )
-- HTML 模板 ( HTML Templates )
-
-我们可以通过 <slot> 将外部元素插入到 Web Component 当中，[Vue 官网](https://v2.cn.vuejs.org/v2/guide/#与自定义元素的关系)中也提到过这个特性：
-
-> 你可能已经注意到 Vue 组件非常类似于**自定义元素**——它是 [Web 组件规范](https://www.w3.org/wiki/WebComponents/)的一部分，这是因为 Vue 的组件语法部分参考了该规范。例如 Vue 组件实现了 [Slot API](https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md) 与 `is` attribute。
-
+Web Component 是一种为 Web 提供具有多种特性的标准组件的模型，允许单个 HTML 元素的封装和组件之间的操作性。
 
 这里主要强调 JS 文件的引入。你需要在 HTML 中加入如下格式的内容：
 
