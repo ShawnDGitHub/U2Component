@@ -6,8 +6,7 @@
   <img src="https://img.shields.io/badge/Design_System-Material_Deisgn_3-blue" alt="The logo of U2Component"/>
 </div>
 
-A web components project Inspired by material design 3.
-U2Component 是一个受到 Material Design 3 ( 后文简称质感 3 ) 启发的 Web Component 组件库，提供了质感 3 风格的组件和衍生样式组件。
+> U2Component 是一个受到 Material Design 3 ( 后文简称质感 3 ) 启发的 Web Component 组件库，提供了质感 3 风格的组件和衍生样式组件。
 
 ## 快速链接
 - [多种主题颜色文件](https://github.com/ShawnDGitHub/U2Component/tree/main/CSS)
