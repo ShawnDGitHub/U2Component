@@ -24,7 +24,7 @@
     background-color: var(--md-sys-state-hover-state-layer-opacity);
 }
 :host(:focus) {
-    background-color: var(--md-sys-state-focused-state-layer-opacity);
+    background-color: var(--md-sys-state-focus-state-layer-opacity);
 }
 :host(:focus-visible) {
     background-color: var(--md-sys-state-pressed-state-layer-opacity);
@@ -60,8 +60,6 @@
     'wght' 400,
     'GRAD' 0,
     'opsz' 48;
-
-    /* transition: 200ms font-variation-settings ease; */
 }
 :host(:active) .material-symbols-outlined {
     font-variation-settings:

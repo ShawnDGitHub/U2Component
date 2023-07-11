@@ -71,14 +71,15 @@
     background-color: var(--md-sys-state-hover-state-layer-opacity);
 }
 :host(:focus-visible) {
-    background-color: var(--md-sys-state-focused-state-layer-opacity);
+    background-color: var(--md-sys-state-pressed-state-layer-opacity);
 }
 :host(:active) {
     background-color: var(--md-sys-state-pressed-state-layer-opacity);
 }
 :host([disabled="true"]) {
+    cursor: not-allowed;
+    color: var(--md-sys-color-on-surface-text-disabled) !important;
     pointer-events: none;
-    color: #cccac8;
     background-color: transparent;
 }
 

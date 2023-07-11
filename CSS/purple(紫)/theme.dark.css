@@ -1,11 +1,11 @@
 :root {
- /* fix */
- --md-sys-color-on-surface-text-disabled: var(--md-sys-color-on-surface-text-disabled-light);
- --md-sys-color-on-surface-disabled: var(--md-sys-color-on-surface-disabled-light);
+  /* fix */
+ --md-sys-color-on-surface-text-disabled: var(--md-sys-color-on-surface-text-disabled-dark);
+ --md-sys-color-on-surface-disabled: var(--md-sys-color-on-surface-disabled-dark);
  --md-sys-state-pressed-state-layer-opacity: var(--md-sys-state-pressed-state-layer-opacity-dark);
  --md-sys-state-focus-state-layer-opacity: var(--md-sys-state-focus-state-layer-opacity-dark);
  --md-sys-state-hover-state-layer-opacity: var(--md-sys-state-hover-state-layer-opacity-dark);
- /* normal */
+  /* normal */
  --md-sys-color-primary: var(--md-sys-color-primary-dark);
  --md-sys-color-on-primary: var(--md-sys-color-on-primary-dark);
  --md-sys-color-primary-container: var(--md-sys-color-primary-container-dark);
