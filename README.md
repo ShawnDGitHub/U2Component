@@ -11,7 +11,6 @@
 ## 快速链接
 - [多种主题颜色文件](https://github.com/ShawnDGitHub/U2Component/tree/main/CSS)
 - [组件](https://github.com/ShawnDGitHub/U2Component/tree/main/HTML/components)
-<<<<<<< HEAD
 
 
 ## 目录
@@ -22,7 +21,6 @@
 
 
 ## 目录
->>>>>>> 6572d9ce3093a67018ca94ddf0e4697098829cf5
 - [简介](#简介)
 - [保持最新](#保持最新)
 - [准备使用的条件](#准备使用的条件)
