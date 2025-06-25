@@ -52,17 +52,6 @@ body > * + * { margin-top: 4rem; }
 
 </head>
 <body>
-    <!-- Filled button -->
-    <!-- 填充按钮 未稳定 -->
-    <!-- <section>
-    <filled-button>
-        确认
-    </filled-button>
-    <filled-button disabled>
-        授权
-    </filled-button>
-    </section> -->
-
     <!-- Outlined button -->
     <!-- 边框按钮 -->
     <section class="card"> 
@@ -85,6 +74,7 @@ body > * + * { margin-top: 4rem; }
         <div class="title-small">Text button</div>    
         <div class="mt-1"></div>      
         <text-button>文字按钮</text-button>
+        <text-button leading-icon="login" icon-variant="rounded">登录</text-button>
 
         <div class="mt-1" style="display: flex; flex-wrap: wrap;">
         <!-- 衍生变种，具有最小宽度限制，自动填充父元素 -->
@@ -95,6 +85,8 @@ body > * + * { margin-top: 4rem; }
                 style="flex: 1;"
                 dropdown>字号</text-button>
             <text-button
+                leading-icon=""
+                icon-variant="rounded"
                 style="flex: 1;"
                 dropdown>类型</text-button>
         </div>
@@ -107,6 +99,18 @@ body > * + * { margin-top: 4rem; }
                 leading-icon="arrow_back"
                 icon-variant="outlined">导航按钮态</text-button>
         </div>
+    </section>
+
+    <!-- Filled button -->
+    <!-- 文字按钮 -->
+    <section class="card">
+        <div class="title-small">Filled button</div>    
+        <div class="mt-1"></div>      
+        <filled-button>填充按钮</filled-button>
+        <div class="mt-1"></div>
+        <filled-button leading-icon="login" icon-variant="rounded">登录</filled-button>
+        <div class="mt-1"></div>
+        <filled-button disabled="true">禁用状态</filled-button>
     </section>
 
     <section class="mw-500 card">
