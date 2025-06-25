@@ -1,5 +1,9 @@
 :root {
  /* fix */
+ --md-sys-color-primary-disabled-state: var(--md-sys-color-primary-disabled-state-light);
+ --md-sys-color-primary-pressed-state: var(--md-sys-color-primary-pressed-state-light);
+ --md-sys-color-primary-focus-state: var(--md-sys-color-primary-focus-state-light);
+ --md-sys-color-primary-hover-state: var(--md-sys-color-primary-hover-state-light);
  --md-sys-color-on-surface-text-disabled: var(--md-sys-color-on-surface-text-disabled-light);
  --md-sys-color-on-surface-disabled: var(--md-sys-color-on-surface-disabled-light);
  --md-sys-state-pressed-state-layer-opacity: var(--md-sys-state-pressed-state-layer-opacity-light);

@@ -1,5 +1,14 @@
 :root {
   /* fix */
+  --md-sys-color-primary-disabled-state-light: #e5ebdb;
+  --md-sys-color-primary-disabled-state-dark: #242424;
+  --md-sys-color-primary-pressed-state-light: #3d7221;
+  --md-sys-color-primary-pressed-state-dark: #8ec072;
+  --md-sys-color-primary-focus-state-light: #3d7221;
+  --md-sys-color-primary-focus-state-dark: #8ec072;
+  --md-sys-color-primary-hover-state-light: #3d7221;
+  --md-sys-color-primary-hover-state-dark: #8ec072;
+  
   --md-sys-state-pressed-state-layer-opacity-light: #E7EDE4;
   --md-sys-state-pressed-state-layer-opacity-dark: #131A0F;
   --md-sys-state-focus-state-layer-opacity-light: #E7EDE4;
