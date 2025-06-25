@@ -1,15 +1,19 @@
-:host {
+:host(:not([nav])) {
     /* filled-button */
-    margin: 0em;
-    padding: 10px 24px;
+    position: relative;
+    padding: 10px 12px;
     color: var(--md-sys-color-on-primary);
     background-color: var(--md-sys-color-primary);
     border: 1px solid transparent;
     user-select: none;
     
-    display: inline-block;
-    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
     overflow: hidden;
+    align-items: center;
+
 
     border-radius: 1.875em;
     font-family: var(--md-sys-typescale-label-large-font-family-name);
@@ -22,17 +26,117 @@
     cursor: pointer;
     transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1);
 }
+:host([nav]) {
+    position: relative;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    color: var(--md-sys-color-on-primary);
+    background-color: var(--md-sys-color-primary);
+    user-select: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 1rem;
+    font-family: var(--md-sys-typescale-label-large-font-family-name);
+    font-style: var(--md-sys-typescale-label-large-font-family-style);
+    font-weight: var(--md-sys-typescale-label-large-font-weight);
+    font-size: var(--md-sys-typescale-label-large-font-size);
+    line-height: var(--md-sys-typescale-label-large-line-height);
+    letter-spacing: var(--md-sys-typescale-label-large-letter-spacing);
+    white-space: nowrap;
+    cursor: pointer;
+    height: 56px;
+    transition: 
+     box-shadow 200ms cubic-bezier(0.2, 0, 0, 1 ),
+     background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+}
 :host(:hover) {
     background-color: var(--md-sys-color-primary-hover-state);
+    /* M3/Elevation Light/1 */
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30);
+    transition: 
+     box-shadow 400ms cubic-bezier(0.2, 0, 0, 1 ),
+     background-color 400ms cubic-bezier(0.2, 0, 0, 1 );
 }
 :host(:focus-visible) {
-    background-color: var(--md-sys-color-primary-focused-state);
+    background-color: var(--md-sys-color-primary-focus-state);
 }
 :host(:active) {
     background-color: var(--md-sys-color-primary-pressed-state);
+    box-shadow: none;
 }
-:host([disabled]) {
-    pointer-events: none;
-    color: #cccac8;
+:host([disabled="true"]) {
+    cursor: not-allowed;
+    color: var(--md-sys-color-on-surface-text-disabled);
     background-color: var(--md-sys-color-primary-disabled-state);
+    pointer-events: none;
+}
+:host([leading-icon][nav]) > span {
+    left: 12px;
+    position: absolute;
+    margin-right: 8px;
+    justify-self: start;
+}
+:host([leading-icon]:not([nav])) > span {
+    margin-right: 8px;
+    align-self: center;
+}
+:host([icon-variant="outlined"]) > span {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48;
+}
+:host([icon-variant="rounded"]) > span {
+    font-family: 'Material Symbols Rounded';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48;
+}
+:host([icon-variant="sharp"]) > span {
+    font-family: 'Material Symbols Sharp';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48;
 }

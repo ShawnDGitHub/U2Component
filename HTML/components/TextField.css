@@ -115,7 +115,8 @@
     caret-color: var(--md-sys-color-primary);
 }
 :host(:focus[variant="filled"]) {
-    border-bottom: 2px solid var(--md-sys-color-primary);
+    z-index: 100;
+    border-bottom: 2px solid var(--md-sys-color-primary) !important;
     transition: border-bottom 100ms cubic-bezier(0.2, 0, 0, 1);
 }
 :host(:focus[variant="filled"]) > input, :host([class~="filled"]) > input {
@@ -469,7 +470,6 @@
 
     text-align: start;
 }
-:host(:focus[variant="filled"]) { z-index: 100; }
 :host([variant="filled"]) select:focus {
     opacity: 1;
     pointer-events: all;
@@ -609,9 +609,9 @@
 }
 /* disabled */
 :host([disabled="true"][variant="filled"]) {
-    color: #cccac8;
-    background-color: var(--md-sys-color-on-surface-opacity-4);
-    border-bottom: 1px solid var(--md-sys-color-on-surface-opacity-38);
+    color: var(--md-sys-color-on-surface-text-disabled) !important;
+    background-color: var(--md-sys-color-on-surface-disabled) !important;
+    border-bottom: 1px solid var(--md-sys-color-on-surface-text-disabled) !important;
     pointer-events: none;
 }
 :host([disabled="true"][variant="filled"]) .filled-textfield-label {
@@ -620,9 +620,9 @@
     background-color: transparent;
 }
 :host([disabled="true"][variant="outlined"]) {
-    color: #cccac8;
+    color: var(--md-sys-color-on-surface-text-disabled) !important;
     background-color: transparent;
-    outline: 1px solid var(--md-sys-color-outline-disabled);
+    outline: 1px solid var(--md-sys-color-on-surface-text-disabled) !important;
     pointer-events: none;
 }
 :host([disabled="true"][variant="outlined"]) .filled-textfield-label {
