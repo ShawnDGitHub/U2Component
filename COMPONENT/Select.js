@@ -31,46 +31,59 @@ export default class Select extends Field {
   get type () { return this._type; }
   set label (value) { this._label = value; }
   get label () { return this._label; }
-  // set title (value) { this._title = value; }
-  // get title () { return this._title; }
+  set title (value) { this._title = value; }
+  get title () { return this._title; }
   set state (value) { this._state = value; }
   get state () { return this._state; }
+  set value (value) { this._value = value; }
+  get value () { return this._value; }
 
   createField () { 
-    this.type = "dropdown";
+    this.type = "select";
     this.classList.add("empty");
-    const label = this.getAttribute("placeholder") || "fill this blank...";
-    // const title = this.getAttribute("title");
+    const label = this.getAttribute("label") || "label";
+    const title = this.getAttribute("title");
     if (label) this.label = label;
-    // if (title) this.title = title;
+    if (title) this.title = title;
     const element = document.createElement("select");
-    element.setAttribute("class", "dropdown-menu");
-    // element.setAttribute("title", this.title);
+    element.setAttribute("class", "select");
+    element.setAttribute("title", title ? this.title : "click to select value.");
+    element.setAttribute("name", label ? this.label : "selector");
     this.addToShadowRoot(element);
-    // the main element node
+    // node:the main element
     this.SELECT = this.shadowRoot.childNodes[1];
     const slot = document.createElement("slot");
     // options node - add slot to SELECT
+    // the SELECT require option to be its child directly (*)
+    // we use slot to collect options and delete slot later
     this.SELECT.appendChild(slot);
+    const labelElement = document.createElement("div");
+    labelElement.setAttribute("class", "label");
+    this.addToShadowRoot(labelElement);
+    // node:label
+    this.LABEL = this.shadowRoot.childNodes[2];
+    this.LABEL.innerText = this.label;
+    this.setAttribute("aria-label", this.label);
     const placeholder = document.createElement("div");
     placeholder.setAttribute("class", "placeholder");
     this.addToShadowRoot(placeholder);
-    // placeholder node
-    this.PLACEHOLDER = this.shadowRoot.childNodes[2];
-    this.PLACEHOLDER.innerText = "请插入 slot 选项";
-    const labelElement = document.createElement("div");
-    labelElement.setAttribute("class", "filled-textfield-label");
-    this.addToShadowRoot(labelElement);
-    // label node
-    this.LABEL = this.shadowRoot.childNodes[3];
-    this.LABEL.innerText = this.label;
-    this.setAttribute("aria-label", this.label);
-    
+    // node:placeholder
+    this.PLACEHOLDER = this.shadowRoot.childNodes[3];
+    this.PLACEHOLDER.innerText = "select";
+    // node:options
+    const optionsData = slot.assignedElements();
+    // so add them to select (**)
+    optionsData.forEach(option => {
+      const optionElement = document.createElement("option");
+      optionElement.value = option.value || option.text;
+      optionElement.textContent = option.label || option.text;
+      this.SELECT.appendChild(optionElement);
+    });
+    slot.remove();
+
     const style = document.createElement("style");
     const computedStyle = this.computeSize(style);
     this.addToShadowRoot(computedStyle);
-
-    // TODO: set event listener
   }
   computeSize (style) {
     let sizeLimit = "";
@@ -99,10 +112,42 @@ export default class Select extends Field {
     return style;
   }
   render () {
-    this.setAttribute('role', "textbox");
     this.createField();
-    // event listener
-
+    // event listeners
+    this.SELECT.addEventListener("focus", (event) => {
+      if (this.state === false) {
+        this.classList.remove("empty");
+        this.classList.add("focused");
+        this.state = true;
+        event.stopPropagation();
+      } else return;
+    });
+    this.addEventListener("click", () => {
+      let focused = this.state;
+      if (focused) return;
+      this.SELECT.focus();
+    })
+    this.addEventListener("blur", (event) => {
+      event.stopPropagation();
+      this.state = false;
+      this.classList.remove('focused');
+      this.classList.add('empty');
+    })
+    this.SELECT.addEventListener("change", (event) => {
+      const selectedValue = event.target.value;
+      const selectedText = event.target.options[event.target.selectedIndex].textContent;
+      this.value = selectedValue;
+      this.PLACEHOLDER.innerText = selectedText;
+      // expose this event
+      this.dispatchEvent(new CustomEvent('select-change', {
+        detail: {
+          value: selectedValue,
+          text: selectedText
+        },
+        bubbles: true,
+        composed: true // event can break Shadow DOM border
+      }));
+    })
   }
 }
 if (!customElements.get('custom-select')) {
