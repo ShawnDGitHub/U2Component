@@ -1,0 +1,132 @@
+/* if no variant set, style will fall back to text type */
+/* variant filled */
+:host([variant="filled"]) {
+    position: relative;
+    padding: 10px 12px;
+    color: var(--md-sys-color-on-primary);
+    background-color: var(--md-sys-color-primary);
+    border: 1px solid transparent;
+    user-select: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    overflow: hidden;
+    align-items: center;
+    border-radius: 1.875em;
+    font-family: var(--md-sys-typescale-label-large-font-family-name);
+    font-style: var(--md-sys-typescale-label-large-font-family-style);
+    font-weight: var(--md-sys-typescale-label-large-font-weight);
+    font-size: var(--md-sys-typescale-label-large-font-size);
+    line-height: var(--md-sys-typescale-label-large-line-height);
+    letter-spacing: var(--md-sys-typescale-label-large-letter-spacing);
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+/* variant outlined */
+:host([variant="outlined"]) {
+    position: relative;
+    padding: 10px 24px;
+    color: var(--md-sys-color-primary);
+    border: 1px solid var(--md-sys-color-outline);
+    user-select: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.875em;
+    font-family: var(--md-sys-typescale-label-large-font-family-name);
+    font-style: var(--md-sys-typescale-label-large-font-family-style);
+    font-weight: var(--md-sys-typescale-label-large-font-weight);
+    font-size: var(--md-sys-typescale-label-large-font-size);
+    line-height: var(--md-sys-typescale-label-large-line-height);
+    letter-spacing: var(--md-sys-typescale-label-large-letter-spacing);
+    white-space: nowrap;
+    cursor: pointer;
+    max-height: 41px;
+    transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+    overflow: hidden;
+}
+/* variant text */
+:host {
+    position: relative;
+    padding: 10px 12px;
+    color: var(--md-sys-color-primary);
+    border: 1px solid transparent;
+    user-select: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.875em;
+    font-family: var(--md-sys-typescale-label-large-font-family-name);
+    font-style: var(--md-sys-typescale-label-large-font-family-style);
+    font-weight: var(--md-sys-typescale-label-large-font-weight);
+    font-size: var(--md-sys-typescale-label-large-font-size);
+    line-height: var(--md-sys-typescale-label-large-line-height);
+    letter-spacing: var(--md-sys-typescale-label-large-letter-spacing);
+    white-space: nowrap;
+    cursor: pointer;
+    max-height: 41px;
+    transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* state */
+/* filled */
+:host(:focus-visible[variant="filled"]) {
+    background-color: var(--md-sys-color-primary-focus-state);
+}
+:host(:hover[variant="filled"]) {
+    background-color: var(--md-sys-color-primary-hover-state);
+    /* M3/Elevation Light/1 */
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30);
+    transition: 
+      box-shadow 400ms cubic-bezier(0.2, 0, 0, 1 ),
+      background-color 400ms cubic-bezier(0.2, 0, 0, 1 );
+}
+:host(:active[variant="filled"]) {
+    background-color: var(--md-sys-color-primary-pressed-state);
+    box-shadow: none;
+}
+/* outlined */
+:host(:focus-visible[variant="outlined"]) {
+    color: var(--md-sys-color-primary);
+    background-color: var(--md-sys-state-pressed-state-layer-opacity);
+}
+:host(:hover[variant="outlined"]) {
+    background-color: var(--md-sys-state-hover-state-layer-opacity);
+}
+:host(:active[variant="outlined"]) {
+    background-color: var(--md-sys-state-pressed-state-layer-opacity);
+}
+/* text */
+:host(:focus-visible) {
+    background-color: var(--md-sys-state-pressed-state-layer-opacity);
+}
+:host(:hover) {
+    background-color: var(--md-sys-state-hover-state-layer-opacity);
+}
+:host(:active) {
+    background-color: var(--md-sys-state-pressed-state-layer-opacity);
+}
+/* disabled */
+:host([disabled][variant="filled"]) {
+    cursor: not-allowed;
+    color: var(--md-sys-color-on-surface-text-disabled);
+    background-color: var(--md-sys-color-primary-disabled-state);
+    pointer-events: none;
+}
+:host([disabled][variant="outlined"]) {
+    cursor: not-allowed;
+    padding: 10px 24px;
+    color: var(--md-sys-color-on-surface-text-disabled);
+    background-color: transparent;
+    border: 1px solid var(--md-sys-color-on-surface-disabled);
+    pointer-events: none;
+}
+:host([disabled]) {
+    cursor: not-allowed;
+    color: var(--md-sys-color-on-surface-text-disabled);
+    pointer-events: none;
+    background-color: transparent;
+}

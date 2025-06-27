@@ -13,7 +13,7 @@ export default class Select extends Field {
     }
   }
   static get observedAttributes() { 
-    return ["width", "height"];
+    return ["width", "height", "disabled"];
   }
   attributeChangedCallback (name, oldValue, newValue) {
     switch (name) {
@@ -22,6 +22,9 @@ export default class Select extends Field {
         break;
       case "height":
         this.height = newValue;
+        break;
+      case "disabled":
+        this.handleDisableState();
         break;
       default: break;
     }

@@ -4,25 +4,13 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>不同的按钮</title>
-<script src="./components/FilledButton.js" type="module"></script>
-<script src="./components/OutlinedButton.js" type="module"></script>
-<script src="./components/TextButton.js" type="module"></script>
-<script src="./components/IconButton.js" type="module"></script>
-<script src="./components/SegmentedButton.js" type="module"></script>
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-<!-- 引入样式 -->
+<title>examples for button</title>
+<script src="../COMPONENT//Button.js" type="module"></script>
+<!-- <script src="./components/IconButton.js" type="module"></script> -->
+<!-- <script src="./components/SegmentedButton.js" type="module"></script> -->
+<!-- import style -->
 <link rel="stylesheet" href="../CSS/theme.css" />
-
 <style>
-@font-face {
-    font-family: 'NotoSansSC-Medium';
-    src: url('../FONTS/NotoSansSC-Medium.otf');
-}
-
 *,
 *::before,
 *::after {
@@ -37,9 +25,8 @@ html {
     padding: 2rem 1rem;
     width: fit-content;
     border-radius: 1rem;
-    /* outline: 1px solid var(--md-sys-color-outline); */
 }
-body { display: flex; flex-direction: column; align-items: center; background-color: var(--md-sys-color-background); }
+body { display: flex; flex-direction: column; align-items: center; }
 @media(prefers-color-scheme: dark) { 
     body { background-color: #121212; }
 }
@@ -52,68 +39,17 @@ body > * + * { margin-top: 4rem; }
 
 </head>
 <body>
-    <!-- Outlined button -->
-    <!-- 边框按钮 -->
-    <section class="card"> 
-        <div class="title-small">Outlined button</div>    
-        <div class="mt-1"></div>   
-        <outlined-button transform="uppercase">Outlined button</outlined-button>
-        <div class="mt-1"></div>
-        <outlined-button leading-icon="login" icon-variant="outlined">登录</outlined-button>
-        <div class="mt-1" style="display: flex;">
-            <outlined-button leading-icon="login" icon-variant="outlined" disabled="true">登录</outlined-button>
-            <div class="mr-1"></div>
-            <outlined-button disabled="true">禁用状态</outlined-button>
-        </div>
-
+    <section>
+        <div class="title-small">buttons</div>
+        <custom-button variant="filled">filled button</custom-button>
+        <custom-button variant="filled" disabled>filled button</custom-button>
+        <custom-button variant="outlined">outlined button</custom-button>
+        <custom-button variant="outlined" disabled>outlined button</custom-button>
+        <custom-button>text button</custom-button>
+        <custom-button disabled>text button</custom-button>
     </section>
 
-    <!-- Text button -->
-    <!-- 文字按钮 -->
-    <section class="card">
-        <div class="title-small">Text button</div>    
-        <div class="mt-1"></div>      
-        <text-button>文字按钮</text-button>
-        <text-button leading-icon="login" icon-variant="rounded">登录</text-button>
-
-        <div class="mt-1" style="display: flex; flex-wrap: wrap;">
-        <!-- 衍生变种，具有最小宽度限制，自动填充父元素 -->
-            <text-button
-                style="flex: 1;"
-                dropdown>下拉按钮</text-button>
-            <text-button
-                style="flex: 1;"
-                dropdown>字号</text-button>
-            <text-button
-                leading-icon=""
-                icon-variant="rounded"
-                style="flex: 1;"
-                dropdown>类型</text-button>
-        </div>
-
-        <text-button disabled="true">禁用状态</text-button>
-
-        <div class="mt-1">
-            <text-button
-                nav
-                leading-icon="arrow_back"
-                icon-variant="outlined">导航按钮态</text-button>
-        </div>
-    </section>
-
-    <!-- Filled button -->
-    <!-- 文字按钮 -->
-    <section class="card">
-        <div class="title-small">Filled button</div>    
-        <div class="mt-1"></div>      
-        <filled-button>填充按钮</filled-button>
-        <div class="mt-1"></div>
-        <filled-button leading-icon="login" icon-variant="rounded">登录</filled-button>
-        <div class="mt-1"></div>
-        <filled-button disabled="true">禁用状态</filled-button>
-    </section>
-
-    <section class="mw-500 card">
+    <!-- <section class="mw-500 card">
         <div class="title-small">Segmented button</div>    
         <div class="mt-1"></div>           
         <segmented-button>
@@ -122,20 +58,9 @@ body > * + * { margin-top: 4rem; }
             <outlined-button leading-icon="construction" icon-variant="rounded">选项 3</outlined-button>
             <outlined-button leading-icon="emoji_nature" icon-variant="rounded">选项 4</outlined-button>
         </segmented-button>
-    </section>
+    </section> -->
 
-    <section class="card">
-        <div class="title-small">icon-variant="outlined"</div>    
-        <div class="mt-1"></div>     
-        <icon-button icon="search" icon-variant="outlined"></icon-button>
-        <icon-button icon="add" icon-variant="outlined"></icon-button>
-        <icon-button icon="arrow_drop_down" icon-variant="outlined"></icon-button>
-        <icon-button icon="arrow_drop_up" icon-variant="outlined"></icon-button>
-        <icon-button icon="videocam" icon-variant="outlined"></icon-button>
-        <icon-button icon="star" icon-variant="outlined"></icon-button>
-    </section> 
-
-    <section class="card">
+    <!-- <section class="card">
         <div class="title-small">icon-variant="rounded"</div>    
         <div class="mt-1"></div>     
         <icon-button icon="search" icon-variant="rounded"></icon-button>
@@ -144,17 +69,6 @@ body > * + * { margin-top: 4rem; }
         <icon-button icon="arrow_drop_up" icon-variant="rounded"></icon-button>
         <icon-button icon="videocam" icon-variant="rounded"></icon-button>
         <icon-button icon="star" icon-variant="rounded"></icon-button>
-    </section>
-
-    <section class="card">
-        <div class="title-small">icon-variant="sharp"</div>    
-        <div class="mt-1"></div>     
-        <icon-button icon="search" icon-variant="sharp"></icon-button>
-        <icon-button icon="add" icon-variant="sharp"></icon-button>
-        <icon-button icon="arrow_drop_down" icon-variant="sharp"></icon-button>
-        <icon-button icon="arrow_drop_up" icon-variant="sharp"></icon-button>
-        <icon-button icon="videocam" icon-variant="sharp"></icon-button>
-        <icon-button icon="star" icon-variant="sharp"></icon-button>
-    </section>
+    </section> -->
 </body>
 </html>
