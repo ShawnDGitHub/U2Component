@@ -117,12 +117,12 @@ export default class Select extends Field {
     return style;
   }
   handleDisableState () {
-    const disabled = this.getAttribute('disabled');
+    const disabled = this.getAttribute("disabled");
     if (disabled === "" || disabled) {
-      this.setAttribute('tabindex', -1);
-      this.setAttribute('aria-disabled', true);
+      this.setAttribute("tabindex", -1);
+      this.setAttribute("aria-disabled", true);
     } else {
-      this.setAttribute('aria-disabled', false);
+      this.setAttribute("aria-disabled", false);
     }
   }
   render () {
@@ -145,8 +145,8 @@ export default class Select extends Field {
     this.addEventListener("blur", (event) => {
       event.stopPropagation();
       this.state = false;
-      this.classList.remove('focused');
-      this.classList.add('empty');
+      this.classList.remove("focused");
+      this.classList.add("empty");
     })
     this.SELECT.addEventListener("change", (event) => {
       const selectedValue = event.target.value;
@@ -154,7 +154,7 @@ export default class Select extends Field {
       this.value = selectedValue;
       this.PLACEHOLDER.innerText = selectedText;
       // expose this event
-      this.dispatchEvent(new CustomEvent('select-change', {
+      this.dispatchEvent(new CustomEvent("select-change", {
         detail: {
           value: selectedValue,
           text: selectedText
@@ -165,6 +165,6 @@ export default class Select extends Field {
     })
   }
 }
-if (!customElements.get('custom-select')) {
-  customElements.define('custom-select', Select);
+if (!customElements.get("u2-select")) {
+  customElements.define("u2-select", Select);
 }

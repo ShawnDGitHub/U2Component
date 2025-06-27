@@ -12,7 +12,7 @@ export default class Button extends HTMLElement {
     }
   }
   static get observedAttributes() { 
-    return ["disabled", "class"];
+    return ["disabled"];
   }
   attributeChangedCallback (name, oldValue, newValue) {
     switch(name) {
@@ -52,26 +52,32 @@ export default class Button extends HTMLElement {
     return style;
   }
   handleDisableState () {
-    const disabled = this.getAttribute('disabled');
+    const disabled = this.getAttribute("disabled");
     if (disabled === "" || disabled) {
-      this.setAttribute('tabindex', -1);
-      this.setAttribute('aria-disabled', true);
+      this.setAttribute("tabindex", -1);
+      this.setAttribute("aria-disabled", true);
     } else {
-      this.setAttribute('aria-disabled', false);
-      this.setAttribute('tabindex', 0);
+      this.setAttribute("aria-disabled", false);
+      this.setAttribute("tabindex", 0);
     }
   }
   handleType () {
-    if (this.parentNode.tagName === 'SEGMENTED-BUTTON') {
+    if (this.parentNode.tagName === "SEGMENTED-BUTTON") {
+      if (this.previousElementSibling === null) {
+        this.setAttribute("tag", "start");
+      } else if (this.nextElementSibling == null) {
+        this.setAttribute("tag", "end");
+      } else {
+        this.setAttribute("tag", "normal");
+      }
       return "child button";
     } else { return "button"; }
   }
   render () {
     this.handleDisableState();
     this.createButton();
-    // event listener
   }
 }
-if (!customElements.get('custom-button')) {
-  customElements.define('custom-button', Button);
+if (!customElements.get("u2-button")) {
+  customElements.define("u2-button", Button);
 }

@@ -26,12 +26,12 @@ export default class Field extends HTMLElement { // basic class for variant fiel
     return style;
   }
   handleDisableState () {
-    const disabled = this.getAttribute('disabled');
+    const disabled = this.getAttribute("disabled");
     if (disabled === "" || disabled) {
-      this.setAttribute('tabindex', -1);
-      this.setAttribute('aria-disabled', true);
+      this.setAttribute("tabindex", -1);
+      this.setAttribute("aria-disabled", true);
     } else {
-      this.setAttribute('aria-disabled', false);
+      this.setAttribute("aria-disabled", false);
     }
   }
   render () {

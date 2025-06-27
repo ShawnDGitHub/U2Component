@@ -96,7 +96,7 @@
 :host(:hover[variant="outlined"]) {
     background-color: var(--md-sys-state-hover-state-layer-opacity);
 }
-:host(:active[variant="outlined"]) {
+:host(:active[variant="outlined"]), :host(.focused) {
     background-color: var(--md-sys-state-pressed-state-layer-opacity);
 }
 /* text */
@@ -130,3 +130,27 @@
     pointer-events: none;
     background-color: transparent;
 }
+/* for segmented button */
+:host([tag]) {
+    padding: 10px 12px;
+    width: 100%;
+    border: 1px solid var(--md-sys-color-outline);
+    overflow: hidden;
+}
+:host([tag="start"]) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: none;
+}
+:host([tag="end"]) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+:host([tag="normal"]) {
+    border-radius: 0;
+    border-right: 0;
+}
+:host(.focused) {
+    font-weight: 800;
+}
+

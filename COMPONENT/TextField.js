@@ -52,7 +52,7 @@ export default class TextField extends Field {
     if (value) {
       this.value = value;
       this.INPUT.value = value;
-      this.classList.add('filled');
+      this.classList.add("filled");
     }
     // initial type
     const type = this.getAttribute("type");
@@ -91,7 +91,7 @@ export default class TextField extends Field {
     let sizeLimit = "";
     let minWidth = this.clientWidth;
     let labelWidth = this.label?.length * 16 || this.placeholder.length * 16;
-    this.fullWidth = this.getAttribute('fullWidth') ? true : false;
+    this.fullWidth = this.getAttribute("fullWidth") ? true : false;
     let attribute_width = this.getAttribute("width");
     let attribute_height = this.getAttribute("height");
     if (attribute_width && attribute_width !== "") {
@@ -143,7 +143,7 @@ export default class TextField extends Field {
     this.INPUT.addEventListener("focus", (evt) => {
       this.state = true;
       evt.stopPropagation();
-      this.classList.add('focused');
+      this.classList.add("focused");
     })
     this.addEventListener("click", this.debounce(() => {
       this.state = true;
@@ -156,7 +156,7 @@ export default class TextField extends Field {
         () => this.value = this.INPUT.value);
     }, 300))
     this.addEventListener("focus", () => {
-      this.classList.add('focused');
+      this.classList.add("focused");
     })
     this.addEventListener("blur", () => {
       this.handleFilledStyle.call(this);
@@ -165,6 +165,6 @@ export default class TextField extends Field {
     })
   }
 }
-if (!customElements.get('custom-textfield')) {
-  customElements.define('custom-textfield', TextField);
+if (!customElements.get("u2-field")) {
+  customElements.define("u2-field", TextField);
 }

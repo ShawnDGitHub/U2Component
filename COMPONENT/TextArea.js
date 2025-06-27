@@ -75,7 +75,7 @@ export default class TextArea extends Field {
   }
   render () {
     this.handleDisableState();
-    this.setAttribute('role', "textbox");
+    this.setAttribute("role", "textbox");
     this.createField();
     // event listener
     this.addEventListener("keyup", () => {
@@ -85,6 +85,6 @@ export default class TextArea extends Field {
     });
   }
 }
-if (!customElements.get('custom-textarea')) {
-  customElements.define('custom-textarea', TextArea);
+if (!customElements.get("u2-textarea")) {
+  customElements.define("u2-textarea", TextArea);
 }

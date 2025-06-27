@@ -1,0 +1,6 @@
+:host {
+    display: flex;
+    width: 100%;
+    max-height: 48px;
+    border-radius: 1.875em;
+}

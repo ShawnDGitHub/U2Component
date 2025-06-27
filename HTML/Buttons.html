@@ -6,8 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>examples for button</title>
 <script src="../COMPONENT//Button.js" type="module"></script>
-<!-- <script src="./components/IconButton.js" type="module"></script> -->
-<!-- <script src="./components/SegmentedButton.js" type="module"></script> -->
+<script src="../COMPONENT/SegmentedButton.js" type="module"></script>
 <!-- import style -->
 <link rel="stylesheet" href="../CSS/theme.css" />
 <style>
@@ -41,24 +40,25 @@ body > * + * { margin-top: 4rem; }
 <body>
     <section>
         <div class="title-small">buttons</div>
-        <custom-button variant="filled">filled button</custom-button>
-        <custom-button variant="filled" disabled>filled button</custom-button>
-        <custom-button variant="outlined">outlined button</custom-button>
-        <custom-button variant="outlined" disabled>outlined button</custom-button>
-        <custom-button>text button</custom-button>
-        <custom-button disabled>text button</custom-button>
+        <div class="title-small mt-1">filled</div>
+        <u2-button variant="filled">filled button</u2-button>
+        <u2-button variant="filled" disabled>filled button</u2-button>
+        <div class="title-small mt-1">outlined</div>
+        <u2-button variant="outlined">outlined button</u2-button>
+        <u2-button variant="outlined" disabled>outlined button</u2-button>
+        <div class="title-small mt-1">default</div>
+        <u2-button>text button</u2-button>
+        <u2-button disabled>text button</u2-button>
     </section>
 
-    <!-- <section class="mw-500 card">
-        <div class="title-small">Segmented button</div>    
-        <div class="mt-1"></div>           
+    <section class="card">
+        <div class="title-small">Segmented button</div>            
         <segmented-button>
-            <outlined-button leading-icon="book" icon-variant="rounded">选项 1</outlined-button>
-            <outlined-button leading-icon="shop" icon-variant="rounded">选项 2</outlined-button>
-            <outlined-button leading-icon="construction" icon-variant="rounded">选项 3</outlined-button>
-            <outlined-button leading-icon="emoji_nature" icon-variant="rounded">选项 4</outlined-button>
+            <u2-button>option 1</u2-button>
+            <u2-button>option 2</u2-button>
+            <u2-button>option 3</u2-button>
         </segmented-button>
-    </section> -->
+    </section>
 
     <!-- <section class="card">
         <div class="title-small">icon-variant="rounded"</div>    

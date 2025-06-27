@@ -5,7 +5,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>examples for field</title>
-<script src="./components/TextField.js" type="module"></script>
 <script src="../COMPONENT/TextArea.js" type="module"></script>
 <script src="../COMPONENT/Select.js" type="module"></script>
 <script src="../COMPONENT/TextField.js" type="module"></script>
@@ -44,95 +43,95 @@ body > * + * { margin-top: 4rem; }
 <body>
     <section class="card">
         <div class="title-small">filled text field</div>
-        <custom-textfield
+        <u2-field
           variant="filled"
           label="username">
-        </custom-textfield>
-        <custom-textfield
+        </u2-field>
+        <u2-field
           variant="filled"
           label="verify code"
           type="password"
           value="hello, world!">
-        </custom-textfield>
+        </u2-field>
         <div class="title-small">outlined text field</div>
-        <custom-textfield
+        <u2-field
           variant="outlined"
           label="address">
-        </custom-textfield>
-        <custom-textfield
+        </u2-field>
+        <u2-field
           variant="outlined"
           label="card code"
           type="password"
           value="hello, world!">
-        </custom-textfield>
+        </u2-field>
         <div class="title-small">filled text field disabled</div>
-        <custom-textfield
+        <u2-field
           variant="filled"
           label="purchase date"
           value="06-27-25"
           disabled>
-        </custom-textfield>
+        </u2-field>
         <div class="title-small">outlined text field disabled</div>
-        <custom-textfield
+        <u2-field
           variant="outlined"
           label="purchase date"
           value="06-27-25"
           disabled>
-        </custom-textfield>
+        </u2-field>
         <div class="title-small">text field without label</div>
         <!-- no placeholder is ok, it will auto add default placeholder attribute to itself -->
-        <custom-textfield
+        <u2-field
           variant="filled">
-        </custom-textfield>
-        <custom-textfield
+        </u2-field>
+        <u2-field
           variant="outlined"
           placeholder="enter your code">
-        </custom-textfield>
+        </u2-field>
     </section>
     <section class="card">
         <div class="title-small">select</div>
-        <custom-select
+        <u2-select
           variant="filled"
           label="type selector">
             <option value="1">inner option 1</option>
             <option value="2">inner option 2 inner option 2 inner option 2</option>
-        </custom-select>
-        <custom-select
+        </u2-select>
+        <u2-select
           variant="outlined"
           label="type selector">
             <option value="1">inner option 1</option>
             <option value="2">inner option 2 inner option 2 inner option 2</option>
-        </custom-select>
+        </u2-select>
         <div class="title-small">filled select disabled</div>
-        <custom-select
+        <u2-select
           variant="filled"
           label="type selector"
           disabled>
             <option value="1">inner option 1</option>
             <option value="2">inner option 2 inner option 2 inner option 2</option>
-        </custom-select>
+        </u2-select>
         <div class="title-small">outlined select disabled</div>
-        <custom-select
+        <u2-select
           variant="outlined"
           label="type selector"
           disabled>
             <option value="1">inner option 1</option>
             <option value="2">inner option 2 inner option 2 inner option 2</option>
-        </custom-select>
+        </u2-select>
     </section>
     <section>
         <div class="title-small">filled textarea</div>
-        <custom-textarea
+        <u2-textarea
           variant="filled"
           width="400"
           height="300">
-        </custom-textarea>
+        </u2-textarea>
         <div class="title-small">outlined textarea</div>
-        <custom-textarea
+        <u2-textarea
           variant="outlined"
           width="400"
           height="300">
-        </custom-textarea>
+        </u2-textarea>
     </section>
 </body>
 </html>
