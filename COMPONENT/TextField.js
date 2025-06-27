@@ -44,7 +44,6 @@ export default class TextField extends Field {
     this.addToShadowRoot(input);
     // node:input
     this.INPUT = this.shadowRoot.childNodes[1];
-    this.INPUT.placeholder = ""; // currently not support to show
     // initial value
     const value = this.getAttribute("value");
     if (value) {
@@ -61,6 +60,7 @@ export default class TextField extends Field {
     }
     // initial label
     const label = this.getAttribute("label");
+    const placeholder = this.getAttribute("placeholder");
     if (label) {
       this.label = label;
       const labelElement = document.createElement("div");
@@ -70,7 +70,12 @@ export default class TextField extends Field {
       this.LABEL = this.shadowRoot.childNodes[2]
       this.LABEL.innerText = this.label;
       this.INPUT.ariaPlaceholder = this.label;
-    } 
+    } else {
+      this.placeholder = placeholder || "placeholder";
+      // input's position won't change with :not([placeholder])
+      if (placeholder === null) this.setAttribute("placeholder", this.placeholder);
+      this.INPUT.placeholder = this.placeholder;
+    }
     // initial autocomplete
     const autocomplete = this.getAttribute("autocomplete");
     if (autocomplete) { this.INPUT.autocomplete = autocomplete; }
@@ -82,7 +87,7 @@ export default class TextField extends Field {
   computeSize (style) {
     let sizeLimit = "";
     let minWidth = this.clientWidth;
-    let labelWidth = this.label.length * 16;
+    let labelWidth = this.label?.length * 16 || this.placeholder.length * 16;
     this.fullWidth = this.getAttribute('fullWidth') ? true : false;
     let attribute_width = this.getAttribute("width");
     let attribute_height = this.getAttribute("height");
@@ -93,7 +98,6 @@ export default class TextField extends Field {
       this.height = attribute_height;
     }
     if (this.label && labelWidth > 90) { // text field's width should wider then label's width
-      console.log("label > 90")
       sizeLimit = this.width ? `:host{width: ${this.width}px}` : `:host{min-width: ${labelWidth + 12}px}`;
       sizeLimit += this.fullWidth ? ":host > input {width: calc(100% - 2rem)}" : ":host > input {max-width: calc(100% - 2rem)}"; // full width
     } else {
@@ -101,12 +105,14 @@ export default class TextField extends Field {
       if (minWidth > 112) { 
         sizeLimit += this.width
           ? `:host{width: ${this.width}px}`
-          : `:host{min-width: ${minWidth}px}`;
+          : `:host{min-width: ${minWidth}px}:host > input {max-width: ${minWidth - 32}px}`;
       } else {
         sizeLimit += this.width
           ? `:host{width: ${this.width}px}`
           : "";
       }
+      // limit the input width
+      sizeLimit += `:host > input {min-width: ${minWidth - 32}px}`;
     }
     style.innerHTML = sizeLimit;
     return style;
