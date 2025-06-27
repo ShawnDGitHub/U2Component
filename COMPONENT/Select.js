@@ -69,9 +69,11 @@ export default class Select extends Field {
     this.addToShadowRoot(placeholder);
     // node:placeholder
     this.PLACEHOLDER = this.shadowRoot.childNodes[3];
-    this.PLACEHOLDER.innerText = "select";
     // node:options
     const optionsData = slot.assignedElements();
+    // set default
+    this.PLACEHOLDER.innerText = optionsData[0].label || optionsData[0].text
+    this.value = optionsData[0].value || optionsData[0].text
     // so add them to select (**)
     optionsData.forEach(option => {
       const optionElement = document.createElement("option");
@@ -97,10 +99,9 @@ export default class Select extends Field {
     if (attribute_height && attribute_height !== "") {
       this.height = attribute_height;
     }
-    if (labelWidth > 90) { // text field's width should wider then label width
+    if (labelWidth > 90) { // text field's width should wider then label's width
       sizeLimit = this.width ? `:host{width: ${this.width}px}` : `:host{min-width: ${labelWidth + 12}px}`;
       sizeLimit += ":host > select {max-width: calc(100% - 2rem)}"; // max width
-      style.innerHTML = sizeLimit;
     } else {
       minWidth = labelWidth + 38 + 24;
       sizeLimit += this.width
@@ -108,10 +109,21 @@ export default class Select extends Field {
         : `:host{min-width: ${minWidth}px !important}`;
     }
     sizeLimit += `:host > select {max-width: calc(100% - 2rem)}`;
+    sizeLimit += `:host .placeholder {max-width: calc(100% - 2rem)}`;
     style.innerHTML = sizeLimit;
     return style;
   }
+  handleDisableState () {
+    const disabled = this.getAttribute('disabled');
+    if (disabled === "" || disabled) {
+      this.setAttribute('tabindex', -1);
+      this.setAttribute('aria-disabled', true);
+    } else {
+      this.setAttribute('aria-disabled', false);
+    }
+  }
   render () {
+    this.handleDisableState();
     this.createField();
     // event listeners
     this.SELECT.addEventListener("focus", (event) => {
@@ -121,7 +133,7 @@ export default class Select extends Field {
         this.state = true;
         event.stopPropagation();
       } else return;
-    });
+    })
     this.addEventListener("click", () => {
       let focused = this.state;
       if (focused) return;

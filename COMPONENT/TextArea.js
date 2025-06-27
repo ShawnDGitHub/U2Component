@@ -73,15 +73,6 @@ export default class TextArea extends Field {
     style.innerHTML = sizeLimit;
     return style;
   }
-  handleDisableState () {
-    const disabled = this.getAttribute('disabled');
-    if (disabled) { this.setAttribute('aria-disabled', false); }
-    else {
-      // only add tabindex when element can be focused
-      this.setAttribute('tabindex', -1);
-      this.setAttribute('aria-disabled', true);
-    }
-  }
   render () {
     this.handleDisableState();
     this.setAttribute('role', "textbox");

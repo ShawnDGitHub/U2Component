@@ -1,0 +1,216 @@
+:host(:not([fullWidth])) {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 8px 0;
+    max-width: 280px;
+}
+:host([fullWidth]) {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 8px 0;
+    min-width: 112px;
+}
+:host > input {
+    padding: 0 16px;
+    position: absolute;
+    left: 0;
+    color: var(--md-sys-color-on-surface-variant);
+    background-color: transparent;
+    font-family: var(--md-sys-typescale-body-large-font-family-name);
+    font-style: var(--md-sys-typescale-body-large-font-family-style);
+    font-weight: var(--md-sys-typescale-body-large-font-weight);
+    font-size: var(--md-sys-typescale-body-large-font-size);
+    line-height: var(--md-sys-typescale-body-large-line-height);
+    letter-spacing: var(--md-sys-typescale-body-large-letter-spacing);
+    white-space: nowrap;
+    outline: none;
+    border: none;
+}
+/* variant filled */
+:host([variant="filled"]) {
+    height: 56px;
+    color: var(--md-sys-color-on-surface-variant);
+    background-color: var(--md-sys-color-surface-variant);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: 1px solid var(--md-sys-color-on-surface-variant);
+    cursor: text;
+    transition: background-color 100ms cubic-bezier(0.2, 0, 0, 1);
+}
+:host([variant="filled"]) > input {
+    margin-top: 8px;
+    caret-color: var(--md-sys-color-primary);
+}
+/* label */
+:host([variant="filled"]) .label {
+    position: absolute;
+    display: inline-block;
+    transform: translateY(0);
+    overflow: hidden;
+    top: 16px;
+    left: 16px;
+    font-family: var(--md-sys-typescale-body-large-font-family-name);
+    font-style: var(--md-sys-typescale-body-large-font-family-style);
+    font-weight: var(--md-sys-typescale-body-large-font-weight);
+    font-size: var(--md-sys-typescale-body-large-font-size);
+    line-height: var(--md-sys-typescale-body-large-line-height);
+    letter-spacing: var(--md-sys-typescale-body-large-letter-spacing);
+    white-space: nowrap;
+    transition: transform 200ms cubic-bezier(0.2, 0, 0, 1),font-size 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+:host(:focus[variant="filled"]) .label {
+    top: 18px;
+    transform: translateY(-16px);
+    font-family: var(--md-sys-typescale-body-small-font-family-name);
+    font-weight: var(--md-sys-typescale-body-small-font-weight);
+    font-size: var(--md-sys-typescale-body-small-font-size);
+    letter-spacing: var(--md-sys-typescale-body-small-letter-spacing);
+    color: var(--md-sys-color-primary);
+    transition: 
+     transform 100ms cubic-bezier(0.2, 0, 0, 1),
+     font-size 100ms cubic-bezier(0.2, 0, 0, 1);
+}
+:host([variant="filled"][class~="filled"]) .label {
+    top: 18px;
+    transform: translateY(-16px);
+    font-family: var(--md-sys-typescale-body-small-font-family-name);
+    font-weight: var(--md-sys-typescale-body-small-font-weight);
+    font-size: var(--md-sys-typescale-body-small-font-size);
+    letter-spacing: var(--md-sys-typescale-body-small-letter-spacing);
+
+    color: var(--md-sys-color-on-surface-variant);
+}
+/* variant outlined */
+:host([variant="outlined"]) {
+    margin-top: 12px;
+    min-height: 50px;
+    border-radius: 4px;
+    outline: 1px solid var(--md-sys-color-outline);
+    cursor: text;
+}
+:host([variant="outlined"]) > input {
+    color: var(--md-sys-color-on-surface);
+    margin-top: 4px ;
+}
+:host([variant="outlined"]) .label {
+    position: absolute;
+    display: inline-block;
+    transform: translateY(0);
+    padding: 0 0px;
+    border-radius: 4px;
+    overflow: hidden;
+    top: 16px;
+    left: 16px;
+    color: var(--md-sys-color-on-surface-variant);
+    font-family: var(--md-sys-typescale-body-large-font-family-name);
+    font-style: var(--md-sys-typescale-body-large-font-family-style);
+    font-weight: var(--md-sys-typescale-body-large-font-weight);
+    font-size: var(--md-sys-typescale-body-large-font-size);
+    line-height: 1rem;
+    letter-spacing: var(--md-sys-typescale-body-large-letter-spacing);
+    white-space: nowrap;
+    transition:
+     transform 100ms cubic-bezier(0.2, 0, 0, 1),
+     font-size 100ms cubic-bezier(0.2, 0, 0, 1);
+}
+:host(:hover[variant="outlined"]) .label {
+    color: var(--md-sys-color-on-surface);
+    transition: 
+    color 100ms cubic-bezier(0.2, 0, 0, 1);
+}
+:host([variant="outlined"][class~="focused"]) .label {
+    top: 6px;
+    left: 12px;
+    padding: 0 4px;
+    transform: translateY(-16px);
+    font-family: var(--md-sys-typescale-body-small-font-family-name);
+    font-weight: var(--md-sys-typescale-body-small-font-weight);
+    font-size: var(--md-sys-typescale-body-small-font-size);
+    letter-spacing: var(--md-sys-typescale-body-small-letter-spacing);
+    background-color: #fff;
+    color: var(--md-sys-color-primary);
+    transition:
+     transform 100ms ease-in-out,
+     top 100ms ease,
+     font-size 100ms ease-in-out;
+}
+:host([variant="outlined"][class~="filled"]) .label {
+    top: 6px;
+    left: 12px;
+    padding: 0 4px;
+    transform: translateY(-16px);
+    font-family: var(--md-sys-typescale-body-small-font-family-name);
+    font-weight: var(--md-sys-typescale-body-small-font-weight);
+    font-size: var(--md-sys-typescale-body-small-font-size);
+    letter-spacing: var(--md-sys-typescale-body-small-letter-spacing);
+    background-color: #fff;
+    color: var(--md-sys-color-primary);
+    transition: 
+    transform 100ms cubic-bezier(0.2, 0, 0, 1),
+    font-size 100ms cubic-bezier(0.2, 0, 0, 1);
+}
+:host(:hover[variant="outlined"][class~="filled"]) .label {
+    color: var(--md-sys-color-on-surface);
+    transition: color 100ms cubic-bezier(0.2, 0, 0, 1);
+}
+/* state */
+/* filled */
+:host(:focus[variant="filled"]) {
+    z-index: 100;
+    border-bottom: 2px solid var(--md-sys-color-primary) !important;
+    background-color: var(--md-sys-state-hover-state-layer-opacity) !important;
+    transition: background-color 100ms cubic-bezier(0.2, 0, 0, 1),
+      border-bottom 100ms cubic-bezier(0.2, 0, 0, 1);
+
+}
+:host(:focus[variant="filled"]) > input, :host([variant="filled"][class~="filled"]) > input {
+    margin-top: 14px;
+}
+:host(:hover[variant="filled"]) {
+    background-color: var(--md-sys-state-hover-state-layer-opacity) !important;
+    transition: background-color 100ms cubic-bezier(0.2, 0, 0, 1);
+}
+:host(:hover[variant="filled"][class~="filled focused"]),
+:host(:hover[variant="filled"][class~="focused filled"]),
+:host(:hover[variant="filled"][class~="focused empty"]),
+:host(:hover[variant="filled"][class~="empty focused"]) {
+    background-color: var(--md-sys-color-surface-variant);
+    transition: background-color 100ms cubic-bezier(0.2, 0, 0, 1);
+}
+/* outlined */
+:host(:focus[variant="outlined"]) {
+    outline: 2px solid var(--md-sys-color-primary);
+    z-index: 100;
+}
+/* disabled */
+:host([disabled]) > input { opacity: 50%; }
+:host([disabled][variant="filled"]) {
+    color: var(--md-sys-color-on-surface-text-disabled) !important;
+    background-color: var(--md-sys-color-on-surface-disabled) !important;
+    border-bottom: 1px solid var(--md-sys-color-on-surface-text-disabled) !important;
+    pointer-events: none;
+}
+:host([disabled][variant="filled"]) .label {
+    color: var(--md-sys-color-on-surface);
+    opacity: 38%;
+    background-color: transparent;
+}
+:host([disabled][variant="outlined"]) {
+    color: var(--md-sys-color-on-surface-text-disabled) !important;
+    background-color: transparent;
+    outline: 1px solid var(--md-sys-color-on-surface-text-disabled) !important;
+    pointer-events: none;
+}
+:host([disabled][variant="outlined"]) .label {
+    color: var(--md-sys-color-on-surface);
+    opacity: 38%;
+}
+/* fix */
+:host > input[type="password"]::-ms-reveal{
+    display:none
+}

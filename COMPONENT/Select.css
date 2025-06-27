@@ -6,13 +6,19 @@
     padding: 8px 0;
     max-width: 280px;
     cursor: pointer;
-    overflow: hidden;
 }
-/* option */
-option {
-    height: 56px;
+:host::before {
+    display: block;
+    position: absolute;
+    top: 24px;
+    left: 16px;
+    content: "";
+    width: 10px;
+    height: 6px;
+    background-color: var(--md-sys-color-on-surface-variant);;
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
 }
-/* filled */
+/* variant filled */
 :host([variant="filled"]) {
     height: 56px;
     border-top-left-radius: 4px;
@@ -21,6 +27,10 @@ option {
     background-color: var(--md-sys-color-surface-variant);
     border-bottom: 1px solid var(--md-sys-color-on-surface-variant);
     transition: background-color 100ms cubic-bezier(0.2, 0, 0, 1);
+}
+:host([variant="filled"])::before {
+    top: 28px;
+    left: 16px;
 }
 /* label */
 :host([variant="filled"]) .label {
@@ -36,7 +46,7 @@ option {
     color: var(--md-sys-color-on-surface-variant);
 }
 /* placeholder */
-:host .placeholder {
+:host([variant="filled"]) .placeholder {
     pointer-events: none;
     position: absolute;
     top: 20px;
@@ -44,17 +54,8 @@ option {
     padding: 0 4px;
     color: var(--md-sys-color-on-surface-variant);
     white-space: nowrap;
-}
-:host .placeholder::before {
-    display: block;
-    position: absolute;
-    top: 8px;
-    left: -8px;
-    content: "";
-    width: 10px;
-    height: 6px;
-    background-color: var(--md-sys-color-on-surface-variant);;
-    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 /* select */
 :host([variant="filled"]) select {
@@ -84,7 +85,100 @@ option {
 :host(:hover[variant="filled"]) select { color: var(--md-sys-color-on-surface); }
 :host([variant="filled"]) select { color: var(--md-sys-color-on-surface); }
 /* state */
-:host(:hover[variant="filled"]) {
+:host(:hover[variant="filled"]), :host(:focus[variant="filled"]) {
     background-color: var(--md-sys-state-hover-state-layer-opacity);
 }
-
+/* variant outlined */
+:host([variant="outlined"]) {
+    margin-top: 12px;
+    min-height: 50px;
+    border-radius: 4px;
+    outline: 1px solid var(--md-sys-color-outline);
+    cursor: text;
+}
+:host([variant="outlined"]) .label {
+    width: fit-content;
+    z-index: 1;
+    position: absolute;
+    top: 6px;
+    left: 12px;
+    padding: 0 4px;
+    transform: translateY(-16px);
+    font-family: var(--md-sys-typescale-body-small-font-family-name);
+    font-weight: var(--md-sys-typescale-body-small-font-weight);
+    font-size: var(--md-sys-typescale-body-small-font-size);
+    letter-spacing: var(--md-sys-typescale-body-small-letter-spacing);
+    background-color: #fff;
+    border-radius: 4px;
+    color: var(--md-sys-color-on-surface-variant);
+}
+/* placeholder */
+:host([variant="outlined"]) .placeholder {
+    pointer-events: none;
+    position: absolute;
+    top: 16px;
+    left: 24px;
+    padding: 0 4px;
+    color: var(--md-sys-color-on-surface-variant);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* select */
+:host([variant="outlined"]) select {
+    appearance:none;
+    -moz-appearance:none; 
+    -webkit-appearance:none;
+    opacity: 0;
+    z-index: 0;
+    top: 0px;
+    position: absolute;
+    width: 100%;
+    padding: 0px 16px;
+    outline: none;
+    border: none;
+    overflow: hidden;
+    background-color: transparent;
+    color: transparent;
+    white-space: nowrap;
+    display: inline-block;
+    border-radius: 4px;
+    max-width: 280px;
+    min-width: 112px;
+    min-height: 100%;
+    text-align: start;
+    cursor: pointer;
+}
+/* state */
+:host(:hover[variant="outlined"]) { outline: 1px solid var(--md-sys-color-on-surface); }
+:host(:focus[variant="outlined"]) { outline: 2px solid var(--md-sys-color-primary); }
+:host(:hover[variant="outlined"]) select { color: var(--md-sys-color-on-surface); }
+:host([variant="outlined"]) select { color: var(--md-sys-color-on-surface); }
+/* disabled */
+:host([disabled])::before,
+:host([disabled]) .placeholder { opacity: 50%; }
+:host([disabled][variant="filled"]) {
+    color: var(--md-sys-color-on-surface-text-disabled) !important;
+    background-color: var(--md-sys-color-on-surface-disabled) !important;
+    border-bottom: 1px solid var(--md-sys-color-on-surface-text-disabled) !important;
+    pointer-events: none;
+}
+:host([disabled][variant="filled"]) .label {
+    color: var(--md-sys-color-on-surface);
+    opacity: 38%;
+    background-color: transparent;
+}
+:host([disabled][variant="outlined"]) {
+    color: var(--md-sys-color-on-surface-text-disabled) !important;
+    background-color: transparent;
+    outline: 1px solid var(--md-sys-color-on-surface-text-disabled) !important;
+    pointer-events: none;
+}
+:host([disabled][variant="outlined"]) .label {
+    color: var(--md-sys-color-on-surface);
+    opacity: 38%;
+}
+/* fix */
+:host([variant="filled"]) ::-webkit-input-placeholder,
+:host([variant="outlined"]) ::-webkit-input-placeholder
+{ color: transparent; }

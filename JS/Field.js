@@ -25,6 +25,15 @@ export default class Field extends HTMLElement { // basic class for variant fiel
     console.error("computeSize() must be implemented by subclasses")
     return style;
   }
+  handleDisableState () {
+    const disabled = this.getAttribute('disabled');
+    if (disabled === "" || disabled) {
+      this.setAttribute('tabindex', -1);
+      this.setAttribute('aria-disabled', true);
+    } else {
+      this.setAttribute('aria-disabled', false);
+    }
+  }
   render () {
     throw new Error("render() must be implemented by subclasses");
   }
