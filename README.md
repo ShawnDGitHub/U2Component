@@ -44,6 +44,9 @@ Just import it into the HTML file (there are many parameters that can be adjuste
 [ -> top](#menu)
 ## Examples of using existing components
 ### text field
+<div align="center">
+  <img src="https://github.com/ShawnDGitHub/imgPack/blob/main/img/u2_example-text-field.png" alt="examples of text field"/>
+</div>
 Basic use. it will auto add a placeholder attribute to itself.
 ```html
   <u2-field variant="filled"></u2-field>
@@ -66,26 +69,29 @@ There are two types of text field: filled and outlined. **variant attribute is r
 parameter:
 (*) means required
 
-1. **variant**(\*)
+1. **variant**(\*) : 
 The style type of the text input box. In Material 3, this component has two style variants: filled and outlined.
-2. **value**
+2. **value** : 
 Set default input.
-3. **placeholder**
+3. **placeholder** : 
 The placeholder text to be displayed in the initial state when the user has not input anything.
-4. **label**
+4. **label** :
 A label may float to top when user focus on text field. **You can't set both of label and placeholder**.
-5. **width** 
+5. **width** : 
 *The default unit is px, and percentage units are not supported*. You can specify the width of the component, and the width of the component will no longer fill the width of the parent element. (*TextField has a maximum width of 112 px in M3 Doc*, but I designed a property to help you remove this limitation.)
-6. **fullWidth**
+6. **fullWidth** : 
 Here it comes. The component will fill the container width.
-7. **type**
+7. **type** : 
 Set ```type="password"``` to let input be invisible.
-8. **disabled**
+8. **disabled** : 
 Set ```disabled``` to make it uninputable.
 
 [ -> top](#menu)
 
 ### select
+<div align="center">
+  <img src="https://github.com/ShawnDGitHub/imgPack/blob/main/img/u2_example-select.png" alt="examples of select"/>
+</div>
 Same as the native web select, put option element in it.
 ```html
   <u2-select
@@ -97,12 +103,15 @@ Same as the native web select, put option element in it.
 ```
 parameter:
 (\*) means required
-1. **variant**(\*)
+1. **variant**(\*) : 
 This component has two style variants: filled and outlined.
 2. **label**(\*)
 3. **disabled**
 
 ### button
+<div align="center">
+  <img src="https://github.com/ShawnDGitHub/imgPack/blob/main/img/u2_example-buttons.png" alt="examples of buttons"/>
+</div>
 ```html
   <u2-button>text button</u2-button>
   <u2-button variant="filled">filled button</u2-button>
@@ -111,11 +120,14 @@ This component has two style variants: filled and outlined.
 ```
 parameter:
 (\*) means required
-1. **variant**
+1. **variant** : 
 This component has three style variants: text, filled and outlined. *If you don't set this attribute, it will fallback to default text type*.
 2. **disabled**
 
 ### segmented button
+<div align="center">
+  <img src="https://github.com/ShawnDGitHub/imgPack/blob/main/img/u2_example-segmented-button.png" alt="example of segmented button"/>
+</div>
 ```html
   <segmented-button>
       <u2-button>option 1</u2-button>
