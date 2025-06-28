@@ -45,6 +45,7 @@
     letter-spacing: var(--md-sys-typescale-body-small-letter-spacing);
     color: var(--md-sys-color-on-surface-variant);
 }
+:host(:focus[variant="filled"]) .label { color: var(--md-sys-color-primary); }
 /* placeholder */
 :host([variant="filled"]) .placeholder {
     pointer-events: none;
@@ -84,10 +85,6 @@
 }
 :host(:hover[variant="filled"]) select { color: var(--md-sys-color-on-surface); }
 :host([variant="filled"]) select { color: var(--md-sys-color-on-surface); }
-/* state */
-:host(:hover[variant="filled"]), :host(:focus[variant="filled"]) {
-    background-color: var(--md-sys-state-hover-state-layer-opacity);
-}
 /* variant outlined */
 :host([variant="outlined"]) {
     margin-top: 12px;
@@ -112,6 +109,7 @@
     border-radius: 4px;
     color: var(--md-sys-color-on-surface-variant);
 }
+:host(:focus[variant="outlined"]) .label { color: var(--md-sys-color-primary); }
 /* placeholder */
 :host([variant="outlined"]) .placeholder {
     pointer-events: none;
@@ -150,8 +148,18 @@
     cursor: pointer;
 }
 /* state */
+:host(:focus[variant="filled"]) {
+    z-index: 100;
+    border-bottom: 2px solid var(--md-sys-color-primary);
+    background-color: var(--md-sys-state-hover-state-layer-opacity);
+}
+:host(:hover[variant="filled"]), :host(:focus[variant="filled"]) {
+    background-color: var(--md-sys-state-hover-state-layer-opacity);
+}
 :host(:hover[variant="outlined"]) { outline: 1px solid var(--md-sys-color-on-surface); }
-:host(:focus[variant="outlined"]) { outline: 2px solid var(--md-sys-color-primary); }
+:host(:focus[variant="outlined"]) {
+    outline: 2px solid var(--md-sys-color-primary);
+}
 :host(:hover[variant="outlined"]) select { color: var(--md-sys-color-on-surface); }
 :host([variant="outlined"]) select { color: var(--md-sys-color-on-surface); }
 /* disabled */

@@ -103,7 +103,7 @@ export default class Select extends Field {
       this.height = attribute_height;
     }
     if (labelWidth > 90) { // text field's width should wider then label's width
-      sizeLimit = this.width ? `:host{width: ${this.width}px}` : `:host{min-width: ${labelWidth + 12}px}`;
+      sizeLimit = this.width ? `:host{width: ${this.width}px}` : `:host{min-width: ${labelWidth + 24}px}`;
       sizeLimit += ":host > select {max-width: calc(100% - 2rem)}"; // max width
     } else {
       minWidth = labelWidth + 38 + 24;
