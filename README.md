@@ -44,9 +44,11 @@ Just import it into the HTML file (there are many parameters that can be adjuste
 [ -> top](#menu)
 ## Examples of using existing components
 ### text field
+
 <div align="center">
   <img src="https://github.com/ShawnDGitHub/imgPack/blob/main/img/u2_example-text-field.png" alt="examples of text field"/>
 </div>
+
 Basic use. it will auto add a placeholder attribute to itself.
 ```html
   <u2-field variant="filled"></u2-field>
@@ -89,9 +91,11 @@ Set ```disabled``` to make it uninputable.
 [ -> top](#menu)
 
 ### select
+
 <div align="center">
   <img src="https://github.com/ShawnDGitHub/imgPack/blob/main/img/u2_example-select.png" alt="examples of select"/>
 </div>
+
 Same as the native web select, put option element in it.
 ```html
   <u2-select
@@ -109,9 +113,11 @@ This component has two style variants: filled and outlined.
 3. **disabled**
 
 ### button
+
 <div align="center">
   <img src="https://github.com/ShawnDGitHub/imgPack/blob/main/img/u2_example-buttons.png" alt="examples of buttons"/>
 </div>
+
 ```html
   <u2-button>text button</u2-button>
   <u2-button variant="filled">filled button</u2-button>
@@ -125,9 +131,11 @@ This component has three style variants: text, filled and outlined. *If you don'
 2. **disabled**
 
 ### segmented button
+
 <div align="center">
   <img src="https://github.com/ShawnDGitHub/imgPack/blob/main/img/u2_example-segmented-button.png" alt="example of segmented button"/>
 </div>
+
 ```html
   <segmented-button>
       <u2-button>option 1</u2-button>
