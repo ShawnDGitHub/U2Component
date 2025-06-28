@@ -73,11 +73,16 @@ export default class TextField extends Field {
       this.LABEL = this.shadowRoot.childNodes[2]
       this.LABEL.innerText = this.label;
       this.INPUT.ariaPlaceholder = this.label;
+      this.INPUT.title = this.getAttribute("title") || `enter ${this.label}`;
+      this.INPUT.name = this.label;
+      this.handleAutocomplete(this.label);
     } else {
       this.placeholder = placeholder || "placeholder";
       // input's position won't change with :not([placeholder])
       if (placeholder === null) this.setAttribute("placeholder", this.placeholder);
       this.INPUT.placeholder = this.placeholder;
+      this.INPUT.name = this.placeholder;
+      this.handleAutocomplete(this.placeholder);
     }
     // initial autocomplete
     const autocomplete = this.getAttribute("autocomplete");
@@ -101,21 +106,28 @@ export default class TextField extends Field {
       this.height = attribute_height;
     }
     if (this.label && labelWidth > 90) { // text field's width should wider then label's width
-      sizeLimit = this.width ? `:host{width: ${this.width}px}` : `:host{min-width: ${labelWidth + 12}px}`;
-      sizeLimit += this.fullWidth ? ":host > input {width: calc(100% - 2rem)}" : ":host > input {max-width: calc(100% - 2rem)}"; // full width
+      sizeLimit = this.width ? `:host{width: ${this.width}px}` : `:host{min-width: ${labelWidth + 24}px}`;
+      if (labelWidth > 180) {
+        sizeLimit += this.fullWidth
+          ? ":host > input {width: calc(100% - 2rem)}"
+          : ":host > input {min-width: calc(100% - 2rem)}";
+      } else {
+        sizeLimit += this.fullWidth
+          ? ":host > input {width: calc(100% - 2rem)}"
+          : ":host > input {max-width: calc(100% - 2rem)}";
+      }
     } else {
       minWidth = labelWidth + 38;
-      if (minWidth > 112) { 
+      if (minWidth > 112) {
         sizeLimit += this.width
-          ? `:host{width: ${this.width}px}`
+          ? `:host{width: ${this.width}px}:host > input {min-width: ${this.width - 32}px}`
           : `:host{min-width: ${minWidth}px}:host > input {max-width: ${minWidth - 32}px}`;
+        sizeLimit += `:host > input {min-width: ${minWidth - 32}px}`;
       } else {
         sizeLimit += this.width
-          ? `:host{width: ${this.width}px}`
-          : "";
+          ? `:host{width: ${this.width}px}:host > input {min-width: ${this.width - 32}px}`
+          : `:host{min-width: ${minWidth}px}:host > input {max-width: ${minWidth - 32}px}`; 
       }
-      // limit the input width
-      sizeLimit += `:host > input {min-width: ${minWidth - 32}px}`;
     }
     style.innerHTML = sizeLimit;
     return style;
@@ -136,6 +148,12 @@ export default class TextField extends Field {
       }
     }
   }
+  handleAutocomplete (value) {
+    if (value === "username" || value === "email" || value === "name") {
+      const autocomplete = this.getAttribute("autocomplete");
+      this.INPUT.autocomplete = autocomplete || "on";
+    }
+  }
   render () {
     this.handleDisableState();
     this.createField();
@@ -145,6 +163,7 @@ export default class TextField extends Field {
       evt.stopPropagation();
       this.classList.add("focused");
     })
+    // debounce can avoid label shake
     this.addEventListener("click", this.debounce(() => {
       this.state = true;
       this.INPUT.focus();
