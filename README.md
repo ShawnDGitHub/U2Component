@@ -6,175 +6,133 @@
   <img src="https://img.shields.io/badge/Design_System-Material_Deisgn_3-blue" alt="The logo of U2Component"/>
 </div>
 
-> U2Component 是一个受到 Material Design 3 ( 后文简称质感 3 ) 启发的 Web Component 组件库，提供了质感 3 风格的组件和衍生样式组件。
+> U2Component offers components documented in M3 (it doesn't aim for M3 Expressive). The project is being refactored and will be published to npm soon.
+## menu
+- [Introduction](#Introduction)
+- [Notice](#Notice)
+- [Instructions](#Instructions)
+  - [Icon (TODO))](#Icon (TODO))
+  - [1. Import style](#1. Import style)
+  - [2. Import component](#2. Import component)
+- [Examples of using existing components](#Examples of using existing components)
+  - [text field](#text field)
+  - [select](#select)
+  - [button](#button)
+  - [segmented button](#segmented button)
+- [Available components](#Available components)
 
-## 快速链接
-- [多种主题颜色文件](https://github.com/ShawnDGitHub/U2Component/tree/main/CSS)
-- [组件](https://github.com/ShawnDGitHub/U2Component/tree/main/HTML/components)
-- [不同的按钮范例](https://github.com/ShawnDGitHub/U2Component/blob/main/HTML/Buttons.html)
+## Introduction
+U2Component is a component library based on **web component**. You can change the color of all components at once by replacing the CSS file "token.css", all component colors and fonts use design tokens.
+## Notice
+1. Please make sure that you use this component library for development on **mainstream browsers**.
+2. Make sure you set ```font-size: 1rem``` on  html. Some styles use rem and em units.
+## Instructions
+### Icon (TODO)
+The previous icon library used material-symbols, which has now been removed and is being redesigned and will be supported in the future.
+> These processes below will no longer be needed in the future.
 
-## 目录
-- [简介](#简介)
-- [保持最新](#保持最新)
-- [准备使用的条件](#准备使用的条件)
-  - [图标 ( Material Symbols )](#图标--material-symbols-)
-    - [HTML 引入](#html-引入)
-    - [npm 安装](#npm-安装)
-  - [颜色](#颜色)
-  - [JavaScript](#javascript)
-  - [总结使用条件](#总结使用条件)
-- [开始使用](#开始使用)
-- [可用组件](#可用组件)
-
-## 简介
-
-U2Component 是一个适应性强的组件库。你能够通过替换 CSS 文件立马改变所有组件的颜色，并且它们风格统一，这得益于 [Design Token](https://m3.material.io/foundations/design-tokens/overview) ( 设计令牌 ) 这个概念，所有组件的颜色、字体都使用了设计令牌。
-
-关于设计令牌的例子，查看本篇博客：https://codingmway.com/U2Component%20README
-
-
-## 保持最新
-
-要注意的是，该项目还在初期阶段，我会保证持续的更新，欢迎你的反馈。这也意味着未声明稳定 ( stable ) 的组件可能会有代码的变动，需要你及时关注 Github 上的提交内容。
-
-
-## 准备使用的条件
-
-U2Component 现阶段未考虑 IE 浏览器等非主流浏览器的适配，请确保你在主流的浏览器上采用该组件库来开发。
-
-### 图标 ( Material Symbols )
-
-U2Component 依赖于 [Material Symbols ( 质感符号 )](https://fonts.google.com/icons)，这是一组可变字形的图标字体。Google Fonts 的介绍：
-
-> Material Symbols 是我们最新的图标，将超过 3,004 个字形整合到一个字体文件中，并具有多种设计变体。 符号提供三种样式和四种可调节的可变字体样式（填充、粗细、等级和尺寸【optical size】 ）。
-
-#### HTML 引入
-
-在 HTML 文件中引入即可（其中有很多参数可调整）：
-
-```html
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-```
-
-注意 Material+Symbols+Outlined 的 `Outlined `这个部分，其可以替换为 Rounded 或 Sharp，这将改变引入的图标从边线变种图标变为i为圆润变种或尖锐变种。
-
-由于质感符号还有很多参数可以调整，我建议访问官网自行调整参数并复制引入链接。
-
-#### npm 安装
-
-```javascript
-npm install material-symbols
-```
-
-需要注意的是，这种方式安装将会使得三种变种图标的字体文件全部安装，且其中图标数量比起官网少了一部分。
-
-[ -> 返回简介](#简介)
-
-### 颜色
-
-因为依赖于质感３的颜色应用规范，请确保你在自己应用中提供了组件需要的样式令牌。即使是你不知道如何获取样式令牌，也**不用担心**，在本项目的 CSS 文件夹中已经准备了多种颜色的主题需要的样式令牌，你可以选择一种主题的文件直接放入你的开发资源文件夹中，在 HTML 文件中引入 theme.css 即可。[多种主题颜色文件](https://github.com/ShawnDGitHub/U2Component/tree/main/CSS)
-
+### 1. Import style
+The style file contains various tokens, such as **light and dark themes**.
 ```html
 <link rel="stylesheet" type="text/css" href="css/theme.css">
 ```
-
-**Theme.css 内容**
-
-```css
-@import url(tokens.css);
-@import url(colors.module.css);
-@import url(typography.module.css);
-@import url(theme.light.css) (prefers-color-scheme: light);
-@import url(theme.dark.css) (prefers-color-scheme: dark);
-```
-
-以上是 U2Component 所依赖的样式文件，看见了吗，token.css 包含了亮/暗色模式所需要的样式令牌，而 theme.dark.css 指定了暗色模式下的内容，无需再考虑暗色模式的适配问题。
-
-[ -> 返回简介](#简介)
-
-### JavaScript
-
-Web Component 是一种为 Web 提供具有多种特性的标准组件的模型，允许单个 HTML 元素的封装和组件之间的操作性。
-
-这里主要强调 JS 文件的引入。你需要在 HTML 中加入如下格式的内容：
-
+### 2. Import component
+Just import it into the HTML file (there are many parameters that can be adjusted):
 ```html
-<script src="webComponents/TextButton.js" type="module"></script>
+<script src="../COMPONENT/TextField.js" type="module"></script>
 ```
-
-webComponents 是一个文件夹，最重要的是引入每个组件需要的 JS 文件。例如，这里引入了 TextButton ( 文字按钮 )。
-
-组件所需要的样式文件是和组件 JS 文件是同名的，**确保**组件对应的同名样式文件和组件 JS 文件在同一个目录下。这是因为 JS 文件指定了样式文件的位置：
-
-```javascript
- this.shadowRoot.innerHTML = `<style>@import "${new URL("TextButton.css", import.meta.url)}";</style><div><slot></slot></div>`;
+[ -> top](#menu)
+## Examples of using existing components
+### text field
+Basic use. it will auto add a placeholder attribute to itself.
+```html
+  <u2-field variant="filled"></u2-field>
+  <u2-field variant="outlined"></u2-field>
 ```
-
-### 总结使用条件
-
-1. 引入 图标
-2. 引入 theme.css
-3. 引入组件 JS 文件
-
-[ -> 返回简介](#简介)
-
-## 开始使用
-
-每个组件都有不同的属性，请参照对应组件的文档。
-
-这里给出 TextField ( 文字输入框 ) 的使用范例：
-
-```javascript
-<text-field 
- variant="filled" placeholder="用户名"
- width="300"
- leading-icon="person"
- icon-variant="rounded"
- :value="username" (*)
- ref="usernameTextField">  (**)
-</text-field>
+There are two types of text field: filled and outlined. **variant attribute is required**.
+```html
+  <u2-field
+      variant="filled"
+      label="username"
+      autocomplete="name"
+      width="240">
+  </u2-field>
+  <u2-field
+      variant="outlined"
+      placeholder="verify code"
+      type="password">
+  </u2-field>
 ```
+parameter:
+(*) means required
 
-这和你使用其他组件库的方式是相同的，你需要在 HTML 标签中指定需要的属性，例如：
+1. **variant**(\*)
+The style type of the text input box. In Material 3, this component has two style variants: filled and outlined.
+2. **value**
+Set default input.
+3. **placeholder**
+The placeholder text to be displayed in the initial state when the user has not input anything.
+4. **label**
+A label may float to top when user focus on text field. **You can't set both of label and placeholder**.
+5. **width** 
+*The default unit is px, and percentage units are not supported*. You can specify the width of the component, and the width of the component will no longer fill the width of the parent element. (*TextField has a maximum width of 112 px in M3 Doc*, but I designed a property to help you remove this limitation.)
+6. **fullWidth**
+Here it comes. The component will fill the container width.
+7. **type**
+Set ```type="password"``` to let input be invisible.
+8. **disabled**
+Set ```disabled``` to make it uninputable.
 
-1. 样式变种 - ***variant\***。
+[ -> top](#menu)
 
-   文本输入框的样式类型，在质感3中，该组件有 filled、outlined 两种样式变种。
+### select
+Same as the native web select, put option element in it.
+```html
+  <u2-select
+      variant="filled"
+      label="type selector">
+      <option value="1">inner option 1</option>
+      <option value="2">inner option 2</option>
+  </u2-select>
+```
+parameter:
+(\*) means required
+1. **variant**(\*)
+This component has two style variants: filled and outlined.
+2. **label**(\*)
+3. **disabled**
 
-2. 占位符 - ***placeholder\***。
+### button
+```html
+  <u2-button>text button</u2-button>
+  <u2-button variant="filled">filled button</u2-button>
+  <u2-button variant="outlined">outlined button</u2-button>
+  <u2-button disabled>disabled state</u2-button>
+```
+parameter:
+(\*) means required
+1. **variant**
+This component has three style variants: text, filled and outlined. *If you don't set this attribute, it will fallback to default text type*.
+2. **disabled**
 
-   用户未输入的初始状态下要展示的占位文字，在聚焦文本输入框后，placeholder 会变为浮动指示文字。
+### segmented button
+```html
+  <segmented-button>
+      <u2-button>option 1</u2-button>
+      <u2-button>option 2</u2-button>
+      <u2-button>option 3</u2-button>
+  </segmented-button>
+```
+no parameter is needed.
 
-3. 固定宽度 - ***width\***。默认补充单位 px，不支持百分比单位。
+[ -> top](#menu)
 
-   你可以指定该组件的宽度，该组件的宽度将不再填充父元素宽度。（TextField 有一个最大宽度 112 px，但我设计了一个属性方便你解除这个限制，详细参考 TextField 文档。）
-
-4. 前置图标 - ***leading-icon\***。必须和 icon-variant 同时出现。
-
-   TextField 的前置图标。你可以设置 TextField 的前置图标，这能提升用户的输入体验。
-
-5. 图标变种 - ***icon-variant\***。
-
-   [Material Symbols](https://fonts.google.com/icons) 拥有三类图标变种，分别是 outlined、rounded 和 sharp (  边线图标、圆润图标以及尖锐图标 )。传入 icon-variant 属性来设置图标变种。
-
-6. 注意到（*）和（**）了吗？U2Component 可以在 Vue 环境下完美使用。
-
-   你可以通过 `this.$refs.usernameTextField.setAttribute("value", xxxx);` 来访问该对象并设定 TextField 中的内容，也可以通过 `v-bind` 动态的绑定 attribute。
-
-该组件更多属性和规范请参考文档。
-
-[ -> 返回简介](#简介)
-
-## 可用组件
-
-目前可用的组件如下：
-
-| 组件名称          | 开发状态                   | 别名           |
+## Available components
+| name          | state                  | the name when using      |
 | ----------------- | -------------------------- | -------------- |
-| TextField         | 稳定(文档编写中)                       | 文字输入框     |
-| Modal Date Picker | 开发中,有 Vue 组件稳定版本(文档编写中) | 模态日期选择器 |
-| [FilledButton](https://codingmway.com/%E5%A1%AB%E5%85%85%E6%8C%89%E9%92%AE-Filled%20button)      | 稳定                       | 填充按钮       |
-| [OutlinedButton](https://codingmway.com/%E8%BE%B9%E6%A1%86%E6%8C%89%E9%92%AE-Outlined%20button)    | 稳定                       | 边框按钮       |
-| [TextButton](https://codingmway.com/%E6%96%87%E5%AD%97%E6%8C%89%E9%92%AE-Text%20button)        | 稳定                       | 文字按钮       |
-| IconButton        | 稳定(文档编写中)                       | 图标按钮       |
-| SegmentedButton   | 开发中                     | 组合按钮       |
+| text field         | stable                      | u2-field    |
+| select         | stable(may change)                 | u2-Select    |
+| filled button  | stable                       | u2-button variant="filled"  |
+| outlined button    | stable                       | u2-button variant="outlined"      |
+| text button       | stable                       | u2-button       |
+| segmented button   | stable                     | segmented-button  |
