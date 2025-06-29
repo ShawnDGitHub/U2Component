@@ -34,12 +34,12 @@ The previous icon library used material-symbols, which has now been removed and 
 ### 1. Import style
 The style file contains various tokens, such as **light and dark themes**.
 ```html
-<link rel="stylesheet" type="text/css" href="css/theme.css">
+<link rel="stylesheet" type="text/css" href="../style/theme.css">
 ```
 ### 2. Import component
 Just import it into the HTML file (there are many parameters that can be adjusted):
 ```html
-<script src="../COMPONENT/TextField.js" type="module"></script>
+<script src="../components/TextField.js" type="module"></script>
 ```
 [ -> top](#menu)
 ## Examples of using existing components
