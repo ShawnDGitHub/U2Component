@@ -1,4 +1,5 @@
-export default class Field extends HTMLElement { // basic class for variant field
+import BasicComponent from "./BasicComponent.js";
+export default class Field extends BasicComponent { // basic class for variant field
   constructor () {
     super();
     this.rendered = false; // avoid render again at the same page

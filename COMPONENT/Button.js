@@ -1,4 +1,5 @@
-export default class Button extends HTMLElement {
+import BasicComponent from "../JS/BasicComponent.js";
+export default class Button extends BasicComponent {
   constructor () {
     super();
     this.attachShadow({ mode: "open" });
@@ -20,7 +21,6 @@ export default class Button extends HTMLElement {
       default: break;
     } 
   }
-  addToShadowRoot (element) { this.shadowRoot.appendChild(element); }
   // setter and getter
   set type (value) { this._type = value; }
   get type () { return this._type; }
