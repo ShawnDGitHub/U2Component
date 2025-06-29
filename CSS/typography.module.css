@@ -1,6 +1,4 @@
 .body-large{
-  font-family: var(--md-sys-typescale-body-large-font-family-name);
-  font-style: var(--md-sys-typescale-body-large-font-family-style);
   font-weight: var(--md-sys-typescale-body-large-font-weight);
   font-size: var(--md-sys-typescale-body-large-font-size);
   letter-spacing: var(--md-sys-typescale-body-large-tracking);
@@ -9,8 +7,6 @@
   text-decoration: var(--md-sys-typescale-body-large-text-decoration);
 }
 .body-small{
-  font-family: var(--md-sys-typescale-body-small-font-family-name);
-  font-style: var(--md-sys-typescale-body-small-font-family-style);
   font-weight: var(--md-sys-typescale-body-small-font-weight);
   font-size: var(--md-sys-typescale-body-small-font-size);
   letter-spacing: var(--md-sys-typescale-body-small-tracking);
@@ -19,8 +15,6 @@
   text-decoration: var(--md-sys-typescale-body-small-text-decoration);
 }
 .label-large{
-  font-family: var(--md-sys-typescale-label-large-font-family-name);
-  font-style: var(--md-sys-typescale-label-large-font-family-style);
   font-weight: var(--md-sys-typescale-label-large-font-weight);
   font-size: var(--md-sys-typescale-label-large-font-size);
   letter-spacing: var(--md-sys-typescale-label-large-tracking);

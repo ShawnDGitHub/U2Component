@@ -236,22 +236,16 @@
   --md-sys-color-surface-bright-dark: #383A35;
   --md-sys-color-surface-dim-dark: #121410;
   /* body - large */
-  --md-sys-typescale-body-large-font-family-name: NotoSansSC-Regular;
-  --md-sys-typescale-body-large-font-family-style: Regular;
   --md-sys-typescale-body-large-font-weight: 400;
   --md-sys-typescale-body-large-font-size: 16px;
   --md-sys-typescale-body-large-line-height: 24px;
   --md-sys-typescale-body-large-letter-spacing: 0.50px;
   /* body - small */
-  --md-sys-typescale-body-small-font-family-name: NotoSansSC-Regular;
-  --md-sys-typescale-body-small-font-family-style: Regular;
   --md-sys-typescale-body-small-font-weight: 400;
   --md-sys-typescale-body-small-font-size: 12px;
   --md-sys-typescale-body-small-line-height: 16px;
   --md-sys-typescale-body-small-letter-spacing: 0.40px;
   /* label - large */
-  --md-sys-typescale-label-large-font-family-name: NotoSansSC-Medium;
-  --md-sys-typescale-label-large-font-family-style: Medium;
   --md-sys-typescale-label-large-font-weight: 500px;
   --md-sys-typescale-label-large-font-size: 0.875em;
   --md-sys-typescale-label-large-line-height: 18px;
