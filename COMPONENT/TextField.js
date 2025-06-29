@@ -13,15 +13,12 @@ export default class TextField extends Field {
     }
   }
   static get observedAttributes() { 
-    return ["width", "height", "disabled"];
+    return ["width", "disabled"];
   }
   attributeChangedCallback (name, oldValue, newValue) {
     switch (name) {
       case "width":
         this.width = newValue;
-        break;
-      case "height":
-        this.height = newValue;
         break;
       case "disabled":
         this.handleDisableState();
@@ -98,12 +95,8 @@ export default class TextField extends Field {
     let labelWidth = this.label?.length * 16 || this.placeholder.length * 16;
     this.fullWidth = this.getAttribute("fullWidth") ? true : false;
     let attribute_width = this.getAttribute("width");
-    let attribute_height = this.getAttribute("height");
     if (attribute_width && attribute_width !== "") {
       this.width = attribute_width;
-    }
-    if (attribute_height && attribute_height !== "") {
-      this.height = attribute_height;
     }
     if (this.label && labelWidth > 90) { // text field's width should wider then label's width
       sizeLimit = this.width ? `:host{width: ${this.width}px}` : `:host{min-width: ${labelWidth + 24}px}`;
@@ -149,7 +142,8 @@ export default class TextField extends Field {
     }
   }
   handleAutocomplete (value) {
-    if (value === "username" || value === "email" || value === "name") {
+    if (value === "username" || value === "email" || value === "name"
+      || value === "address") {
       const autocomplete = this.getAttribute("autocomplete");
       this.INPUT.autocomplete = autocomplete || "on";
     }
