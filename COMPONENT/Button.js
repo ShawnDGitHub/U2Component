@@ -1,4 +1,4 @@
-import BasicComponent from "../JS/BasicComponent.js";
+import BasicComponent from "../class/BasicComponent.js";
 export default class Button extends BasicComponent {
   constructor () {
     super();

@@ -1,4 +1,4 @@
-import Field from '../JS/Field.js'
+import Field from '../class/Field.js'
 export default class TextField extends Field {
   constructor () {
     super();

@@ -1,4 +1,4 @@
-import BasicComponent from '../JS/BasicComponent.js';
+import BasicComponent from '../class/BasicComponent.js';
 import { handleNamespace } from '../utils/namespace.js';
 export default class FormItem extends BasicComponent {
   constructor () {
