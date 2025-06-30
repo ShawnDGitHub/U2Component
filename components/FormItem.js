@@ -46,6 +46,12 @@ export default class FormItem extends BasicComponent {
     content.setAttribute("class", ns.e("content"));
     content.appendChild(slot);
     this.addToShadowRoot(content);
+    // error message
+    const message = document.createElement("div");
+    message.setAttribute("class", ns.e("error") +" "+ ns.e("supporting"));
+    this.addToShadowRoot(message);
+    // node:message
+    this.MESSAGE = message;
   }
   onValidationSucceeded () {
     this.validationState = "success";
@@ -64,6 +70,7 @@ export default class FormItem extends BasicComponent {
     this.validateMessage = errors
       ? errors?.[0]?.message ?? `${this.prop} is required`
       : "";
+    this.MESSAGE.innerText = this.validateMessage;
     // notify this item is validated
     this.dispatch("validation-completed", {
       prop: this.prop,
