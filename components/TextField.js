@@ -167,6 +167,11 @@ export default class TextField extends Field {
       this.handleFilledStyle.call(this,
         () => this.value = "",
         () => this.value = this.INPUT.value);
+      this.dispatchEvent(new CustomEvent("change", {
+        bubbles: true,
+        composed: true,
+        detail: { value: this.INPUT.value }
+      }));
     }, 300))
     this.addEventListener("focus", () => {
       this.classList.add("focused");

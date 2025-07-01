@@ -9,7 +9,8 @@ const required = (rule, value, source, errors, options, type) => {
   }    
 };
 function isEmptyValue (value, type) {
-  if (value === undefined || value === null) {
+  // for required value, "" is not acceptable
+  if (value === undefined || value === null || value === "") {
     return true;
   }
   if (type === "array" && Array.isArray(value) && !value.length) {

@@ -1,5 +1,4 @@
 import BasicComponent from '../class/BasicComponent.js';
-import { handleNamespace } from '../utils/namespace.js';
 export default class Form extends BasicComponent {
   constructor () {
     super();
@@ -69,7 +68,7 @@ export default class Form extends BasicComponent {
       try {
         await field.validate("");
         if (field.validateState === "error") {
-          // TODO: field.resetField()
+          field.resetField()
         }
       } catch (fields) {
         validationErrors = {

@@ -10,6 +10,7 @@ export default class FormItem extends BasicComponent {
     this._componentName = "U2FormItem";
     this.formContext = null;
     this._prop = null;
+    this.isResettingField = false;
   }
   connectedCallback () {
     if (!this.rendered) {
@@ -25,6 +26,10 @@ export default class FormItem extends BasicComponent {
         this.formContext.addField(this);
       }, 100)
     }
+    this.addEventListener("change", this._handleEvent);
+  }
+  disconnectedCallback() {
+    this.removeEventListener("change", this._handleEvent);
   }
   get componentName () { return this._componentName; }
   set validationState (state) { this._validationState = state; }
@@ -55,10 +60,14 @@ export default class FormItem extends BasicComponent {
   }
   onValidationSucceeded () {
     this.validationState = "success";
+    this.validateMessage = "";
+    this.MESSAGE.innerText = this.validateMessage;
+    const child = this.getFieldChild();
+    child.classList.remove("error");
     this.dispatch("validation-completed", {
       prop: this.prop,
       isValid: true,
-      message: ""
+      message: this.validateMessage
     });
   }
   onValidationFailed (error) {
@@ -71,6 +80,8 @@ export default class FormItem extends BasicComponent {
       ? errors?.[0]?.message ?? `${this.prop} is required`
       : "";
     this.MESSAGE.innerText = this.validateMessage;
+    const child = this.getFieldChild();
+    child.classList.add("error");
     // notify this item is validated
     this.dispatch("validation-completed", {
       prop: this.prop,
@@ -96,11 +107,11 @@ export default class FormItem extends BasicComponent {
   }
   async validate (trigger, callback) {
     // skip validation if its resetting
-    // if (isResettingField || this.prop) {
-    //   return false
-    // }
-
-    // const hasCallback = isFunction(callback)
+    if (this.isResettingField || !this.prop) {
+      return false
+    }
+    const hasCallback = callback !== undefined &&
+      typeof callback === "function";
     // if (!validateEnabled.value) {
     //   callback?.(false);
     //   return false;
@@ -122,8 +133,7 @@ export default class FormItem extends BasicComponent {
       .catch((err) => {
         const { fields } = err
         callback?.(false, fields)
-        // return hasCallback ? false : Promise.reject(fields)
-        return true ? false : Promise.reject(fields)
+        return hasCallback ? false : Promise.reject(fields)
       })
   }
   normalizedRules () {
@@ -155,6 +165,22 @@ export default class FormItem extends BasicComponent {
         .map(({ trigger, ...rule }) => rule)
     )
   }
+  clearValidate () {
+    this.validationState = "";
+    this.validateMessage = "";
+    this.MESSAGE.innerText = this.validateMessage;
+    const child = this.getFieldChild();
+    child.classList.remove("error");
+    this.isResettingField = false;
+  }
+  async resetField () {
+    // TODO: model bind?
+    if (!this.prop) return;
+    // prevent validation from being triggered
+    this.isResettingField = true;
+    this.clearValidate();
+    this.isResettingField = false;
+  }
   dispatch (eventName, detail) {
     this.dispatchEvent(new CustomEvent(eventName, {
       bubbles: true,
@@ -162,8 +188,19 @@ export default class FormItem extends BasicComponent {
       detail
     }));
   }
+  async _handleEvent (event) {
+    await this.validate(event.type);
+  }
   getFieldValue () {
-    return this.children[0].value;
+    const child = this.getFieldChild();
+    return child.value;
+  }
+  getFieldChild () {
+    const child = this.children?.[0] || null;
+    if (!child) {
+      throw Error("Form item must have a child field");
+    }
+    return child;
   }
   render () {
     this.create();

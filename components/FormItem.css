@@ -1,11 +1,11 @@
 :host {
   display: flow-root;
   position: relative;
-  padding-bottom: 16px;
+  padding-bottom: 14px;
 }
 :host .u2-form-item__error {
   position: absolute;
-  left: 0;
+  left: 16px;
   bottom: 0;
   color: var(--md-sys-color-error);
   font-family: var(--md-sys-typescale-body-small-font-family-name);

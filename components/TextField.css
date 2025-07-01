@@ -209,6 +209,28 @@
     color: var(--md-sys-color-on-surface);
     opacity: 38%;
 }
+/* error */
+/* filled */
+:host([variant="filled"][class~="error"]) {
+    border-bottom: 1px solid var(--md-sys-color-error);
+}
+:host(:focus[variant="filled"][class~="error"]) {
+    border-bottom: 2px solid var(--md-sys-color-error);
+}
+/* outlined */
+:host([variant="outlined"][class~="error"]) {
+    outline: 1px solid var(--md-sys-color-error);
+}
+:host(:focus[variant="outlined"][class~="error"]) {
+    outline: 2px solid var(--md-sys-color-error);
+}
+/* label */
+:host(:focus[class~="error"]) .label {
+    color: var(--md-sys-color-error);
+}
+:host([class~="error"]) .label {
+    color: var(--md-sys-color-error);
+}
 /* fix */
 :host > input[type="password"]::-ms-reveal{
     display:none
