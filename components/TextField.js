@@ -176,10 +176,17 @@ export default class TextField extends Field {
     this.addEventListener("focus", () => {
       this.classList.add("focused");
     })
-    this.addEventListener("blur", () => {
+    this.addEventListener("blur", (event) => {
+      // avoid cycle execute
+      if (event instanceof CustomEvent) return;
       this.handleFilledStyle.call(this);
       this.state = false;
       this.classList.remove("focused");
+      this.dispatchEvent(new CustomEvent("blur", {
+        bubbles: true,
+        composed: true,
+        detail: { value: this.INPUT.value }
+      }));
     })
   }
 }

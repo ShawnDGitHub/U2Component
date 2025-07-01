@@ -27,9 +27,11 @@ export default class FormItem extends BasicComponent {
       }, 100)
     }
     this.addEventListener("change", this._handleEvent);
+    this.addEventListener("blur", this._handleEvent);
   }
   disconnectedCallback() {
     this.removeEventListener("change", this._handleEvent);
+    this.removeEventListener("blur", this._handleEvent);
   }
   get componentName () { return this._componentName; }
   set validationState (state) { this._validationState = state; }
