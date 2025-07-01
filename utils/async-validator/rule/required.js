@@ -1,11 +1,11 @@
+import { format } from '../util.js'
 const required = (rule, value, source, errors, options, type) => {
   if (
     rule.required &&
     (!source.hasOwnProperty(rule.field) ||
       isEmptyValue(value, type || rule.type))
   ) {
-    // TODO: format
-    errors.push(`error -${options.messages.required}, ${rule.fullField}`);
+    errors.push(format(options.messages.required, rule.fullField));
   }    
 };
 function isEmptyValue (value, type) {

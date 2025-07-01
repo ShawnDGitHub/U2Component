@@ -1,4 +1,6 @@
 
+const formatRegExp = /%[sdj%]/g;
+
 function asyncParallelArray (
   arr,
   func,
@@ -70,6 +72,43 @@ export function convertFieldsError (
     fields[field].push(error);
   });
   return fields;
+}
+export function format(
+  template,
+  ...args
+) {
+  let i = 0;
+  const len = args.length;
+  if (typeof template === 'function') {
+    return template.apply(null, args);
+  }
+  if (typeof template === 'string') {
+    let str = template.replace(formatRegExp, x => {
+      if (x === '%%') {
+        return '%';
+      }
+      if (i >= len) {
+        return x;
+      }
+      switch (x) {
+        case '%s':
+          return String(args[i++]);
+        case '%d':
+          return Number(args[i++]);
+        case '%j':
+          try {
+            return JSON.stringify(args[i++]);
+          } catch (_) {
+            return '[Circular]';
+          }
+          break;
+        default:
+          return x;
+      }
+    });
+    return str;
+  }
+  return template;
 }
 export function asyncMap (objArr, option, func, callback, source) {
   if (option.first) {

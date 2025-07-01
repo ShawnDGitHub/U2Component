@@ -1,6 +1,7 @@
 import { messages as defaultMessages, newMessages } from './message.js';
 import validators from './validator/index.js';
 import {
+  format,
   asyncMap,
   complementError,
   deepMerge,
@@ -147,8 +148,7 @@ export default class AsyncValidator {
       rule.type &&
       !validators.hasOwnProperty(rule.type)
     ) {
-      // TODO: format
-      throw new Error(`Unknown rule type ${rule.type}`);
+      throw new Error(format('Unknown rule type %s', rule.type));
     }
     return rule.type || "string";
   }
@@ -193,8 +193,7 @@ export default class AsyncValidator {
             filledErrors = [
               options.error(
                 rule,
-                // TODO: format
-                `${options.messages.required}-${rule.field}`,
+                format(options.messages.required, rule.field)
               ),
             ];
           }
