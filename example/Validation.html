@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>examples for validation</title>
+<script src="../components/Button.js" type="module"></script>
+<script src="../components/TextField.js" type="module"></script>
+<script src="../components/FormItem.js" type="module"></script>
+<script src="../components/Form.js" type="module"></script>
+
+<!-- import style -->
+<link rel="stylesheet" href="../style/theme.css" />
+
+<style>
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  margin: 0;
+  font-size: 1rem;
+}
+.card {
+    color: var(--md-sys-color-on-surface);
+    padding: 2rem 1rem;
+    width: fit-content;
+    border-radius: 1rem;
+}
+body { display: flex; flex-direction: column; align-items: center;  }
+@media(prefers-color-scheme: dark) { 
+    body { background-color: #121212; }
+}
+body > * + * { margin-top: 4rem; }
+</style>
+
+</head>
+<body>
+    <section class="card">
+        <div class="title-small">form validation</div>
+        <u2-form>
+          <u2-form-item prop="age">
+              <u2-field
+                variant="filled"
+                label="age"
+                fullWidth
+               >
+              </u2-field>
+          </u2-form-item>
+          <u2-form-item prop="address">
+              <u2-field
+                variant="outlined"
+                label="address">
+              </u2-field>
+          </u2-form-item>
+        </u2-form>
+        <u2-button variant="filled"
+         onclick="submitForm">submit</u2-button>
+    </section>
+    
+</body>
+<script>
+  const FORM = document.getElementsByTagName("U2-FORM")[0];
+  const submitButton = document.getElementsByTagName("U2-BUTTON")[0];
+  const rules = {
+    age: [
+      {
+        required: true,
+        trigger: "change",
+      },
+    ],
+    address: [
+      {
+        required: true,
+        message: "Please fill the address field",
+        trigger: "change",
+      },
+    ],
+  }
+  FORM.rules = rules;
+
+  const submitForm = async (formElement) => {
+    if (!formElement) return;
+    await formElement.validate((valid, fields) => {
+      if (valid) {
+        console.log('submit!');
+      } else {
+        console.log('error submit!', fields);
+      }
+    })
+  }
+  submitButton.addEventListener("click", () => {
+    submitForm(FORM)
+  });
+</script>
+</html>

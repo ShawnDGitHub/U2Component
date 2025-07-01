@@ -173,7 +173,6 @@
 }
 :host([disabled][variant="filled"]) .label {
     color: var(--md-sys-color-on-surface);
-    opacity: 38%;
     background-color: transparent;
 }
 :host([disabled][variant="outlined"]) {
@@ -184,7 +183,6 @@
 }
 :host([disabled][variant="outlined"]) .label {
     color: var(--md-sys-color-on-surface);
-    opacity: 38%;
 }
 /* fix */
 :host([variant="filled"]) ::-webkit-input-placeholder,
