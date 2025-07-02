@@ -1,4 +1,5 @@
 :host {
+    box-sizing: border-box;
     display: flow-root;
     height: fit-content;
     cursor: text;

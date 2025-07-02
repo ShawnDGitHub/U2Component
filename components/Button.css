@@ -1,3 +1,4 @@
+:host { box-sizing: border-box; }
 /* if no variant set, style will fall back to text type */
 /* variant filled */
 :host([variant="filled"]) {
