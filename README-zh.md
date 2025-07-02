@@ -18,6 +18,7 @@
 - [可用组件](#可用组件)
 - [文档](#文档)
   - [text field](#text-field)
+  - [textarea](#textarea)
   - [select](#select)
   - [button](#button)
   - [segmented button](#segmented-button)
@@ -31,15 +32,18 @@ U2Component 是一个基于 **Web Component** 的组件库。可以通过替换 
 2. 确保在 html 上设置了 ```font-size: 1rem```。某些样式使用了 rem 和 em 单位。
 ## 使用引导
 ### 主题
+
 **生成 tokens**
+
 /style 文件夹中的 css 文件由 **Figma 插件** [Material Theme Builder](https://www.figma.com/community/plugin/1034969338659738588/material-theme-builder) 生成。选择 “Export" - “Web(CSS)”，替换本项目 /style 中的 token.css 文件即可。
 
-我正在设计一个库，可以根据图片生成 U2Component 主题所需的 tokens，保持关注。
+> **[Material-Theme-Builder web](https://material-foundation.github.io/material-theme-builder/)**: 这另外一个网页项目更新了，所以不再生成 token.css，上面的 Figma 插件应该也是。
+
+但我正在设计一个库，可生成 U2Component 主题所需的 tokens，保持关注。
 
 **图标 (TODO)**
+
 之前的图标库使用了 material-symbols，目前图标功能已经被移除，后续会支持，当然可能会是其他的图标库。
-
-
 
 > 将来的 npm 包将不再需要以下这些流程（仅限框架中使用时）。
 
@@ -56,12 +60,12 @@ U2Component 是一个基于 **Web Component** 的组件库。可以通过替换 
 ```html
 <script src="../components/TextField.js" type="module"></script>
 ```
-[ -> top](#目录)
 
 ## 可用组件
 | 名称          | 状态                  | 使用时的标签名     |
 | :---------------: | :------------------------- | :------------- |
 | text field         | 稳定                      | u2-field    |
+| textarea         | 稳定                      | u2-textarea    |
 | select         | 可能变动                | u2-Select    |
 | filled button  | 稳定                       | u2-button variant="filled"  |
 | outlined button    | 稳定                       | u2-button variant="outlined"      |
@@ -116,7 +120,29 @@ U2Component 是一个基于 **Web Component** 的组件库。可以通过替换 
 8. **disabled** : 
 设置 ```disabled``` 可让 text field 不可输入。
 
-[ -> top](#目录)
+### textarea
+
+<div align="center">
+  <img src="https://github.com/ShawnDGitHub/imgPack/blob/main/img/u2_example-textarea.png" alt="examples of textarea"/>
+</div>
+
+```html
+  <u2-textarea
+      variant="filled"
+      label="note"
+      height="200">
+  </u2-textarea>
+```
+parameter:
+(\*) means required
+
+1. **variant**(\*) : 
+This component has two style variants: filled and outlined.
+2. **value** :
+3. **placeholder** 
+4. **label** 
+5. **width**
+6. **height**
 
 ### select
 
@@ -174,8 +200,6 @@ U2Component 是一个基于 **Web Component** 的组件库。可以通过替换 
   </segmented-button>
 ```
 没有任何参数。**仅支持 text button**。
-
-[ -> top](#目录)
 
 ### form
 表单验证组件。
