@@ -5,6 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>examples for validation</title>
+<script src="../components/TextArea.js" type="module"></script>
 <script src="../components/Button.js" type="module"></script>
 <script src="../components/TextField.js" type="module"></script>
 <script src="../components/FormItem.js" type="module"></script>
@@ -43,7 +44,7 @@ body > * + * { margin-top: 4rem; }
         <u2-form>
           <u2-form-item prop="age">
               <u2-field
-                variant="filled"
+                variant="outlined"
                 label="age"
                 fullWidth
                >
@@ -51,9 +52,17 @@ body > * + * { margin-top: 4rem; }
           </u2-form-item>
           <u2-form-item prop="address">
               <u2-field
-                variant="outlined"
-                label="address">
+                variant="filled"
+                label="address"
+                fullWidth>
               </u2-field>
+          </u2-form-item>
+          <u2-form-item prop="note">
+              <u2-textarea
+                variant="filled"
+                label="note"
+                height="200">
+              </u2-textarea>
           </u2-form-item>
         </u2-form>
         <u2-button variant="filled"
@@ -75,6 +84,12 @@ body > * + * { margin-top: 4rem; }
       {
         required: true,
         message: "Please fill the address field",
+        trigger: "change",
+      },
+    ],
+    note: [
+      {
+        required: true,
         trigger: "change",
       },
     ],

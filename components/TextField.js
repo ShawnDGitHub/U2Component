@@ -67,7 +67,7 @@ export default class TextField extends Field {
       labelElement.setAttribute("class", "label");
       this.addToShadowRoot(labelElement);
       // node:label
-      this.LABEL = this.shadowRoot.childNodes[2]
+      this.LABEL = this.shadowRoot.childNodes[2];
       this.LABEL.innerText = this.label;
       this.INPUT.ariaPlaceholder = this.label;
       this.INPUT.title = this.getAttribute("title") || `enter ${this.label}`;

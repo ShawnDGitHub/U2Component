@@ -103,7 +103,6 @@
     transform: translateY(0);
     padding: 0 0px;
     border-radius: 4px;
-    overflow: hidden;
     top: 16px;
     left: 16px;
     color: var(--md-sys-color-on-surface-variant);
