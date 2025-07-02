@@ -33,6 +33,17 @@ export default class FormItem extends BasicComponent {
     this.removeEventListener("change", this._handleEvent);
     this.removeEventListener("blur", this._handleEvent);
   }
+  static get observedAttributes() { 
+    return ["prop"];
+  }
+  attributeChangedCallback (name, oldValue, newValue) {
+    switch (name) {
+      case "prop":
+        this.prop = newValue;
+        break;
+      default: break;
+    }
+  }
   get componentName () { return this._componentName; }
   set validationState (state) { this._validationState = state; }
   get validationState () { return this._validationState; }
@@ -42,12 +53,6 @@ export default class FormItem extends BasicComponent {
   get validateMessage () { return this._validateMessage; }
   create () {
     const ns = handleNamespace("form-item");
-    const prop = this.getAttribute("prop");
-    if (!prop) {
-      console.error("Form item must have a prop attribute.");
-    } else {
-      this.prop = prop;
-    }
     const content = document.createElement("div");
     const slot = document.createElement("slot");
     content.setAttribute("class", ns.e("content"));
