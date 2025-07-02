@@ -45,9 +45,70 @@ U2Component 是一个基于 **Web Component** 的组件库。可以通过替换 
 
 之前的图标库使用了 material-symbols，目前图标功能已经被移除，后续会支持，当然可能会是其他的图标库。
 
-> 将来的 npm 包将不再需要以下这些流程（仅限框架中使用时）。
-
 ### Import
+#### 在包管理器 / 框架中使用
+**步骤 1**：安装
+```js
+npm install u2-component
+```
+
+**步骤 2**：配置（这样框架能够识别自定义元素）
+
+对于 *Vite (vue)*
+
+```js
+// vite.config.js
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith('u2-'),
+        },
+      },
+    }),
+  ],
+});
+```
+
+对于 *Vue CLI / Webpack (vue)*
+
+```js
+// vue.config.js
+module.exports = {
+  chainWebpack: config => {
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap(options => {
+        options.compilerOptions = {
+          isCustomElement: (tag) => tag.startsWith('u2-')
+        };
+        return options;
+      });
+  }
+};
+```
+
+**最后一步**：引入
+对于 *vue*
+
+```typescript
+// main.ts
+import U2Component from 'u2-component'
+import 'u2-component/style' // 引入样式
+
+import { createApp } from 'vue'
+const app = createApp(App)
+app.use(U2Component) // 安装
+app.mount('#app')
+```
+
+对于 *react* (还在处理中)
+
+#### 直接在 HTML 中使用
+可以下载 github 的文件解压后直接引入。
+
 **1. 导入基础样式**
 样式文件包含各种 token，例如**浅色和深色主题**。
 
@@ -123,7 +184,7 @@ U2Component 是一个基于 **Web Component** 的组件库。可以通过替换 
 ### textarea
 
 <div align="center">
-  <img src="https://github.com/ShawnDGitHub/imgPack/blob/main/img/u2_example-textarea.png" alt="examples of textarea"/>
+  <img src="https://github.com/ShawnDGitHub/imgPack/blob/main/img/u2_example-textarea.png" alt="textarea 示例"/>
 </div>
 
 ```html
@@ -133,11 +194,11 @@ U2Component 是一个基于 **Web Component** 的组件库。可以通过替换 
       height="200">
   </u2-textarea>
 ```
-parameter:
-(\*) means required
+参数:
+(\*) 表示必须设置
 
 1. **variant**(\*) : 
-This component has two style variants: filled and outlined.
+此组件有两种样式变体: 填充 (filled) 和轮廓 (outlined)。
 2. **value** :
 3. **placeholder** 
 4. **label** 
@@ -230,11 +291,11 @@ const rules = {
         },
     ]
 }
-FORM.rules = rules;
+FORM.rules = rules; // (*)
 ```
+在 vue 或者 react 中使用时也是需要先获取 form 并设置 form 的 rules 配置。（像 (\*) 行一样传递）
+
 **rules 的配置内容和 Element Plus 的一样**。
 
 ### form-item
 见 form 的代码示例。 **必须放在 u2-form 中使用**。
-
-[ -> top](#目录)
