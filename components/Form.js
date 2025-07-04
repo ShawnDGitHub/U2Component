@@ -6,7 +6,6 @@ export default class Form extends BasicComponent {
     this.rendered = false;
     this.shadowRoot.innerHTML = `<style>@import "${new URL("Form.css", import.meta.url)}";</style>`;
     this._componentName = "U2Form";
-    this.formItemContext = null;
     this.fields = [];
     this._allValidationState = new Map();
     this._rules = {}; // for validation
@@ -14,8 +13,6 @@ export default class Form extends BasicComponent {
   connectedCallback () {
     if (!this.rendered) {
       this.render();
-      this.rendered = true;
-      this.formItemContext = this.childNodes[1];
     }
     this.addEventListener("validation-completed", this._handleValidated);
   }
@@ -31,6 +28,11 @@ export default class Form extends BasicComponent {
     const slot = document.createElement("slot");
     form.appendChild(slot);
     this.addToShadowRoot(form);
+  }
+  addFields () {
+    [].forEach.call(this.children, (field) => {
+      this.addField(field);
+    })
   }
   addField (field) {
     if (field.prop === null) {
@@ -89,6 +91,8 @@ export default class Form extends BasicComponent {
   }
   render () {
     this.create();
+    this.rendered = true;
+    this.addFields();
   }
 }
 if (!customElements.get("u2-form")) {

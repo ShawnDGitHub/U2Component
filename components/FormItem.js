@@ -21,10 +21,6 @@ export default class FormItem extends BasicComponent {
         throw new Error("From item can only be placed in Form.");
       }
       this.formContext = this.parentElement;
-      // TODO: handle the async problem, replace setTimeout
-      setTimeout(() => {
-        this.formContext.addField(this);
-      }, 100)
     }
     this.addEventListener("change", this._handleEvent);
     this.addEventListener("blur", this._handleEvent);
