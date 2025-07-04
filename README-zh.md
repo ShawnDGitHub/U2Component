@@ -3,8 +3,7 @@
 </div>
 <div align="center">
   <img src="https://img.shields.io/badge/License-Apache--2.0_license-green" alt="License"/>
-  <img src="https://img.shields.io/badge/Design_System-Material_Deisgn_3-blue" alt="设计系统受到 Material Design 3 启发"/>
-  <img src="https://img.shields.io/badge/stars-1-orange" alt="star 数目"/>
+  <img src="https://img.shields.io/badge/stars-2-orange" alt="star 数目"/>
 </div>
 
 > U2Component 是一个受 Material Design 3 设计系统启发的跨框架组件库，基于 Web Component。该项目正在重构中。

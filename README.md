@@ -3,8 +3,7 @@
 </div>
 <div align="center">
   <img src="https://img.shields.io/badge/License-Apache--2.0_license-green" alt="License"/>
-  <img src="https://img.shields.io/badge/Design_System-Material_Deisgn_3-blue" alt="Design system is inspired by the Material Design 3"/>
-  <img src="https://img.shields.io/badge/stars-1-orange" alt="stars"/>
+  <img src="https://img.shields.io/badge/stars-2-orange" alt="stars"/>
 </div>
 
 > U2Component is a cross-framework component library inspired by the Material Design 3 design system, based on web component. The project is being refactored.
