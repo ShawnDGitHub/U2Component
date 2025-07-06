@@ -1,0 +1,27 @@
+:host button,
+:host li {
+    background: none;
+    border: none;
+    cursor: inherit;
+    padding: 0;
+    margin: 0;
+    text-align: unset;
+    text-decoration: none;
+}
+:host .list-item {
+    border-radius: inherit;
+    display: flex;
+    flex: 1;
+    max-width: inherit;
+    min-width: inherit;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    width: 100%;
+}
+:host .list-item.interactive {
+    cursor: pointer;
+}
+:host .list-item.disabled {
+    opacity: 58%;
+    pointer-events: none;
+}
