@@ -1,0 +1,9 @@
+:host {
+    position: relative;
+    background-color: var(--md-sys-color-background);
+    color: unset;
+    display: flex;
+    flex-direction: column;
+    outline: none;
+    padding: 8px 0;
+}

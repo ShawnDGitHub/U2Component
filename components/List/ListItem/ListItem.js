@@ -33,9 +33,6 @@ export class ListItemEl extends ListItem {
       default: break;
     }
   }
-  get isDisabled () {
-    return this.disabled;
-  }
   create () {
     const listItemChild = document.createElement("u2-item");
 
@@ -46,7 +43,7 @@ export class ListItemEl extends ListItem {
     container.setAttribute("slot", "container");
     slotStart.setAttribute("slot", "start");
     slotEnd.setAttribute("slot", "end");
-    container.setAttribute("name", "container");
+
     slotStart.setAttribute("name", "start");
     slotEnd.setAttribute("name", "end");
 
@@ -75,7 +72,7 @@ export class ListItemEl extends ListItem {
     }
     const isInteractive = this.type !== "text";
     tag.setAttribute("id", "item");
-    tag.setAttribute("tabindex", `${this.isDisabled || !isInteractive ? -1 : 0}`);
+    tag.setAttribute("tabindex", `${this.disabled || !isInteractive ? -1 : 0}`);
     if (this.disabled) tag.setAttribute("disabled", this.disabled);
     tag.setAttribute("role", "listitem");
     tag.setAttribute("class", `list-item ${this.disabled ? "disabled" : "" }`);

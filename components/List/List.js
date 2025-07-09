@@ -6,7 +6,7 @@ const NAVIGABLE_KEY_SET = new Set(Object.values(NavigableKeys));
 export class List extends BasicComponent {
   listController = new ListController({
     isItem: this.isItem,
-    getPossibleItems: this.getPossibleItems,
+    getPossibleItems: this.getPossibleItems.bind(this),
     deactivateItem: this.deactivateItem,
     activateItem: this.activateItem,
     isNavigableKey: this.isNavigableKey,
@@ -17,7 +17,6 @@ export class List extends BasicComponent {
     this.attachShadow({ mode: "open" });
     this.rendered = false;
     this.shadowRoot.innerHTML = `<style>@import "${new URL("List.css", import.meta.url)}";</style>`;
-    this.slotItems = this.shadowRoot.slotAssignment;
   }
   connectedCallback () {
     if (!this.rendered) {
@@ -27,7 +26,7 @@ export class List extends BasicComponent {
   disconnectedCallback() {
     this.SLOT.removeEventListener("deactivate-items", 
       this.listController.onDeactivateItems);
-    this.SLOT.removeEventListener("slot-change",
+    this.SLOT.removeEventListener("slotchange",
       this.listController.onSlotchange);
   }
   get items () {
@@ -41,13 +40,14 @@ export class List extends BasicComponent {
     this.SLOT = this.shadowRoot.children[1];
     this.SLOT.addEventListener("deactivate-items", 
       this.listController.onDeactivateItems);
-    this.SLOT.addEventListener("slot-change",
+    this.SLOT.addEventListener("slotchange",
       this.listController.onSlotchange);
   }
   isItem (item) { item.hasAttribute("u2-list-item"); }
+  // should bind list's this when pass as parameter of ListController
   getPossibleItems () { return this.slotItems; }
   deactivateItem (item) { return item.tabIndex = -1; }
-  activeItem (item) { return item.tabIndex = 0; }
+  activateItem (item) { return item.tabIndex = 0; }
   isNavigableKey (key) { return NAVIGABLE_KEY_SET.has(key); }
   isActivatable (item) {
     return !item.disabled && item.type !== "text"
@@ -55,6 +55,7 @@ export class List extends BasicComponent {
 
   render () {
     this.create();
+    this.slotItems = this.SLOT.assignedElements();
     this.rendered = true;
   }
 }

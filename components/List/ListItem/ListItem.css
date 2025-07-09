@@ -1,3 +1,6 @@
+:host {
+    -webkit-tap-highlight-color: transparent;
+}
 :host button,
 :host li {
     background: none;
@@ -24,4 +27,22 @@
 :host .list-item.disabled {
     opacity: 58%;
     pointer-events: none;
+}
+/* type */
+:host(:is([type='button']:not([disabled]))) {
+    cursor: pointer;
+}
+:host [slot='container'] {
+    pointer-events: none;
+}
+:host :is([slot='start'], [slot='end'])::slotted(*) {
+    fill: currentColor;
+}
+
+:host [slot='start'] {
+    /* TODO: color */
+}
+
+:host [slot='end'] {
+    /* TODO: color */
 }
