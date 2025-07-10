@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../components/Select.js" type="module"></script>
+  <script src="../components/Button.js" type="module"></script>
+  <script src="../components/Menu/MenuItem/MenuItem.js" type="module"></script>
+  <script src="../components/Menu/Menu.js" type="module"></script>
+  <!-- import style -->
+  <link rel="stylesheet" href="../style/theme.css" />
+</head>
+<style>
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  margin: 0;
+  font-size: 1rem;
+}
+/* container must have relative attribute to let menu
+  get right position parameters */
+.card {
+    position: relative;
+    min-width: 200px;
+    margin: 2rem 1rem;
+    border-radius: 1rem;
+}
+body { display: flex; flex-direction: column; align-items: center;  }
+@media(prefers-color-scheme: dark) { 
+    body { background-color: #121212; }
+}
+</style>
+<body>
+  <section class="card">
+    <u2-button variant="filled" id="trigger">trigger</u2-button>
+    <u2-menu anchor="trigger">
+      <u2-menu-item>
+        option 1
+        <div slot="start">←</div>
+        <div slot="end">🔰</div>
+      </u2-menu-item>
+      <u2-menu-item>option 2</u2-menu-item>
+      <u2-menu-item disabled>option 3</u2-menu-item>
+    </u2-menu>
+  </section>
+</body>
+<script>
+  const menu = document.getElementsByTagName("u2-menu")[0];
+  const button = document.getElementById("trigger");
+  button.addEventListener("click", () => {
+    menu.open = !menu.open;
+  })
+</script>
+</html>
