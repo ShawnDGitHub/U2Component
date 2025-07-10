@@ -1,0 +1,51 @@
+:host {
+    -webkit-tap-highlight-color: transparent;
+}
+:host button,
+:host li {
+    background: none;
+    border: none;
+    cursor: inherit;
+    padding: 0;
+    margin: 0;
+    text-align: unset;
+    text-decoration: none;
+}
+:host .menu-item {
+    padding: 2px 8px;
+    border-radius: inherit;
+    display: flex;
+    flex: 1;
+    max-width: inherit;
+    min-width: inherit;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+}
+:host .menu-item.disabled {
+    opacity: 58%;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+:host .menu-item > div {
+    display: flex;
+}
+:host ::slotted([slot="start"]) {
+    margin-right: 12px;
+}
+
+:host ::slotted([slot="end"]) {
+    margin-left: 12px;
+}
+/* state */
+:host .menu-item:focus-visible {
+    background-color: var(--md-sys-state-pressed-state-layer-opacity);
+    outline: 2px solid var(--md-sys-color-outline);
+    border-radius: 8px;
+}
+:host .menu-item:hover {
+    background-color: var(--md-sys-state-hover-state-layer-opacity);
+}
+:host .menu-item:active {
+    background-color: var(--md-sys-state-focus-state-layer-opacity);
+}

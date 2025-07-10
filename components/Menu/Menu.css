@@ -1,0 +1,28 @@
+:host .menu {
+    display: none;
+    inset: auto;
+    border: none;
+    padding: 0px;
+    overflow: hidden;
+    background-color: var(--md-sys-color-surface-container-lowest);
+    color: var(--md-sys-color-on-surface);
+    opacity: 0;
+    z-index: 20;
+    position: absolute;
+    user-select: none;
+    max-height: inherit;
+    height: inherit;
+    min-width: inherit;
+    max-width: inherit;
+    scrollbar-width: inherit;
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30);
+    border-radius: 4px;
+}
+:host .item-padding {
+    padding: 8px 2px;
+}
+@media (prefers-color-scheme: dark) {
+:host .menu {
+    background-color: var(--md-sys-color-surface-container);
+}
+}

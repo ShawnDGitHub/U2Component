@@ -1,9 +1,4 @@
-  :host {
-    /* color: map.get($tokens, 'label-text-color');
-    font-family: map.get($tokens, 'label-text-font');
-    font-size: map.get($tokens, 'label-text-size');
-    font-weight: map.get($tokens, 'label-text-weight');
-    line-height: map.get($tokens, 'label-text-line-height'); */
+:host {
     align-items: center;
     box-sizing: border-box;
     display: flex;
