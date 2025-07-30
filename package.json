@@ -1,0 +1,42 @@
+{
+  "name": "u2-component",
+  "version": "0.0.2",
+  "description": "U2Component is a cross-framework component library inspired by the Material Design 3 design system, based on web component.",
+  "module": "dist/index.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js"
+    },
+    "./style": {
+      "import": "./dist/index.css",
+      "require": "./dist/index.css"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShawnDGitHub/U2Component.git"
+  },
+  "keywords": [
+    "material-design-3",
+    "web-component"
+  ],
+  "author": "shawn_1024 <chengjunsoft@outlook.com> (https://github.com/ShawnDGitHub)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ShawnDGitHub/U2Component/issues"
+  },
+  "homepage": "https://github.com/ShawnDGitHub/U2Component#readme",
+  "devDependencies": {
+    "vite": "^7.0.0"
+  }
+}
