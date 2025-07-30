@@ -1,6 +1,6 @@
 {
   "name": "u2-component",
-  "version": "0.0.3",
+  "version": "0.0.2",
   "description": "U2Component is a cross-framework component library inspired by the Material Design 3 design system, based on web component.",
   "module": "dist/index.es.js",
   "exports": {
