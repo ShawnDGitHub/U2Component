@@ -7,6 +7,7 @@
 <title>examples for button</title>
 <script src="../components/Button.js" type="module"></script>
 <script src="../components/SegmentedButton.js" type="module"></script>
+<script src="../components/IconButton.js" type="module"></script>
 <!-- import style -->
 <link rel="stylesheet" href="../style/theme.css" />
 <style>
@@ -49,7 +50,7 @@ body > * + * { margin-top: 4rem; }
     </section>
 
     <section class="card">
-        <div class="title-small">Segmented button</div>            
+        <div class="title-small">Segmented button</div>
         <segmented-button>
             <u2-button>option 1</u2-button>
             <u2-button>option 2</u2-button>
@@ -57,15 +58,14 @@ body > * + * { margin-top: 4rem; }
         </segmented-button>
     </section>
 
-    <!-- <section class="card">
-        <div class="title-small">icon-variant="rounded"</div>    
-        <div class="mt-1"></div>     
-        <icon-button icon="search" icon-variant="rounded"></icon-button>
-        <icon-button icon="add" icon-variant="rounded"></icon-button>
-        <icon-button icon="arrow_drop_down" icon-variant="rounded"></icon-button>
-        <icon-button icon="arrow_drop_up" icon-variant="rounded"></icon-button>
-        <icon-button icon="videocam" icon-variant="rounded"></icon-button>
-        <icon-button icon="star" icon-variant="rounded"></icon-button>
-    </section> -->
+    <section class="card">
+        <div class="title-small">Icon button</div>
+        <u2-icon-button variant="filled">✔</u2-icon-button>
+        <u2-icon-button variant="outlined">✔</u2-icon-button>
+        <u2-icon-button>✔</u2-icon-button>
+        <u2-icon-button variant="filled" disabled>✔</u2-icon-button>
+        <u2-icon-button variant="outlined" disabled>✔</u2-icon-button>
+        <u2-icon-button disabled>✔</u2-icon-button>
+    </section>
 </body>
 </html>
