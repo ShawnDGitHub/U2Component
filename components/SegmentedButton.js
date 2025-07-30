@@ -40,7 +40,7 @@ export default class SegmentedButton extends HTMLElement {
   }
   handleEvent (event) {
     const previousValue = this.value;
-    const button = event.target;
+    let button = event.target;
     while (button && button.parentNode !== this) {
       button = button.parentNode;
     }
