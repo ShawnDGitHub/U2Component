@@ -1,5 +1,6 @@
 :host {
     -webkit-tap-highlight-color: transparent;
+    white-space: nowrap;
 }
 :host button,
 :host li {

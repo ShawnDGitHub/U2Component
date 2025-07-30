@@ -1,7 +1,7 @@
 import { MenuItem } from '../util.js';
 import { MenuItemController } from './controller.js'
 
-export class MenuItemEl extends MenuItem {
+export default class MenuItemEl extends MenuItem {
   menuItemController = new MenuItemController(
     this,
     {

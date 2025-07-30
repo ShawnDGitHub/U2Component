@@ -64,7 +64,7 @@ function getProperties () {
   }
 }
 // SurfacePositionController needs a host implements the ReactiveControllerHost
-export class Menu extends ReactiveControllerHost {
+export default class Menu extends ReactiveControllerHost {
   constructor () {
     super();
     this.attachShadow({ mode: "open" });
@@ -85,7 +85,7 @@ export class Menu extends ReactiveControllerHost {
     this.defaultFocus = FocusState.FIRST_ITEM;
     this.isSubmenu = false;
     this.isRepositioning = false;
-    this.lastFocuesdElement = null;
+    this.lastFocusedElement = null;
     this.currentAnchorElement = null;
 
     this.openCloseAnimationSignal = createAnimationSignal();
@@ -219,7 +219,7 @@ export class Menu extends ReactiveControllerHost {
     return slot;
   }
   getMenuClasses () {
-    const classes = "";
+    let classes = "";
     if (this.open) classes += "open ";
     if (this.positioning === "fixed") classes += "fixed "
     return classes;
@@ -406,7 +406,7 @@ export class Menu extends ReactiveControllerHost {
     return await animationEnded;
   }
   async onOpened () {
-    this.lastFocuesdElement = getFocusedElement();
+    this.lastFocusedElement = getFocusedElement();
     const items = this.items;
     const activeItemRecord = getActiveItem(items);
 
@@ -448,7 +448,7 @@ export class Menu extends ReactiveControllerHost {
   async beforeClose () {
     this.open = false;
     // TODO: skipRetoreFocus
-    this.lastFocuesdElement?.focus?.();
+    this.lastFocusedElement?.focus?.();
     await this.animateClose();
   }
   onClosed () {
